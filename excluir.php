@@ -4,9 +4,9 @@
 include("conecta.php");
 
 // receber os dados do formulário
-$matri = $_GET['matri'];
+$id = $_GET['id'];
 
-$sql = "DELETE FROM chamada WHERE id_historia = $matri";
+$sql = "DELETE FROM chamada WHERE id = $id";
 
 // executa o comando no BD
 mysqli_query($conexao,$sql);
