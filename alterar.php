@@ -5,15 +5,20 @@ include("conecta.php");
 
 // receber os dados do formulário
 $id = $_POST['id'];
-$texto = $_POST['texto'];
-$imagem = $_POST['imagem'];
-$escolha1 = $_POST['escolha1'];
-$texto1 = $_POST['texto1'];
-$escolha2 = $_POST['escolha2'];
-$texto2 = $_POST['texto2'];
+$matri = $_POST['matri'];
+$nome = $_POST['nome'];
 
-$sql = "UPDATE historia SET id_historia = $id, 
-texto = '$texto', nome_imagem = '$imagem', escolha1 = $escolha1, escolha2 = $escolha2, texto1 = '$texto1', texto2 = '$texto2' WHERE id_historia = $id";
 
+$sql = "UPDATE chamada SET 
+matricula = '$matri', nome = '$nome' WHERE id = $id";
+
+if ($mysqli->error) {
+
+    die("Falha ao editar usuário no sistema:". $mysqli->error);
+
+}else {
+    header("location: listar.php");
+}
 // executa o comando no BD
-mysqli_query($conexao,$sql);
+mysqli_query($mysqli,$sql);
+?>
