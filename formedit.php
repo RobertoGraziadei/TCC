@@ -32,7 +32,7 @@ $dados = mysqli_fetch_assoc($resultado);
 <form action="alterar.php" method="post">
 
     <h2>Editar usuário</h2>
-    <input type="hidden" name="id">
+    <input type="hidden" name="id" value="<?php echo $dados['id'];?>">
     Edite a matricula
     <input  type="number" id="id" value="<?php echo $dados['matricula'];?>" name="matri"/><br><br>
     Edite o nome
