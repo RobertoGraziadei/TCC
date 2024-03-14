@@ -10,3 +10,6 @@ $sql = "DELETE FROM chamada WHERE id = $id";
 
 // executa o comando no BD
 mysqli_query($conexao,$sql);
+
+header("location: listar.php");
+?>
