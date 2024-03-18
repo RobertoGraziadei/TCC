@@ -28,5 +28,6 @@ echo '<td> <a href="excluir?id='.$dados['id'].'"> <img src="imagens/excluir.png"
 echo '</tr>';
 }
 
-echo '</table>';
+echo '</table>'."<br>";
+echo '<button><a href="index.php">Voltar</a></button>';
 ?>
