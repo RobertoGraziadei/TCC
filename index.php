@@ -7,11 +7,12 @@ include("conecta.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crud</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <b>
-    <h1>Página Inicial do Crud</h1><br>
-    <a href="formcad.html">Cadastrar</a><br>
-    <a href="formedit.php">Alterar</a><br>
-    <a href="listar.php">Listar</a><br>
-    <a href="excluir.php">Excluir</a><br>
+    <div class="c"> Página Inicial do Crud </div><br>
+    <div class="d">
+    <button><a href="formcad.html">Cadastrar </button></a><br><br>
+    <button><a href="listar.php">Listar</button><br><br>
+</div>
 </b
