@@ -1,14 +1,14 @@
 <?php
 
 // Recebe o id do usuário
-
+$id = $_GET['id'];
 
 // Conectar ao BD
 include("conecta.php");
 
 
 // Seleciona os dados do usuário da tabela
-$sql = "SELECT * FROM chamada";
+$sql = "SELECT * FROM chamada WHERE id = $id";
 
 // Executa o Select
 $resultado = mysqli_query($conexao,$sql);
