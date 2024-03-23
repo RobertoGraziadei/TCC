@@ -1,14 +1,14 @@
 <?php
 
 // Recebe o id do usuário
-$id = $_GET['id'];
+$id = $_GET['id_aluno'];
 
 // Conectar ao BD
 include("conecta.php");
 
 
 // Seleciona os dados do usuário da tabela
-$sql = "SELECT * FROM chamada WHERE id = $id";
+$sql = "SELECT * FROM aluno WHERE id_aluno = $id";
 
 // Executa o Select
 $resultado = mysqli_query($conexao,$sql);
@@ -33,7 +33,7 @@ $dados = mysqli_fetch_assoc($resultado);
 <form action="alterar.php" method="get">
 
     <h2>Editar Aluno</h2>
-    <input type="hidden" name="id" value="<?php echo $dados['id'];?>">
+    <input type="hidden" name="id_aluno" value="<?php echo $dados['id_aluno'];?>">
     Edite a matricula
     <input  type="number" value="<?php echo $dados['matricula'];?>" name="matricula"/><br><br>
     Edite o nome

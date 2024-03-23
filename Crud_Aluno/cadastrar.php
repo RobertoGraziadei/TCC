@@ -9,7 +9,7 @@ $nome = $_POST['nome'];
 
 
 //comando sql.
-$sql = "INSERT INTO chamada (matricula, nome) VALUES ($matricula, '$nome')";
+$sql = "INSERT INTO aluno (matricula, nome) VALUES ($matricula, '$nome')";
 
 header("location: listar.php");
  

@@ -3,7 +3,7 @@
 include("conecta.php");
 
 // Seleciona todos os dados da tabela historia
-$sql = "SELECT * FROM chamada";
+$sql = "SELECT * FROM aluno";
 
 // Executa o Select
 $resultado = mysqli_query($conexao,$sql);
