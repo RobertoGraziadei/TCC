@@ -4,9 +4,9 @@
 include("conecta.php");
 
 // receber os dados do formulário
-$id = $_GET['id'];
+$id_disciplina = $_GET['id_disciplina'];
 
-$sql = "DELETE FROM aluno WHERE id = $id";
+$sql = "DELETE FROM disciplina WHERE id_disciplina = $id_disciplina";
 
 // executa o comando no BD
 mysqli_query($conexao,$sql);

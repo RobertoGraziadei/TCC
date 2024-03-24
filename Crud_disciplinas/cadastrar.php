@@ -4,12 +4,11 @@
 include("conecta.php");
 
 //receber os dados do formulário.
-$matricula = $_POST['matricula'];
 $nome = $_POST['nome'];
 
 
 //comando sql.
-$sql = "INSERT INTO aluno (matricula, nome) VALUES ($matricula, '$nome')";
+$sql = "INSERT INTO disciplina (nome) VALUES ('$nome')";
 
 header("location: listar.php");
  

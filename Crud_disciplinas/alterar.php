@@ -4,13 +4,12 @@
 include("conecta.php");
 
 // receber os dados do formulário
-$id = $_GET['id'];
-$matricula = $_GET['matricula'];
+$id_disciplina = $_GET['id_disciplina'];
 $nome = $_GET['nome'];
 
 
-$sql = "UPDATE aluno SET 
-matricula = '$matricula', nome = '$nome' WHERE id = $id";
+$sql = "UPDATE disciplina SET 
+nome = '$nome' WHERE id_disciplina = $id_disciplina";
 mysqli_query($conexao,$sql);
 
 if ($conexao->error) {

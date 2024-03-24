@@ -1,14 +1,14 @@
 <?php
 
 // Recebe o id do usuário
-$id = $_GET['id'];
+$id_disciplina = $_GET['id_disciplina'];
 
 // Conectar ao BD
 include("conecta.php");
 
 
 // Seleciona os dados do usuário da tabela
-$sql = "SELECT * FROM aluno WHERE id = $id";
+$sql = "SELECT * FROM disciplina WHERE id_disciplina = $id_disciplina";
 
 // Executa o Select
 $resultado = mysqli_query($conexao,$sql);
@@ -25,17 +25,15 @@ $dados = mysqli_fetch_assoc($resultado);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Aluno</title>
+    <title>Editar disciplina</title>
     
 </head>
 <body>
 
 <form action="alterar.php" method="get">
 
-    <h2>Editar Aluno</h2>
-    <input type="hidden" name="id" value="<?php echo $dados['id'];?>">
-    Edite a matricula
-    <input  type="number" value="<?php echo $dados['matricula'];?>" name="matricula"/><br><br>
+    <h2>Editar disciplina</h2>
+    <input type="hidden" name="id_disciplina" value="<?php echo $dados['id_disciplina'];?>">
     Edite o nome
     <input type="text" value="<?php echo $dados['nome'];?>" name="nome" id="nome"/><br><br>
        
