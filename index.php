@@ -12,6 +12,7 @@
     <div class="d">
     <button><a href="Crud_Aluno">Crud alunos </button></a><br><br>
     <button><a href="Crud_disciplinas">Crud disciplinas</button><br><br>
+    <button><a href="Crud_dia">Crud dia</button><br><br>
 </div>
 </body>
 </html>
