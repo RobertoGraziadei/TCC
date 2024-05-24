@@ -26,6 +26,7 @@ $dados = mysqli_fetch_assoc($resultado);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Aluno</title>
+    <link rel="stylesheet" href="main.css">
     
 </head>
 <body>
@@ -33,14 +34,15 @@ $dados = mysqli_fetch_assoc($resultado);
 <form action="alterar.php" method="get">
 
     <h2>Editar Aluno</h2>
-    <input type="hidden" name="id_aluno" value="<?php echo $dados['id_aluno'];?>">
+    Edite o Id
+    <input type="number" name="id_aluno" value="<?php echo $dados['id_aluno'];?>"><br><br>
     Edite a matricula
     <input  type="number" value="<?php echo $dados['matricula'];?>" name="matricula"/><br><br>
     Edite o nome
     <input type="text" value="<?php echo $dados['nome'];?>" name="nome" id="nome"/><br><br>
        
 
-    <input type="submit" value="Editar"/>
+    <input class="e" type="submit" value="Editar">
 
     <p>Deseja <a href="index.php">Voltar?</a></p>
 
