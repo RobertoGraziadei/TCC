@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION['user'])){
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,22 +11,13 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="processa.php" method="post">
         <label>Usuário:<input type="text" name="user"><br></label>
-        <label>Senha:<input type="password" name="senha"></label>
+        <label>Senha:<input type="password" name="senha"></label><br>
 
-        <input type="submit" value="Login">
+        <input type="submit" value="Login"><br><br><br>
+
+        <button><a href="inscreve.php">Inscrever-se</a></button>
     </form>
 </body>
 </html>
-<?php
-include "conecta.php";
-
-$user = $_POST['user'];
-$senha = $_POST['senha'];
-
-$sql = "SELECT * FROM usuario where senha = '$senha', usuario = '$user';
-$resultado = mysqli_query($conexao, $sql);
-
-
-?>

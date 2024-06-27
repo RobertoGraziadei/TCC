@@ -1,3 +1,14 @@
+<?php
+if(!isset($_SESSION['user'])){
+    session_start();
+}
+if(isset($_SESSION['user'])){
+    echo "Você precisa fazer login para acessar essa página! <br><br>" . '<a href="index.php">Login</a>';
+    die();
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +18,8 @@
     <link rel="shortcut icon" href="barra.ico" type="image/x-icon">
 </head>
 <body>
-    <h1>Redirecionamento dos crud's</h1>
+    <h1>Olá, <?php  echo $_SESSION['user']; ?> </h1>
+    <h2>Redirecionamento dos crud's</h2>
     <div class="d">
     <button><a href="crud/crud_aluno/">Crud alunos </button></a><br><br>
     <button><a href="crud/crud_disciplina">Crud disciplinas</button><br><br>
@@ -15,7 +27,9 @@
     <button><a href="crud/crud_horario">Crud horario</button><br><br>
     <button><a href="crud/crud_presenca">Crud presenca</button><br><br>
     <button><a href="crud/crud_sala">Crud sala</button><br><br>
-    <button><a href="crud/crud_turma">Crud turma</button><br><br>
+    <button><a href="crud/crud_turma">Crud turma</button><br><br><br><br>
+
+    <button><a href="logout.php">Logout</button><br><br>
 </div>
 </body>
 </html>
