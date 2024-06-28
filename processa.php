@@ -1,22 +1,32 @@
 <?php
-if(!isset($_SESSION['user'])){
+
     session_start();
-}
+
 include "conecta.php";
 
-$user = $_POST['user'];
+
+$email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$sql = "SELECT * FROM usuario where usuario = '$user' and senha = '$senha'";
+$sql = "SELECT * FROM usuario where email = '$email'";
 $resultado = mysqli_query($conexao, $sql);
 
-$_SESSION['user'] = $user;
-//$_SESSION['senha'] = $senha;
 
-$result = mysqli_num_rows($resultado);
-if($result == 1){
+$result = mysqli_fetch_assoc($resultado);
+$hash = $result['senha'];
+$user = $result['nome_usuario'];
+
+
+$_SESSION['user'] = $user;
+if(password_verify($senha, $hash) == true){
     header('location: redire.php');
 }else{
     echo "Usuário ou senha inválida! Tente novamente";
 }
+
+
+
+
+//$_SESSION['senha'] = $senha;
+
 ?>

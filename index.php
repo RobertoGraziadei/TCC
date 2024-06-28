@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION['user'])){
+if(!isset($_SESSION['email'])){
     session_start();
 }
 ?>
@@ -12,7 +12,7 @@ if(!isset($_SESSION['user'])){
 </head>
 <body>
     <form action="processa.php" method="post">
-        <label>Usuário:<input type="text" name="user"><br></label>
+        <label>Email:<input type="email" name="email"><br></label>
         <label>Senha:<input type="password" name="senha"></label><br>
 
         <input type="submit" value="Login"><br><br><br>

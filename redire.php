@@ -1,8 +1,8 @@
 <?php
-if(!isset($_SESSION['user'])){
+
     session_start();
-}
-if(isset($_SESSION['user'])){
+
+if(!isset($_SESSION['user'])){
     echo "Você precisa fazer login para acessar essa página! <br><br>" . '<a href="index.php">Login</a>';
     die();
 }

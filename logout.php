@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION['user'])){
+if(!isset($_SESSION['email'])){
     session_start();
 }
 session_destroy();
