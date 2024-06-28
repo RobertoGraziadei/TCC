@@ -11,7 +11,7 @@ if(!isset($_SESSION['email'])){
     <title>Login</title>
 </head>
 <body>
-    <form action="processa.php" method="post">
+    <form action="" method="post">
         <label>Email:<input type="email" name="email"><br></label>
         <label>Senha:<input type="password" name="senha"></label><br>
 
@@ -21,3 +21,30 @@ if(!isset($_SESSION['email'])){
     </form>
 </body>
 </html>
+<?php
+if($_POST){
+
+
+include "conecta.php";
+
+
+$email = $_POST['email'];
+$senha = $_POST['senha'];
+
+$sql = "SELECT * FROM usuario where email = '$email'";
+$resultado = mysqli_query($conexao, $sql);
+
+
+$result = mysqli_fetch_assoc($resultado);
+$hash = $result['senha'];
+$user = $result['nome_usuario'];
+
+
+$_SESSION['user'] = $user;
+if(password_verify($senha, $hash) == true){
+    header('location: redire.php');
+}else{
+    echo "Usuário ou senha inválida! Tente novamente";
+}
+}
+?>

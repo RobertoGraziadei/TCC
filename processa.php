@@ -1,6 +1,5 @@
 <?php
-
-    session_start();
+session_start();
 
 include "conecta.php";
 
@@ -23,10 +22,5 @@ if(password_verify($senha, $hash) == true){
 }else{
     echo "Usuário ou senha inválida! Tente novamente";
 }
-
-
-
-
-//$_SESSION['senha'] = $senha;
 
 ?>
