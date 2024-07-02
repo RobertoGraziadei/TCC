@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
+    <h1> Informações </h1>
     
     <form action="cadastrar.php" method="post">
-        <div class="a">Informe o id do dia</div>
-    <input class="b" type="number" name="id_dia">
+        <div class="a">Informe</div>
+    <input class="b" type="number" name="id_dia" required>
 
-        <div class="a">Informe o dia</div>
+        <div class="a">Informe</div>
 
-        <input class="b" type="date" name="nome" id="2"><br><br>
+        <input class="b" type="date" name="nome" id="2" required><br><br>
 
-        <input class="b" type="submit" value="Cadastrar">
+        <input class="b" type="submit" value="Cadastrar"><br><br><br><br>
+        <button><a href="index.php">Voltar</a></button>
     </form>
 </body>
 </html>

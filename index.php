@@ -12,8 +12,8 @@ if(!isset($_SESSION['email'])){
 </head>
 <body>
     <form action="" method="post">
-        <label>Email:<input type="email" name="email"><br></label>
-        <label>Senha:<input type="password" name="senha"></label><br>
+        <label>Email:<input type="email" name="email" required><br></label>
+        <label>Senha:<input type="password" name="senha" required></label><br><br>
 
         <input type="submit" value="Login"><br><br><br>
 
@@ -33,6 +33,10 @@ $senha = $_POST['senha'];
 
 $sql = "SELECT * FROM usuario where email = '$email'";
 $resultado = mysqli_query($conexao, $sql);
+if(mysqli_num_rows($resultado) == 0){
+    echo "Usuário inválido! Tente novamente";
+    die();
+}
 
 
 $result = mysqli_fetch_assoc($resultado);
@@ -41,10 +45,12 @@ $user = $result['nome_usuario'];
 
 
 $_SESSION['user'] = $user;
+
+
 if(password_verify($senha, $hash) == true){
     header('location: redire.php');
 }else{
-    echo "Usuário ou senha inválida! Tente novamente";
+    echo "Senha inválida! Tente novamente";
 }
 }
 ?>

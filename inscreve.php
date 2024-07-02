@@ -9,10 +9,11 @@
 
 <body>
   <form action="" method="post">
-    <label>Nome de usuário:<input type="text" name="user"><br></label>
-    <label>Usuário:<input type="text" name="email"><br></label>
-    <label>Senha:<input type="password" name="senha"><br></label>
-    <input type="submit" value="Inscrever-se">
+    <label>Nome de usuário:<input type="text" name="user" required><br></label>
+    <label>Email:<input type="text" name="email" required><br></label>
+    <label>Senha:<input type="password" name="senha" required><br></label><br>
+    <input type="submit" value="Inscrever-se"><br><br><br>
+    <button><a href="index.php">Login</a></button>
   </form>
 </body>
 
