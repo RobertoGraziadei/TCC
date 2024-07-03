@@ -1,15 +1,17 @@
 <?php
-if(!isset($_SESSION['email'])){
+if (!isset($_SESSION['email'])) {
     session_start();
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
+
 <body>
     <form action="" method="post">
         <label>Email:<input type="email" name="email" required><br></label>
@@ -20,37 +22,42 @@ if(!isset($_SESSION['email'])){
         <button><a href="inscreve.php">Inscrever-se</a></button>
     </form>
 </body>
+
 </html>
 <?php
-if($_POST){
+if ($_POST) {
+    include "conecta.php";
 
 
-include "conecta.php";
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
+    $sql = "SELECT * FROM usuario where email = '$email'";
+    $resultado = mysqli_query($conexao, $sql);
 
-$email = $_POST['email'];
-$senha = $_POST['senha'];
+    if (mysqli_num_rows($resultado) == 0) {
+        echo "Usuário inválido! Tente novamente";
+        die();
+    }
+    
+    $usuario = $resultado->fetch_assoc();
+    $_SESSION['nivel'] = $usuario['nivel'];
 
-$sql = "SELECT * FROM usuario where email = '$email'";
-$resultado = mysqli_query($conexao, $sql);
-if(mysqli_num_rows($resultado) == 0){
-    echo "Usuário inválido! Tente novamente";
-    die();
-}
+    var_dump($_SESSION['nivel']);
 
+    $hash = $usuario['senha'];
+    $user = $usuario['nome_usuario'];
+    
+    $_SESSION['user'] = $user;
 
-$result = mysqli_fetch_assoc($resultado);
-$hash = $result['senha'];
-$user = $result['nome_usuario'];
+    if ($usuario == null) {
+        die("Este usuario nao existe");
+    }
 
-
-$_SESSION['user'] = $user;
-
-
-if(password_verify($senha, $hash) == true){
-    header('location: redire.php');
-}else{
-    echo "Senha inválida! Tente novamente";
-}
+    if (password_verify($senha, $hash) == true) {
+        header('location: redire.php');
+    } else {
+        echo "Senha inválida! Tente novamente";
+    }
 }
 ?>
