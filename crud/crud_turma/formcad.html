@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
+<h1> Informações </h1>
     
     <form action="cadastrar.php" method="post">
-    <label>Id da turma<input type="number" name="id_turma"></label><br>
-    <label>Nome da turma<input type="text" name="nome"></label>
+    <label>Id da turma<input type="number" name="id_turma" required></label><br>
+    <label>Nome da turma<input type="text" name="nome" required></label>
 
-        <input class="b" type="submit" value="Cadastrar">
+        <input class="b" type="submit" value="Cadastrar"><br><br><br><br>
+        <button><a href="index.php">Voltar</a></button>
     </form>
 </body>
 </html>

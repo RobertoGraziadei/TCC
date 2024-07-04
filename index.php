@@ -14,7 +14,9 @@ if (!isset($_SESSION['email'])) {
 </head>
 
 <body>
-<body class="align">
+    <form action="" method="post">
+        <label>Email:<input type="email" name="email" required><br></label>
+        <label>Senha:<input type="password" name="senha" required></label><br><br>
 
 <div class="grid">
 
