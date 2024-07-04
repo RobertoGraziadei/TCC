@@ -12,9 +12,8 @@
     <input type="hidden" name="nivel" value="2">
     <label>Nome de usuário:<input type="text" name="user" required><br></label>
     <label>Email:<input type="text" name="email" required><br></label>
-    <label>Senha:<input type="password" name="senha" required><br></label><br>
-    <input type="submit" value="Inscrever-se"><br><br><br>
-    <button><a href="index.php">Login</a></button>
+    <label>Senha:<input type="password" name="senha" required><br></label>
+    <input type="submit" value="Inscrever-se">
   </form>
 </body>
 
@@ -34,7 +33,17 @@ if ($_POST) {
 
   $sql = "INSERT INTO usuario (nome_usuario, email, senha, nivel) VALUES ('$user', '$email', '$hash', $nivel)";
   $resultado = mysqli_query($conexao, $sql);
-  header('location: index.php');
+  if ($resultado === false) {
+    if (mysqli_errno($conexao) == 1062) {
+      echo "Email em uso! Tente outro email.";
+      die();
+    } else {
+      echo "Erro ao inserir o novo usuário! " .
+        mysqli_errno($conexao) . ": " . mysqli_error($conexao);
+      die();
+    }
+  }
+  header("Location: index.php");
 }
 
 

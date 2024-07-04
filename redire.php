@@ -1,17 +1,10 @@
 <?php
-include "conecta.php";
-session_start();
-var_dump($_SESSION['nivel']);
-
-if (!isset($_SESSION['user'])) {
-    die("Você precisa fazer login para acessar essa página! <br><br>" . '<a href="index.php">Login</a>');
+include "verif-log.php";
+if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
+    header('location: principal.php');
 }
-if (!isset($_SESSION['nivel']) == 2) {
-    die("Esta página é apenas para administradores" . '<p><a href="index.php">Voltar</a></p>');
-}
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,16 +17,17 @@ if (!isset($_SESSION['nivel']) == 2) {
 
 <body>
     <h1>Olá, <?php echo $_SESSION['user']; ?> </h1>
-    <h2>Redirecionamento dos crud's</h2>
+    <h2>Página do administrador</h2>
+    <h3>Redirecionamento dos CRUDs</h3>
     <div class="d">
-        <button><a href="crud/crud_aluno/">Crud alunos </button></a><br><br>
-        <button><a href="crud/crud_disciplina">Crud disciplinas</button><br><br>
-        <button><a href="crud/crud_horario">Crud horario</button><br><br>
-        <button><a href="crud/crud_presenca">Crud presenca</button><br><br>
-        <button><a href="crud/crud_sala">Crud sala</button><br><br>
-        <button><a href="crud/crud_turma">Crud turma</button><br><br><br><br>
+        <button><a href="crud/crud_aluno/">Crud alunos </a></button><br><br>
+        <button><a href="crud/crud_disciplina/">Crud disciplinas</a></button><br><br>
+        <button><a href="crud/crud_horario/">Crud horario</a></button><br><br>
+        <button><a href="crud/crud_presenca/">Crud presenca</a></button><br><br>
+        <button><a href="crud/crud_sala/">Crud sala</a></button><br><br>
+        <button><a href="crud/crud_turma/">Crud turma</a></button><br><br><br><br>
 
-        <button><a href="logout.php">Logout</button><br><br>
+        <button><a href="logout.php">Logout</a></button><br><br>
     </div>
 </body>
 
