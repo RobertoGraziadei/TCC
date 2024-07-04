@@ -1,6 +1,7 @@
 <?php
 include "conecta.php";
 session_start();
+var_dump($_SESSION['nivel']);
 
 if (!isset($_SESSION['user'])) {
     die("Você precisa fazer login para acessar essa página! <br><br>" . '<a href="index.php">Login</a>');

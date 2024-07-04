@@ -43,8 +43,6 @@ if ($_POST) {
     $usuario = $resultado->fetch_assoc();
     $_SESSION['nivel'] = $usuario['nivel'];
 
-    var_dump($_SESSION['nivel']);
-
     $hash = $usuario['senha'];
     $user = $usuario['nome_usuario'];
     
@@ -56,6 +54,7 @@ if ($_POST) {
 
     if (password_verify($senha, $hash) == true) {
         header('location: redire.php');
+        var_dump($_SESSION['nivel']);
     } else {
         echo "Senha inválida! Tente novamente";
     }
