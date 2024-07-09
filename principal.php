@@ -13,10 +13,10 @@ include "verif-log.php";
 <body>
     <div class="container">
         <header>
-            <h1>Página Inicial</h1>
+        <h2>Página do professor(a)</h2>
             <nav>
                 <ul>
-                    <li><a href="#">Ver presença</a></li>
+                <li><a href="logout.php"><button type="button" class="btn btn-outline-danger">Logout   <img src="img/logout.png" width="20" height="20"></button></a></td></a></li>
                     <!-- <li><a href="#">Sobre</a></li>
                     <li><a href="#">Contato</a></li> -->
                 </ul>
@@ -24,11 +24,10 @@ include "verif-log.php";
         </header>
         <main>
             <section>
-                <h2>Página do professor(a)</h2>
                 <p>Olá professor, <?php echo $_SESSION['user']; ?></p>
             </section>
         </main>
-        <?php echo '<td> <a href="logout.php"><button type="button" class="btn btn-outline-secondary">Logout  <img src="img/logout.png" width="20" height="20"></button></a></td>';?>
+        
     </div>
 
     

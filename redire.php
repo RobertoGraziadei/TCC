@@ -19,11 +19,18 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 
 <body>
     <div class="container">
-    <h1>Olá, <?php echo $_SESSION['user']; ?> </h1><br>
-    <h3>Página do administrador</h3>
+    <header>
+    <h2>Página do administrador</h2>
+            <nav>
+                <ul>
+                    <li><a href="logout.php"><button type="button" class="btn btn-outline-danger">Logout   <img src="img/logout.png" width="20" height="20"></button></a></td></a></li>
+                    <!-- <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li> -->
+                </ul>
+            </nav>
+        </header>
+        <p><p>
     <p>Olá administrador(a), <?php echo $_SESSION['user']; ?></p>
-    <p><p>
-        <hr>
     </p></p>
     <div class="d">
         <a href="crud/crud_aluno/"><button type="button" class="btn btn-primary">Crud aluno</button><br><br></a>
@@ -34,7 +41,6 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         <a href="crud/crud_turma/"><button type="button" class="btn btn-primary">Crud turma</button><br><br></a>
         <a href="crud/crud_usuario/"><button type="button" class="btn btn-primary">Crud usuário</button><br><br><br></a>
         
-        <?php echo '<td> <a href="logout.php"><button type="button" class="btn btn-outline-secondary">Logout  <img src="img/logout.png" width="20" height="20"></button></a></td>';?>
         
     </div>
 </body>
