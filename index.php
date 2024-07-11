@@ -40,8 +40,11 @@ if (!isset($_SESSION['user'])) {
 
     </form>
 
-    <p class="text--center">Você não tem um cadastro? <a href="inscreve.php">Clique aqui</a> <svg class="icon">
+    <p class="text--center">Você não tem um cadastro? <a href="inscreve.php">Cadastre-se</a> <svg class="icon">
         <use xlink:href="#icon-arrow-right"></use>
+      </svg></p>
+      <p class="text--center">Esqueceu sua senha? <a href="inscreve.php">Esqueci minha senha</a> <svg>
+        <!-- <use xlink:href="#icon-arrow-right"></use> -->
       </svg></p>
 
   </div>

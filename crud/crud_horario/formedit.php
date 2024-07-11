@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
+    header('location: ../../principal.php');
+    die();
+}
 
 // Recebe o id do usuário
 $id_horario = $_GET['id_horario'];

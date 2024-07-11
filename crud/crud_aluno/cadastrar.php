@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
+    header('location: ../../principal.php');
+    die();
+}
 
 //conectar ao banco de dados.
 include("conecta.php");
@@ -13,8 +18,6 @@ $nome = $_POST['nome'];
 $sql = "INSERT INTO aluno (matricula, nome) VALUES ($matricula, '$nome')";
 
 header("location: listar.php");
- 
+
 //executar o comando sql.
 mysqli_query($conexao, $sql);
-
-?>

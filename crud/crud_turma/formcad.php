@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
+    header('location: ../../principal.php');
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +14,11 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1> Informações </h1>
+<h1> Informações </h1>
     
     <form action="cadastrar.php" method="post">
-        <label>Número da sala<input type="number" name="n_sala" required><br><br></label>
-        <label>descricao<input type="text" name="descricao" required></label>
+    <label>Id da turma<input type="number" name="id_turma" required></label><br>
+    <label>Nome da turma<input type="text" name="nome" required></label>
 
         <input class="b" type="submit" value="Cadastrar"><br><br><br><br>
         <button><a href="index.php">Voltar</a></button>

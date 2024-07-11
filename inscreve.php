@@ -40,7 +40,7 @@
       <div class="form__field">
         <input type="submit" value="Logar">
       </div>
-      
+
 
     </form>
 
@@ -48,8 +48,8 @@
         <use xlink:href="#icon-arrow-right"></use>
       </svg></p>
 
-        <use xlink:href="#icon-arrow-right"></use>
-      </svg></p>
+    <use xlink:href="#icon-arrow-right"></use>
+    </svg></p>
 
   </div>
 
@@ -78,20 +78,23 @@ if ($_POST) {
   $senha = $_POST['senha'];
   $nivel = $_POST['nivel'];
 
+  $sql2 = "SELECT * FROM usuario where email = '$email'";
+  $result2 = mysqli_query($conexao, $sql2);
+  $seg = $result2->num_rows;
+  if ($seg >= 1) {
+    echo "Esse email já existe";
+    die();
+  }
+
   $hash = password_hash($senha, PASSWORD_ARGON2I);
   password_verify($senha, $hash);
 
   $sql = "INSERT INTO usuario (nome_usuario, email, senha, nivel) VALUES ('$user', '$email', '$hash', $nivel)";
   $resultado = mysqli_query($conexao, $sql);
   if ($resultado === false) {
-    if (mysqli_errno($conexao) == 1062) {
-      echo "Email em uso! Tente outro email.";
-      die();
-    } else {
-      echo "Erro ao inserir o novo usuário! " .
-        mysqli_errno($conexao) . ": " . mysqli_error($conexao);
-      die();
-    }
+    echo "Erro ao inserir o novo usuário! " .
+      mysqli_errno($conexao) . ": " . mysqli_error($conexao);
+    die();
   }
   header("Location: index.php");
 }
