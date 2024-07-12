@@ -4,7 +4,7 @@ if (!isset($_SESSION['user'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -43,7 +43,7 @@ if (!isset($_SESSION['user'])) {
     <p class="text--center">Você não tem um cadastro? <a href="inscreve.php">Cadastre-se</a> <svg class="icon">
         <use xlink:href="#icon-arrow-right"></use>
       </svg></p>
-      <p class="text--center">Esqueceu sua senha? <a href="inscreve.php">Esqueci minha senha</a> <svg>
+      <p class="text--center">Esqueceu sua senha? <a href="#">Esqueci minha senha</a> <svg>
         <!-- <use xlink:href="#icon-arrow-right"></use> -->
       </svg></p>
 

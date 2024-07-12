@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
@@ -38,7 +38,7 @@
       </div>
 
       <div class="form__field">
-        <input type="submit" value="Logar">
+        <input type="submit" value="Inscrever-se">
       </div>
 
 

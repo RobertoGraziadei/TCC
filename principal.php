@@ -5,7 +5,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
         </header>
         <main>
             <section>
-                <p>Olá professor, <?php echo $_SESSION['user']; ?></p>
+                <p>Olá professor, <?php echo $_SESSION['user']; ?>.</p>
             </section>
         </main>
         
