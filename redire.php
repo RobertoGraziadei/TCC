@@ -1,7 +1,7 @@
 <?php
 include "verif-log.php";
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
-    header('location: QRcode/index.php');
+    header('location: QRcode/index.php'); 
 }
 ?>
 
@@ -32,13 +32,13 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         <p>
         <p>
         <p>Olá, administrador(a) <?php echo $_SESSION['user']; ?>.</p>
-            <a href="crud/crud_aluno/"><button type="button" class="btn btn-primary">Crud aluno</button><br><br></a>
-            <a href="crud/crud_disciplina/"><button type="button" class="btn btn-primary">Crud disciplinas</button><br><br></a>
-            <a href="crud/crud_horario/"><button type="button" class="btn btn-primary">Crud horário</button><br><br></a>
-            <a href="crud/crud_presenca/"><button type="button" class="btn btn-primary">Crud presença</button><br><br></a>
-            <a href="crud/crud_sala/"><button type="button" class="btn btn-primary">Crud sala</button><br><br></a>
-            <a href="crud/crud_turma/"><button type="button" class="btn btn-primary">Crud turma</button><br><br></a>
-            <a href="crud/crud_usuario/"><button type="button" class="btn btn-primary">Crud usuário</button><br><br><br></a>
+            <a href="crud/crud_aluno/"><button type="button" class="btn btn-primary">Cadastrar aluno</button><br><br></a>
+            <a href="crud/crud_disciplina/"><button type="button" class="btn btn-primary">Cadastrar disciplinas</button><br><br></a>
+            <a href="crud/crud_horario/"><button type="button" class="btn btn-primary">Cadastrar horário</button><br><br></a>
+            <a href="crud/crud_presenca/"><button type="button" class="btn btn-primary">Cadastrar presença</button><br><br></a>
+            <a href="crud/crud_sala/"><button type="button" class="btn btn-primary">Cadastrar sala</button><br><br></a>
+            <a href="crud/crud_turma/"><button type="button" class="btn btn-primary">Cadastrar turma</button><br><br></a>
+            <a href="crud/crud_usuario/"><button type="button" class="btn btn-primary">Cadastrar usuário</button><br><br><br></a>
 </body>
 
 </html>

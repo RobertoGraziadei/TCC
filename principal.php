@@ -43,7 +43,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     </script>
     <div class="container">
         <header>
-        <h2>Página do professor(a)</h2>
+        <h2>Página do professor</h2>
             <nav>
                 <ul>
                 <li><a href="nova-senha.php"><button type="button" class="btn btn-outline-info">Alterar senha   </button></a></td></a></li>
@@ -55,7 +55,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
         </header>
         <main>
             <section>
-                <p>Olá, professor <?php echo $_SESSION['user']; ?>.</p>
+                <p>Olá, professor(a) <?php echo $_SESSION['user']; ?>.</p>
             </section>
         </main>
         
