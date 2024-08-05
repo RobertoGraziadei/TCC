@@ -17,7 +17,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     
     <form action="cadastrar.php" method="post">
     <input type="hidden" name="id_horario">
-    <input type="hidden" name="id_disciplina">
+    <!-- <input type="hidden" name="id_disciplina"> -->
 
         <h2>Crud do horário</h2>
         <select name="dia" require>

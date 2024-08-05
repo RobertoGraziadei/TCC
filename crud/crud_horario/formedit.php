@@ -1,30 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
-    header('location: ../../principal.php');
-    die();
-}
-
-// Recebe o id do usuário
-$id_horario = $_GET['id_horario'];
-$dia = $_GET['dia'];
-$horario = $_GET['horario'];
-
-// Conectar ao BD
-include("conecta.php");
-
-
-// Seleciona os dados do usuário da tabela
-$sql = "SELECT * FROM horario WHERE id_horario = $id_horario";
-
-// Executa o Select
-$resultado = mysqli_query($conexao,$sql);
-
-// Gera o vetor com os dados buscados
-$dados = mysqli_fetch_assoc($resultado);
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
@@ -40,12 +13,36 @@ $dados = mysqli_fetch_assoc($resultado);
 <form action="alterar.php" method="get">
 
     <h2>Editar disciplina</h2>
-    <input type="date" name="dia" value="<?php echo $dados['dia'];?>">
-    Edite o nome
-    <input type="time" value="<?php echo $dados['horario'];?>" name="horario"/><br><br>
-       
-
-    <input type="submit" value="Editar"/>
+    <h2>Crud do horário</h2>
+    <input type="hidden" name="id_horario" value="<?php echo $dados['id_horario']; ?>">
+        <select name="dia" require>
+            <option value="<?php echo $dados['dia'];?>"></option>
+            <option value="Segunda-feira">Segunda-feira</option>
+            <option value="ter">Terça-feira</option>
+            <option value="qua">Quarta-feira</option>
+            <option value="qui">Quinta-feira</option>
+            <option value="sex">Sexta-feira</option>
+        </select><br><br>
+        <select name="n_sala" require>
+            <option value="<?php echo $dados['n_sala'];?>"></option>
+            <option value="a">109</option>
+            <option value="b">108</option>
+            <option value="c">107</option>
+        </select><br><br>
+        <select name="disciplina" require>
+            <option value="<?php echo $dados['fk_disciplina_id_disciplina'];?>"></option>
+            <option value="a">Português</option>
+            <option value="b">Matemática</option>
+            <option value="c">História</option>
+        </select><br><br>
+        <select name="turma" require>
+            <option value="<?php echo $dados['fk_turma_id_turma'];?>"></option>
+            <option value="a">INF31</option>
+            <option value="b">ADM31</option>
+            <option value="c">INF21</option>
+        </select><br><br>
+        <label>Horário inicial <input type="time" name="horario-inicio" value="<?php echo $dados['horario_inicio'];?>" required></label><br>
+        <label>Horário final <input type="time" name="horario-fim" value="<?php echo $dados['horario_inicio'];?>" required></label><br><br>
 
     <p>Deseja <a href="index.php">Voltar?</a></p>
 
@@ -53,3 +50,33 @@ $dados = mysqli_fetch_assoc($resultado);
     
 </body>
 </html>
+<?php
+session_start();
+if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
+    header('location: ../../principal.php');
+    die();
+}
+
+// Recebe o id do usuário
+$id_horario = $_GET['id_horario'];
+$dia = $_POST['dia'];
+$sala = $_POST['n_sala'];
+$turma = $_POST['turma'];
+$disciplina = $_POST['disciplina'];
+$horario_i = $_POST['horario_inicial'];
+$horario_f = $_POST['horario_fim'];
+
+// Conectar ao BD
+include("conecta.php");
+
+
+// Seleciona os dados do usuário da tabela
+$sql = "SELECT * FROM horario WHERE id_horario = $id_horario";
+
+// Executa o Select
+$resultado = mysqli_query($conexao,$sql);
+
+// Gera o vetor com os dados buscados
+$dados = mysqli_fetch_assoc($resultado);
+
+?>
