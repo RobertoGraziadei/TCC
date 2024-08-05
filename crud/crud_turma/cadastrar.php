@@ -10,11 +10,11 @@ include("conecta.php");
 
 //receber os dados do formulário.
 $id_turma = $_POST['id_turma'];
-$nome = $_POST['nome'];
+$nome = $_POST['nome_turma'];
 
 
 //comando sql.
-$sql = "INSERT INTO turma (id_turma, nome) VALUES ($id_turma, '$nome')";
+$sql = "INSERT INTO turma (id_turma, nome_turma) VALUES ($id_turma, '$nome')";
 
 header("location: listar.php");
  

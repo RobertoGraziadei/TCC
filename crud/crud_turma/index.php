@@ -17,7 +17,7 @@ include("conecta.php");
 <body>
     <div class="c"> Crud das turmas </div><br>
     <div class="d">
-    <button><a href="formcad.html">Cadastrar </button></a><br><br>
+    <button><a href="formcad.php">Cadastrar </button></a><br><br>
     <button><a href="listar.php">Listar</button><br><br><br><br>
     <button><a href="/roberto/TCC/redire.php">Voltar</a></button>
 </div>

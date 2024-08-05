@@ -10,11 +10,11 @@ include("conecta.php");
 
 // receber os dados do formulário
 $id_turma = $_GET['id_turma'];
-$nome = $_GET['nome'];
+$nome = $_GET['nome_turma'];
 
 
 $sql = "UPDATE turma SET 
-nome = '$nome' WHERE id_turma = $id_turma";
+nome_turma = '$nome' WHERE id_turma = $id_turma";
 mysqli_query($conexao,$sql);
 
 if ($conexao->error) {

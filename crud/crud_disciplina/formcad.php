@@ -20,7 +20,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 
         <div class="a">Informe a disciplina</div>
 
-        <input class="b" type="text" name="nome" id="2" required><br><br>
+        <input class="b" type="text" name="nome_disciplina" id="2" required><br><br>
 
         <input class="b" type="submit" value="Cadastrar"><br><br><br><br>
         <button><a href="index.php">Voltar</a></button>

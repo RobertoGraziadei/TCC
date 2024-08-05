@@ -49,7 +49,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             $executaSQL = mysqli_query($conexao, $sql);
             while ($dados = mysqli_fetch_assoc($executaSQL)) {
             ?>
-                <option value="<?php echo $dados['id_disciplinas']; ?>"><?php echo $dados['nome']; ?></option>
+                <option value="<?php echo $dados['id_disciplinas']; ?>"><?php echo $dados['nome_disciplina']; ?></option>
             <?php
             }
             ?>
@@ -61,7 +61,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             $executaSQL = mysqli_query($conexao, $sql);
             while ($dados = mysqli_fetch_assoc($executaSQL)) {
             ?>
-                <option value="<?php echo $dados['id_turma']; ?>"><?php echo $dados['nome']; ?></option>
+                <option value="<?php echo $dados['id_turma']; ?>"><?php echo $dados['nome_turma']; ?></option>
             <?php
             }
             ?>

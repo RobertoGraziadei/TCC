@@ -9,9 +9,9 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 include("conecta.php");
 
 // receber os dados do formulário
-$id_disciplina = $_GET['id_disciplina'];
+$n_sala = $_GET['n_sala'];
 
-$sql = "DELETE FROM disciplina WHERE id_disciplina = $id_disciplina";
+$sql = "DELETE FROM sala WHERE n_sala = $n_sala";
 
 // executa o comando no BD
 mysqli_query($conexao,$sql);

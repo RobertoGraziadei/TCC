@@ -40,7 +40,7 @@ $dados = mysqli_fetch_assoc($resultado);
     <h2>Editar disciplina</h2>
     <input type="hidden" name="id_disciplinas" value="<?php echo $dados['id_disciplinas'];?>">
     Edite o nome
-    <input type="text" value="<?php echo $dados['nome'];?>" name="nome" id="nome"/><br><br>
+    <input type="text" value="<?php echo $dados['nome_disciplina'];?>" name="nome_disciplina"/><br><br>
        
 
     <input type="submit" value="Editar"/>

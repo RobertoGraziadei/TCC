@@ -24,7 +24,7 @@ echo '<table border=1>
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
 echo '<tr>';
-echo '<td>'.$dados['nome'] .'</td>';
+echo '<td>'.$dados['nome_disciplina'] .'</td>';
 echo '<td> <a href="formedit.php?id_disciplinas='.$dados['id_disciplinas'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
 echo '<td> <a href="excluir?id_disciplinas='.$dados['id_disciplinas'].'"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
 echo '</tr>';
