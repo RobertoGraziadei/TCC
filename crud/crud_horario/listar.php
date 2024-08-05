@@ -8,7 +8,11 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 include("conecta.php");
 
 // Seleciona todos os dados da tabela historia
-$sql = "SELECT * FROM horario";
+$sql = "SELECT * FROM horario 
+INNER JOIN sala ON fk_sala_n_sala = n_sala
+INNER JOIN disciplina ON id_disciplinas = fk_disciplina_id_disciplina
+INNER JOIN turma ON id_turma = fk_turma_id_turma
+;";
 
 // Executa o Select
 $resultado = mysqli_query($conexao,$sql);

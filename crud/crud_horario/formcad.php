@@ -1,4 +1,5 @@
 <?php
+include "conecta.php";
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
@@ -7,51 +8,71 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar</title>
 </head>
+
 <body>
     <h1> Informações </h1>
-    
+
     <form action="cadastrar.php" method="post">
-    <input type="hidden" name="id_horario">
-    <!-- <input type="hidden" name="id_disciplina"> -->
+        <input type="hidden" name="id_horario">
 
         <h2>Crud do horário</h2>
-        <select name="dia" require>
-            <option value="">Selecione o dia</option>
-            <option value="Segunda-feira">Segunda-feira</option>
-            <option value="ter">Terça-feira</option>
-            <option value="qua">Quarta-feira</option>
-            <option value="qui">Quinta-feira</option>
-            <option value="sex">Sexta-feira</option>
+        <select name="dia" required>
+            <option disabled selected >Selecione o dia</option>
+            <option value="segunda">Segunda-Feira</option>
+            <option value="terça">Terça-Feira</option>
+            <option value="quarta">Quarta-Feira</option>
+            <option value="quinta">Quinta-Feira</option>
+            <option value="sexta">Sexta-Feira</option>
         </select><br><br>
-        <select name="n_sala" require>
-            <option value="">Selecione o numero da sala</option>
-            <option value="a">109</option>
-            <option value="b">108</option>
-            <option value="c">107</option>
+        <select name="sala" required>
+            <option disabled selected>Selecione a sala</option>
+            <?php
+            $sql = "SELECT * FROM sala";
+            $executaSQL = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($executaSQL)) {
+            ?>
+                <option value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?></option>
+            <?php
+            }
+            ?>
         </select><br><br>
-        <select name="disciplina" require>
-            <option value="">Selecione a disciplina</option>
-            <option value="a">Português</option>
-            <option value="b">Matemática</option>
-            <option value="c">História</option>
+        <select name="disciplina" required>
+            <option disabled selected>Selecione a disciplina</option>
+            <?php
+            $sql = "SELECT * FROM disciplina";
+            $executaSQL = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($executaSQL)) {
+            ?>
+                <option value="<?php echo $dados['id_disciplinas']; ?>"><?php echo $dados['nome']; ?></option>
+            <?php
+            }
+            ?>
         </select><br><br>
-        <select name="turma" require>
-            <option value="">Selecione a turma</option>
-            <option value="a">INF31</option>
-            <option value="b">ADM31</option>
-            <option value="c">INF21</option>
+        <select name="turma" required>
+            <option disabled selected>Selecione a turma</option>
+            <?php
+            $sql = "SELECT * FROM turma";
+            $executaSQL = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($executaSQL)) {
+            ?>
+                <option value="<?php echo $dados['id_turma']; ?>"><?php echo $dados['nome']; ?></option>
+            <?php
+            }
+            ?>
         </select><br><br>
-        <label>Horário inicial <input type="time" name="horario-inicio" required></label><br>
-        <label>Horário final <input type="time" name="horario-fim" required></label><br><br>
+        <label>Horário inicial <input type="time" name="horario_inicio" required></label><br>
+        <label>Horário final <input type="time" name="horario_fim" required></label><br><br>
 
 
         <input class="b" type="submit" value="Cadastrar"><br><br><br><br>
         <button><a href="index.php">Voltar</a></button>
     </form>
 </body>
+
 </html>

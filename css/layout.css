@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: rgb(222, 232, 255);
     color: #000000;
 }
 
@@ -10,6 +10,9 @@ body {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 70px;
 }
 
 header {

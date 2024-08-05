@@ -16,12 +16,13 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
    
     <title>Escaner - QR Code</title>		
 </head>		
+<body>
 <div class="container">
-        <header>
+        <header>        
         <h2>Página do professor </h2>
-            <nav>
+        <nav>    
                 <ul>
-                <li><a href="../nova-senha.php"><button type="button" class="btn btn-outline-info">Alterar senha   </button></a></td></a></li>
+                <!-- <li><a href="../nova-senha.php"><button type="button" class="btn btn-outline-info">Alterar senha   </button></a></td></a></li> -->
                 <li><a href="../logout.php"><button type="button" class="btn btn-outline-danger">Sair   <img src="../img/logout.png" width="20" height="20"></button></a></td></a></li>
                     <!-- <li><a href="#">Sobre</a></li>
                     <li><a href="#">Contato</a></li> -->
@@ -33,12 +34,11 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                 <p>Olá, professor(a) <?php echo $_SESSION['user']; ?>.</p>
             </section>
         </main>
-        
-    </div>
-    
+       
     
         <div id="qr-reader"></div>
         <div id="qr-reader-results"></div>
+
     </div>
 </body>
     <script src="html5-qrcode.min.js"></script>
@@ -67,4 +67,5 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
             html5QrcodeScanner.render(onScanSuccess);
         });
     </script>
+       </div>
 </html>
