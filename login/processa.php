@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include "conecta.php";
+include ".../conecta.php";
 
 
 $email = $_POST['email'];

@@ -22,38 +22,6 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         <input type="hidden" name="id_horario">
 
         <h2>Crud do horário</h2>
-        <select name="dia" required>
-            <option disabled selected >Selecione o dia</option>
-            <option value="segunda">Segunda-Feira</option>
-            <option value="terça">Terça-Feira</option>
-            <option value="quarta">Quarta-Feira</option>
-            <option value="quinta">Quinta-Feira</option>
-            <option value="sexta">Sexta-Feira</option>
-        </select><br><br>
-        <select name="sala" required>
-            <option disabled selected>Selecione a sala</option>
-            <?php
-            $sql = "SELECT * FROM sala";
-            $executaSQL = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($executaSQL)) {
-            ?>
-                <option value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?></option>
-            <?php
-            }
-            ?>
-        </select><br><br>
-        <select name="disciplina" required>
-            <option disabled selected>Selecione a disciplina</option>
-            <?php
-            $sql = "SELECT * FROM disciplina";
-            $executaSQL = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($executaSQL)) {
-            ?>
-                <option value="<?php echo $dados['id_disciplinas']; ?>"><?php echo $dados['nome_disciplina']; ?></option>
-            <?php
-            }
-            ?>
-        </select><br><br>
         <select name="turma" required>
             <option disabled selected>Selecione a turma</option>
             <?php
@@ -66,6 +34,50 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             }
             ?>
         </select><br><br>
+
+
+        <select name="dia" required>
+            <option disabled selected >Selecione o dia</option>
+            <option value="Segunda-Feira">Segunda-Feira</option>
+            <option value="Terça-Feira">Terça-Feira</option>
+            <option value="Quarta-Feira">Quarta-Feira</option>
+            <option value="Quinta-Feira">Quinta-Feira</option>
+            <option value="Sexta-Feira">Sexta-Feira</option>
+        </select><br><br>
+
+        <select name="disciplina" required>
+            <option disabled selected>Selecione a disciplina</option>
+            <?php
+            $sql = "SELECT * FROM disciplina";
+            $executaSQL = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($executaSQL)) {
+            ?>
+                <option value="<?php echo $dados['id_disciplinas']; ?>"><?php echo $dados['nome_disciplina']; ?></option>
+            <?php
+            }
+            ?>
+        </select><br><br>
+
+        <select name="sala" required>
+            <option disabled selected>Selecione a sala</option>
+            <?php
+            $sql = "SELECT * FROM sala";
+            $executaSQL = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($executaSQL)) {
+            ?>
+                <option value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?></option>
+            <?php
+            }
+            ?>
+        </select><br><br>
+
+
+        
+
+
+        
+
+
         <label>Horário inicial <input type="time" name="horario_inicio" required></label><br>
         <label>Horário final <input type="time" name="horario_fim" required></label><br><br>
 

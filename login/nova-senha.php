@@ -17,7 +17,7 @@
 </html>
 <?php
 if ($_POST) {
-  include "conecta.php";
+  include ".../conecta.php";
   $email = $_POST['email'];
   $senha = $_POST['senha'];
 

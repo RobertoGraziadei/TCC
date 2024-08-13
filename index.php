@@ -40,10 +40,10 @@ if (!isset($_SESSION['user'])) {
 
     </form>
 
-    <p class="text--center">Você não tem um cadastro? <a href="inscreve.php">Cadastre-se</a> <svg class="icon">
+<!--     <p class="text--center">Você não tem um cadastro? <a href="inscreve.php">Cadastre-se</a> <svg class="icon">
         <use xlink:href="#icon-arrow-right"></use>
-      </svg></p>
-      <p class="text--center">Esqueceu sua senha? <a href="#">Esqueci minha senha</a> <svg>
+      </svg></p> -->
+      <p class="text--center">Esqueceu sua senha? <a href="#">Recuperar senha</a> <svg>
         <!-- <use xlink:href="#icon-arrow-right"></use> -->
       </svg></p>
 
@@ -93,7 +93,7 @@ if ($_POST) {
     }
 
     if (password_verify($senha, $hash) == true) {
-        header('location: redire.php');
+        header('location: login/redire.php');
         var_dump($_SESSION['nivel']);
     } else {
         echo "Senha inválida! Tente novamente";

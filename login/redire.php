@@ -22,7 +22,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             <h2>Página do administrador</h2>
             <nav>
                 <ul>
-                    <li><a href="nova-senha.php"><button type="button" class="btn btn-outline-info">Alterar senha </button></a></td></a></li>
+                    <!-- <li><a href="nova-senha.php"><button type="button" class="btn btn-outline-info">Alterar senha </button></a></td></a></li> -->
                     <li><a href="logout.php"><button type="button" class="btn btn-outline-danger">Sair <img src="img/logout.png" width="20" height="20"></button></a></td></a></li>
                     <!-- <li><a href="#">Sobre</a></li>
                     <li><a href="#">Contato</a></li> -->
@@ -39,6 +39,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             <a href="crud/crud_sala/"><button type="button" class="btn btn-primary">Cadastrar sala</button><br><br></a>
             <a href="crud/crud_turma/"><button type="button" class="btn btn-primary">Cadastrar turma</button><br><br></a>
             <a href="crud/crud_usuario/"><button type="button" class="btn btn-primary">Cadastrar usuário</button><br><br><br></a>
+</div>
 </body>
 
 </html>

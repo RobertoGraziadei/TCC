@@ -1,3 +1,26 @@
+<?php
+include("conecta.php");
+session_start();
+if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
+    header('location: ../../principal.php');
+    die();
+}
+
+// Recebe o id do usuário
+$id_horario = $_GET['id_horario'];
+$dia = $_GET['dia'];
+$sala = $_GET['n_sala'];
+$turma = $_GET['turma'];
+$disciplina = $_GET['disciplina'];
+$horario_i = $_GET['horario_inicial'];
+$horario_f = $_GET['horario_fim'];
+
+$sql = "SELECT * FROM horario WHERE id_horario = $id_horario";
+$resultado = mysqli_query($conexao,$sql);
+$dados = mysqli_fetch_assoc($resultado);
+var_dump($id_horario);
+
+?>
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
@@ -18,10 +41,10 @@
         <select name="dia" require>
             <option value="<?php echo $dados['dia'];?>"></option>
             <option value="Segunda-feira">Segunda-feira</option>
-            <option value="ter">Terça-feira</option>
-            <option value="qua">Quarta-feira</option>
-            <option value="qui">Quinta-feira</option>
-            <option value="sex">Sexta-feira</option>
+            <option value="Terça-feira">Terça-feira</option>
+            <option value="Quarta-feira">Quarta-feira</option>
+            <option value="Quinta-feira">Quinta-feira</option>
+            <option value="Sexta-feira">Sexta-feira</option>
         </select><br><br>
         <select name="n_sala" require>
             <option value="<?php echo $dados['n_sala'];?>"></option>
@@ -50,33 +73,3 @@
     
 </body>
 </html>
-<?php
-session_start();
-if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
-    header('location: ../../principal.php');
-    die();
-}
-
-// Recebe o id do usuário
-$id_horario = $_GET['id_horario'];
-$dia = $_POST['dia'];
-$sala = $_POST['n_sala'];
-$turma = $_POST['turma'];
-$disciplina = $_POST['disciplina'];
-$horario_i = $_POST['horario_inicial'];
-$horario_f = $_POST['horario_fim'];
-
-// Conectar ao BD
-include("conecta.php");
-
-
-// Seleciona os dados do usuário da tabela
-$sql = "SELECT * FROM horario WHERE id_horario = $id_horario";
-
-// Executa o Select
-$resultado = mysqli_query($conexao,$sql);
-
-// Gera o vetor com os dados buscados
-$dados = mysqli_fetch_assoc($resultado);
-
-?>

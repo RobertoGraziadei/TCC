@@ -71,7 +71,7 @@
 <?php
 if ($_POST) {
 
-  include "conecta.php";
+  include ".../conecta.php";
 
   $user = $_POST['user'];
   $email = $_POST['email'];
