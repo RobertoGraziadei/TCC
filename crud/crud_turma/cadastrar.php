@@ -4,21 +4,10 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
     die();
 }
-
-//conectar ao banco de dados.
-include("conecta.php");
-
-//receber os dados do formulário.
+include('../../conecta.php');
 $id_turma = $_POST['id_turma'];
 $nome = $_POST['nome_turma'];
-
-
-//comando sql.
 $sql = "INSERT INTO turma (id_turma, nome_turma) VALUES ($id_turma, '$nome')";
-
-header("location: listar.php");
- 
-//executar o comando sql.
 mysqli_query($conexao, $sql);
-
+header("location: listar.php");
 ?>

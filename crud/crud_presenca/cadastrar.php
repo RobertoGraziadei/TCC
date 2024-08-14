@@ -6,7 +6,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 }
 
 //conectar ao banco de dados.
-include("conecta.php");
+include('../../conecta.php');
 
 //receber os dados do formulário.
 $id_dia = $_POST['dia'];

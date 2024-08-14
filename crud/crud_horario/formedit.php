@@ -1,26 +1,9 @@
-<?php
-include("conecta.php");
+<?php include('../../conecta.php');
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
     die();
-}
-
-// Recebe o id do usuário
-$id_horario = $_GET['id_horario'];
-$dia = $_GET['dia'];
-$sala = $_GET['n_sala'];
-$turma = $_GET['turma'];
-$disciplina = $_GET['disciplina'];
-$horario_i = $_GET['horario_inicial'];
-$horario_f = $_GET['horario_fim'];
-
-$sql = "SELECT * FROM horario WHERE id_horario = $id_horario";
-$resultado = mysqli_query($conexao,$sql);
-$dados = mysqli_fetch_assoc($resultado);
-var_dump($id_horario);
-
-?>
+}?>
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
@@ -52,6 +35,7 @@ var_dump($id_horario);
             <option value="b">108</option>
             <option value="c">107</option>
         </select><br><br>
+        
         <select name="disciplina" require>
             <option value="<?php echo $dados['fk_disciplina_id_disciplina'];?>"></option>
             <option value="a">Português</option>
@@ -73,3 +57,20 @@ var_dump($id_horario);
     
 </body>
 </html>
+<?php
+
+$id_horario = $_GET['id_horario'];
+$dia = $_GET['dia'];
+$sala = $_GET['n_sala'];
+$turma = $_GET['turma'];
+$disciplina = $_GET['disciplina'];
+$horario_i = $_GET['horario_inicial'];
+$horario_f = $_GET['horario_fim'];
+
+$sql = "SELECT * FROM horario WHERE id_horario = $id_horario";
+$resultado = mysqli_query($conexao,$sql);
+$dados = mysqli_fetch_assoc($resultado);
+var_dump($id_horario);
+var_dump($dia);
+
+?>

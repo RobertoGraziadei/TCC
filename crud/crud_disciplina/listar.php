@@ -4,21 +4,16 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
     die();
 }
-//conectar ao banco de dados.
-include("conecta.php");
-
-// Seleciona todos os dados da tabela historia
+include('../../conecta.php');
+echo "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>";
 $sql = "SELECT * FROM disciplina";
-
-// Executa o Select
 $resultado = mysqli_query($conexao,$sql);
 
 
 //Lista os itens
-echo '<table border=1>
+echo '<table class="table table-white table-striped">
 <tr>
-<!--<th>Id</th>-->
-<th>Nome da disciplina</th>
+<th scope="col">Nome da disciplina</th>
 <th colspan=3>Opções</th>
 </tr>';
 

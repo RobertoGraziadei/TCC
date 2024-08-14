@@ -9,5 +9,5 @@ if(isset($_SESSION['user'])){
 }
 
 // Redireciona para a página de login (ou outra página desejada)
-header('location: index.php');
+header('location: ../index.php');
 ?>

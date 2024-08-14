@@ -4,7 +4,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
     die();
 }
-include("conecta.php");
+include('../../conecta.php');
 
 $dia = $_POST['dia'];
 $sala = $_POST['sala'];

@@ -18,7 +18,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     die();
 }
 //conectar ao banco de dados.
-include("conecta.php");
+include('../../conecta.php');
 
 // Seleciona todos os dados da tabela historia
 $sql = "SELECT * FROM horario 

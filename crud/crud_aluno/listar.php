@@ -4,28 +4,22 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
     die();
 }
-//conectar ao banco de dados.
-include("conecta.php");
-
-// Seleciona todos os dados da tabela historia
+include('../../conecta.php');
+echo "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>";
 $sql = "SELECT * FROM aluno";
-
-// Executa o Select
 $resultado = mysqli_query($conexao, $sql);
 
 
 //Lista os itens
-echo '<table border=1>
+echo '<table class="table table-white table-striped">
 <tr>
-<!--<th>Id_aluno</th>-->
-<th>Matricula</th>
-<th>Nome</th>
+<th scope="col">Matricula</th>
+<th scope="col">Nome</th>
 <th colspan=3>Opções</th>
 </tr>';
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
 echo '<tr>';    
-//echo '<td>'.$dados['id_aluno'].'</td>';
 echo '<td>'.$dados['matricula'].'</td>';
 echo '<td>'.$dados['nome'] .'</td>';
 echo '<td> <a href="formedit.php?matricula='.$dados['matricula'].'"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';

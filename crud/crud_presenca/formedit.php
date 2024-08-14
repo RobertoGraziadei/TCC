@@ -4,25 +4,13 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
     die();
 }
-
-// Recebe o id do usuário
-$id_disciplina = $_GET['id_disciplina'];
-
-// Conectar ao BD
-include("conecta.php");
-
-
-// Seleciona os dados do usuário da tabela
-$sql = "SELECT * FROM disciplina WHERE id_disciplina = $id_disciplina";
-
-// Executa o Select
+$id_disciplina = $_GET['id_disciplinas'];
+include('../../conecta.php');
+$sql = "SELECT * FROM disciplina WHERE id_disciplinas = $id_disciplina";
 $resultado = mysqli_query($conexao,$sql);
-
-// Gera o vetor com os dados buscados
 $dados = mysqli_fetch_assoc($resultado);
-
+var_dump($dados['id_disciplinas']);
 ?>
-
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
@@ -38,9 +26,9 @@ $dados = mysqli_fetch_assoc($resultado);
 <form action="alterar.php" method="get">
 
     <h2>Editar disciplina</h2>
-    <input type="hidden" name="id_disciplina" value="<?php echo $dados['id_disciplina'];?>">
+    <input type="hidden" name="id_disciplinas" value="<?php echo $dados['id_disciplinas'];?>">
     Edite o nome
-    <input type="text" value="<?php echo $dados['nome'];?>" name="nome" id="nome"/><br><br>
+    <input type="text" value="<?php echo $dados['nome_disciplina'];?>" name="nome_disciplina"><br><br>
        
 
     <input type="submit" value="Editar"/>

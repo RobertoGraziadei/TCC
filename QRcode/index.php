@@ -1,5 +1,5 @@
 <?php
-include "../verif-log.php";
+include "../login/verif-log.php";
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     /* header('location: redire.php'); */
 }
@@ -23,7 +23,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
         <nav>    
                 <ul>
                 <!-- <li><a href="../nova-senha.php"><button type="button" class="btn btn-outline-info">Alterar senha   </button></a></td></a></li> -->
-                <li><a href="../logout.php"><button type="button" class="btn btn-outline-danger">Sair   <img src="../img/logout.png" width="20" height="20"></button></a></td></a></li>
+                <li><a href="../login/logout.php"><button type="button" class="btn btn-outline-danger">Sair   <img src="../img/logout.png" width="20" height="20"></button></a></td></a></li>
                     <!-- <li><a href="#">Sobre</a></li>
                     <li><a href="#">Contato</a></li> -->
                 </ul>

@@ -1,5 +1,5 @@
 <?php
-include "conecta.php";
+include('../../conecta.php');
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
@@ -37,7 +37,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 
 
         <select name="dia" required>
-            <option disabled selected >Selecione o dia</option>
+            <option disabled selected>Selecione o dia</option>
             <option value="Segunda-Feira">Segunda-Feira</option>
             <option value="Terça-Feira">Terça-Feira</option>
             <option value="Quarta-Feira">Quarta-Feira</option>
@@ -72,10 +72,10 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         </select><br><br>
 
 
-        
 
 
-        
+
+
 
 
         <label>Horário inicial <input type="time" name="horario_inicio" required></label><br>

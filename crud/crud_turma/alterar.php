@@ -6,7 +6,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 }
 
 // Conectar ao BD
-include("conecta.php");
+include('../../conecta.php');
 
 // receber os dados do formulário
 $id_turma = $_GET['id_turma'];

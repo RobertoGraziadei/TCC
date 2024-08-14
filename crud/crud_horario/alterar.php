@@ -6,7 +6,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 }
 
 // Conectar ao BD
-include("conecta.php");
+include('../../conecta.php');
 
 $id_horario = $_GET['id_horario'];
 $dia = $_POST['dia'];

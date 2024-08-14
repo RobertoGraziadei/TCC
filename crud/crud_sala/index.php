@@ -4,7 +4,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
     die();
 }
-include("conecta.php");
+include('../../conecta.php');
 ?>
 <!DOCTYPE html>
 <htm lang="pt-br">
@@ -15,11 +15,10 @@ include("conecta.php");
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="c"> Crud das salas </div><br>
-    <div class="d">
+    <h1> Crud das salas</h1><br>
     <button><a href="formcad.php">Cadastrar </button></a><br><br>
     <button><a href="listar.php">Listar</button><br><br><br><br>
-    <button><a href="/roberto/TCC/redire.php">Voltar</a></button>
+    <button><a href="/roberto/TCC/login/redire.php">Voltar</a></button>
 </div>
 </body>
 </html>
