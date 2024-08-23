@@ -7,6 +7,11 @@
   :root {
     --baseColor: #606468;
   }
+  #olho{
+    position: fixed; 
+    margin-top: -11.3%;
+    left: 1070px;
+  }
   
   /* helpers/align.css */
   

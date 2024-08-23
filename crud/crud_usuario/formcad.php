@@ -20,7 +20,11 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <form action="cadastrar.php" method="post">
         <label><input type="text" placeholder="Nome de usuário" name="user" required></label><br><br>
         <label></label><input type="email" placeholder="Email" name="email" required></label><br><br>
+
+    <!-- COLOCAR O OLHO QUE ESTA NA TELA DE LOGIN PARA VER A SENHA -->
         <label><input type="password" placeholder="Senha" name="senha" required></label><br><br>
+
+
         <label>Nível de segurança:</label><br>
         <label>Administrador<input type="radio" name="nivel" value="1" required></label><br>
         <label>Professor<input type="radio" name="nivel" value="2" required></label><br><br>
