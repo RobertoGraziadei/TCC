@@ -4,31 +4,10 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
     die();
 }
-
-// Conectar ao BD
 include('../../conecta.php');
+$email = $_GET['email'];
+$nome = $_GET['nome_usuario'];
 
-// receber os dados do formulário
-//$id = $_GET['id_aluno'];
-$matricula = $_GET['matricula'];
-$nome = $_GET['nome'];
-
-//if('id_aluno' == $id){
-$sql = "UPDATE aluno SET nome = '$nome' WHERE matricula = $matricula";
-mysqli_query($conexao,$sql);
-//}
-//else{
-/*$sql2 = "UPDATE aluno SET id_aluno = '$id', nome = '$nome' WHERE matricula = $matricula";
-mysqli_query($conexao,$sql2);
-//}
-*/
-if ($conexao->error) {
-
-    die("Falha ao editar usuário no sistema:". $conexao->error);
-
-}else {
-    header("location: listar.php");
-}
-// executa o comando no BD
-
-?>
+$sql = "UPDATE usuario SET nome_usuario = '$nome' WHERE email = '$email'";
+$executaSql = mysqli_query($conexao, $sql);
+header("location: listar.php");

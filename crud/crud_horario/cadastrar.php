@@ -13,7 +13,6 @@ $disciplina = $_POST['disciplina'];
 $horario_i = $_POST['horario_inicio'];
 $horario_f = $_POST['horario_fim'];
 
-//comando sql.
 $sql = "INSERT INTO horario (dia, fk_sala_n_sala, fk_disciplina_id_disciplina, fk_turma_id_turma, horario_inicio, horario_fim)
 VALUES ('$dia', '$sala', '$disciplina', '$turma', '$horario_i', '$horario_f')";
 mysqli_query($conexao, $sql);

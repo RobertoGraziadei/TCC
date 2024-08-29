@@ -6,14 +6,14 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 }
 include('../../conecta.php');
 $email = $_GET['email'];
-$nome_usuario = $_GET['nome_usuario'];
-$nivel = $_GET['nivel'];
+// $nome_usuario = $_GET['nome_usuario'];
+// $nivel = $_GET['nivel'];
 $sql = "SELECT * FROM usuario WHERE email = '$email'";
 $resultado = mysqli_query($conexao, $sql);
 $dados = mysqli_fetch_assoc($resultado);
-var_dump($email);
-var_dump($nome_usuario);
-var_dump($nivel);
+// var_dump($email);
+// var_dump($nome_usuario);
+// var_dump($nivel);
 ?>
 <!DOCTYPE html>
 <html lang="pt_br">
@@ -33,9 +33,9 @@ var_dump($nivel);
     <form action="alterar.php" method="get">
 
         <h2>Editar Usuário</h2>
-        <label><input type="text" name="email" value="<?php echo $dados['email']; ?>"></label><br><br>
-        <label>Nome do usuario<br><input type="text" name="nome_usuario" value="<?php echo $dados['nome_usuario']; ?>"></label><br><br>
-        <label>Editar o nivel<br><input type="number" name="nivel" value="<?php echo $dados['nivel']; ?>"></label><br><br>
+        <label>Email<br><input type="email" name="email" value="<?php echo $dados['email']; ?>"></label><br><br>
+        <label>Nome do usuario<br><input name="nome_usuario" type="text" value="<?php echo $dados['nome_usuario']; ?>"></label><br><br>
+        <label>Editar o nivel<br><input name="nivel" type="number" value="<?php echo $dados['nivel']; ?>"></label><br><br>
 
 
         <button type="submit" class="btn btn-outline-success">Editar</button>

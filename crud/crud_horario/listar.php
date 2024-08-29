@@ -17,10 +17,8 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     header('location: ../../principal.php');
     die();
 }
-//conectar ao banco de dados.
 include('../../conecta.php');
 
-// Seleciona todos os dados da tabela historia
 $sql = "SELECT * FROM horario 
 INNER JOIN sala ON fk_sala_n_sala = n_sala
 INNER JOIN disciplina ON id_disciplinas = fk_disciplina_id_disciplina
@@ -33,8 +31,8 @@ $resultado = mysqli_query($conexao,$sql);
 //Lista os itens
 echo '<table class="table">
 <tr>
-<th scope="col">Turma</th>
 <th scope="col">Dia</th>
+<th scope="col">Turma</th>
 <th scope="col">Disciplina</th>
 <th scope="col">Sala</th>
 <th scope="col">Horário de inicio</th>
@@ -44,8 +42,8 @@ echo '<table class="table">
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
 echo '<tr>';    
-echo '<td>'.$dados['nome_turma'] .'</td>';
 echo '<td>'.$dados['dia'] .'</td>';
+echo '<td>'.$dados['nome_turma'] .'</td>';
 echo '<td>'.$dados['nome_disciplina'] .'</td>';
 echo '<td>'.$dados['descricao'] .'</td>';
 echo '<td>'.$dados['horario_inicio'] .'</td>';
