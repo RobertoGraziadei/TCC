@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
-    header('location: ../../principal.php');
+    header('location: ../../index.php');
     die();
 }
 $n_sala = $_GET['n_sala'];
