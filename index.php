@@ -95,7 +95,7 @@ if ($_POST) {
     $resultado = mysqli_query($conexao, $sql);
 
     if (mysqli_num_rows($resultado) == 0) {
-        echo "Usuário inválido! Tente novamente";
+        echo '<script>alert("Usuário Invalida, Tente novamente!")</script>';
         die();
     }
     
@@ -115,7 +115,7 @@ if ($_POST) {
         header('location: login/redire.php');
         var_dump($_SESSION['nivel']);
     } else {
-        echo "Senha inválida! Tente novamente";
+        echo '<script>alert("Senha Invalida, Tente novamente!")</script>';
     }
 }
 ?>
