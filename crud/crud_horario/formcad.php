@@ -43,6 +43,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             <option value="Quarta-Feira">Quarta-Feira</option>
             <option value="Quinta-Feira">Quinta-Feira</option>
             <option value="Sexta-Feira">Sexta-Feira</option>
+            <option value="Sábado">Sábado</option>
         </select><br><br>
 
         <select name="disciplina" required>
