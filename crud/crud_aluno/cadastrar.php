@@ -11,5 +11,5 @@ $turma = $_POST['turma'];
 
 $sql = "INSERT INTO aluno (matricula, nome, turma) VALUES ($matricula, '$nome', $turma)";
 mysqli_query($conexao, $sql);
-header("location: listar.php");
+/* header("location: listar.php"); */
 ?>
