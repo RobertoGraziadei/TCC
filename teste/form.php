@@ -1,17 +1,19 @@
-<?php 
+<?php
 include('../conecta.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste de matricula</title>
 </head>
+
 <body>
-    <form action="processa.php" method="post">
-        <input type="number" name="matricula" placeholder="Matricula"><br>
-        
+    <form action="processa.php" method="get">
+        <input type="number" name="matricula" placeholder="Matricula" required><br>
+
         <select name="sala" required>
             <option disabled selected>Selecione a sala</option>
             <?php
@@ -19,7 +21,7 @@ include('../conecta.php');
             $executaSQL = mysqli_query($conexao, $sql);
             while ($dados = mysqli_fetch_assoc($executaSQL)) {
             ?>
-                <option value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?></option>
+                <option value="<?php echo $dados['n_sala']; ?>" required><?php echo $dados['descricao']; ?></option>
             <?php
             }
             ?>
@@ -28,6 +30,7 @@ include('../conecta.php');
         <input type="submit" value="Enviar"><br>
     </form>
 </body>
+
 </html>
 <?php
 echo "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>";

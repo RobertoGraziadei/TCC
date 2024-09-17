@@ -1,18 +1,20 @@
-<?php 
-include_once("../Login/autenticar.php"); 
+<?php
+include_once("../Login/autenticar.php");
 include("../config.php");
 ?>
 <!DOCTYPE HTML>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../Bootstrap5/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../Bootstrap5/js/bootstrap.min.js"></script> 
+    <script src="../Bootstrap5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
     <title>Escaner - QR Code</title>
 </head>
+
 <BODY class="container-xxl" style="background-color: #79dfa5;">
     <nav class="rounded shadow bg-light mt-3">
         <ul class="nav nav-pills nav-justified">
@@ -40,41 +42,35 @@ include("../config.php");
         WHERE matricula=" . $comanda;
         $resultado = $connect->query($verif);
         $qtLinhas = $resultado->num_rows;
-        if ($qtLinhas > 0) 
-        {
+        if ($qtLinhas > 0) {
             // Consulta 1 = retorna o aluno e a turma da a matrícula escaneada
-            while ($row = $resultado->fetch_object()) 
-            { ?>
+            while ($row = $resultado->fetch_object()) { ?>
                 <button type="button" id="registro" class="btn btn-success btn-lg p-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal"> Visualizar Registro </button>
                 <?php
                 $teste = "SELECT * FROM cronograma WHERE ID_turma=" . $row->ID_turma;
                 $resultTeste = $connect->query($teste);
                 $qtLinhasTeste = $resultTeste->num_rows;
-                if ($qtLinhasTeste > 0) 
-                {
-                        // Consulta 2 = retorna o cronograma para a turma com o ID informado
-                    while ($rowTeste = $resultTeste->fetch_object()) 
-                    { 
+                if ($qtLinhasTeste > 0) {
+                    // Consulta 2 = retorna o cronograma para a turma com o ID informado
+                    while ($rowTeste = $resultTeste->fetch_object()) {
                         //$dia = date('D');
                         //$dia = 'Mon';
                         date_default_timezone_set('America/Sao_Paulo');
-                        $hora = date("H:i:s"); 
+                        $hora = date("H:i:s");
                         $hora = '08:00:00';
-                        if ($rowTeste->dia_semana == $dia) 
-                        {
+                        if ($rowTeste->dia_semana == $dia) {
                             $autorizados = "SELECT * FROM historico AS hist 
                             INNER JOIN aluno AS al ON hist.matricula = al.matricula
                             INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma
                             INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico  
                             INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
                             WHERE al.matricula = $comanda AND hist.ID_historico = (SELECT MAX(ID_historico)
-                            FROM historico WHERE matricula = $comanda)";  
+                            FROM historico WHERE matricula = $comanda)";
                             $resultAutorizados = $connect->query($autorizados);
                             $qtLinhasAutorizados = $resultAutorizados->num_rows;
-                            if (($qtLinhasAutorizados > 0)) 
-                            {
-                                    // Consulta 3 = retorna tudo sobre o último ID da matrícula informada
-                                while ($rowAut = $resultAutorizados->fetch_object()) { 
+                            if (($qtLinhasAutorizados > 0)) {
+                                // Consulta 3 = retorna tudo sobre o último ID da matrícula informada
+                                while ($rowAut = $resultAutorizados->fetch_object()) {
                                     if ($rowAut->ID_status == 12) {
                                         $status_Atual = 12;
                                         $descricao_Atual = "Entrada Autorizada";
@@ -82,23 +78,23 @@ include("../config.php");
                                         $status_Atual = 10;
                                         $descricao_Atual = "Saída Autorizada";
                                     } elseif (($rowTeste->hr_entrada == '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00')
-                                    or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00')
-                                    or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '18:00:00' && $hora <= '19:15:00')) 
-                                    {
+                                        or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00')
+                                        or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '18:00:00' && $hora <= '19:15:00')
+                                    ) {
                                         $status_Atual = 6;
                                         $descricao_Atual = "Presente";
                                     } elseif (($rowTeste->hr_entrada == '08:00:00') && ($hora >= '08:15:00' && $hora <= '10:00:00')
                                         or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:35:00')
-                                        or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '19:15:00' && $hora <= '20:55:00')) 
-                                    {
+                                        or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '19:15:00' && $hora <= '20:55:00')
+                                    ) {
                                         $status_Atual  = 4;
                                         $descricao_Atual = "Entrada em Atraso";
                                     } else {
                                         if (($rowTeste->hr_saida == '11:35:00' && $hora >= '11:20:00')
                                             or ($rowTeste->hr_saida == '12:25:00' && $hora >= '12:10:00')
                                             or ($rowTeste->hr_saida == '17:10:00' && $hora >= '16:55:00')
-                                            or ($rowTeste->hr_saida == '22:30:00' && $hora >= '22:15:00')) 
-                                        {
+                                            or ($rowTeste->hr_saida == '22:30:00' && $hora >= '22:15:00')
+                                        ) {
                                             $status_Atual  = 8;
                                             $descricao_Atual = "Ausente";
                                         } else {
@@ -109,22 +105,22 @@ include("../config.php");
                                 }
                             } elseif (($rowTeste->hr_entrada == '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00')
                                 or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00')
-                                or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '18:00:00' && $hora <= '19:15:00')) 
-                            {
+                                or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '18:00:00' && $hora <= '19:15:00')
+                            ) {
                                 $status_Atual = 6;
                                 $descricao_Atual = "Presente";
                             } elseif (($rowTeste->hr_entrada == '08:00:00') && ($hora >= '08:15:00' && $hora <= '10:00:00')
                                 or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:35:00')
-                                or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '19:15:00' && $hora <= '20:55:00')) 
-                            {
+                                or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '19:15:00' && $hora <= '20:55:00')
+                            ) {
                                 $status_Atual  = 4;
                                 $descricao_Atual = "Entrada em Atraso";
                             } else {
                                 if (($rowTeste->hr_saida == '11:35:00' && $hora >= '11:20:00')
                                     or ($rowTeste->hr_saida == '12:25:00' && $hora >= '12:10:00')
                                     or ($rowTeste->hr_saida == '17:10:00' && $hora >= '16:55:00')
-                                    or ($rowTeste->hr_saida == '22:30:00' && $hora >= '22:15:00')) 
-                                {
+                                    or ($rowTeste->hr_saida == '22:30:00' && $hora >= '22:15:00')
+                                ) {
                                     $status_Atual  = 8;
                                     $descricao_Atual = "Ausente";
                                 } else {
@@ -134,7 +130,7 @@ include("../config.php");
                             }
                         }
                     }
-                }   
+                }
                 ?>
                 <div class="modal-fullscreen-md-down">
                     <div class="modal fade text-center mx-auto" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -150,14 +146,14 @@ include("../config.php");
                                         <div class="col-md-5">
                                             <img src="../Aluno/fotos/<?php print $row->foto; ?>" class="img img-responsive img-thumbnail" style="height: 150px; width:150px;">
                                         </div>
-                                            <div class="col-md-7 ">
-                                                <h5 class="card-title mt-3">
-                                                    <p><?php print $row->nome . "<br>"; ?></p>
-                                                    <p><?php print "Matrícula : " . $row->matricula . "<br>"; ?></p>
-                                                    <p><?php print "Turma : " . $row->nome_turma . "<br>"; ?></p>
-                                                </h5>
-                                            </div>
+                                        <div class="col-md-7 ">
+                                            <h5 class="card-title mt-3">
+                                                <p><?php print $row->nome . "<br>"; ?></p>
+                                                <p><?php print "Matrícula : " . $row->matricula . "<br>"; ?></p>
+                                                <p><?php print "Turma : " . $row->nome_turma . "<br>"; ?></p>
+                                            </h5>
                                         </div>
+                                    </div>
                                     <div class="card-body">
                                         <p class="card-text mt-3 h5"> <?php print "Status : " .  $descricao_Atual . "<br>"; ?> </p>
                                         <p class="card-text"><small class="text-body-secondary"><?php print "Data/Hora de Acesso : " . $dt_hrAtual . "<br>"; ?></small></p>
@@ -172,11 +168,11 @@ include("../config.php");
                 </div>
                 <script>
                     $(document).ready(function() {
-                    $('#registro').click(); // jQuery para abrir o modal automaticamente
+                        $('#registro').click(); // jQuery para abrir o modal automaticamente
 
                     });
                 </script>
-                <?php
+        <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if (isset($_POST['OK'])) {
                         if ($status_Atual == 10 or $status_Atual == 12) {
@@ -185,8 +181,7 @@ include("../config.php");
                         } else {
                             $sql = "INSERT INTO historico (data_hr, matricula) VALUES ('{$dt_hrAtual}', '{$comanda}')";
                             $result = $connect->query($sql);
-                            if ($result == true) 
-                            {
+                            if ($result == true) {
                                 $sql2 = "SELECT * FROM historico ORDER BY ID_historico DESC";
                                 $result2 = $connect->query($sql2);
                                 $rowR2 = $result2->fetch_object();
@@ -196,10 +191,9 @@ include("../config.php");
 
                                 $sql3 = "INSERT INTO informa (ID_historico, ID_status) VALUES ('{$ID_historico}', '{$ID_status}')";
                                 $result3 = $connect->query($sql3);
-                                if($result3 == true)
-                                {
+                                if ($result3 == true) {
                                     print "<script> alert('Acesso Registrado com Sucesso!'); </script>";
-                                    print "<script> location.href='index.php'; </script>";    
+                                    print "<script> location.href='index.php'; </script>";
                                 }
                             } else {
                                 print "<script> alert('Não foi Possível Registrar o Acesso!'); </script>";
@@ -209,10 +203,11 @@ include("../config.php");
                     }
                 }
             }
-        } else { 
+        } else {
             print "<script> alert('Matrícula de Aluno Não Reconhecida pelo Sistema!'); </script>";
             print "<script> location.href='index.php'; </script>";
         } ?>
     </div>
 </BODY>
+
 </html>

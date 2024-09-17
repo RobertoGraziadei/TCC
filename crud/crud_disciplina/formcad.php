@@ -18,6 +18,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <form action="cadastrar.php" method="post">
     <input type="hidden" name="id_disciplinas">
         <input type="text" name="nome_disciplina" placeholder="Nome da disciplina" required><br><br>
+        <input type="text" name="professor" placeholder="Professor responsável" required><br><br>
 
         <input type="submit" value="Cadastrar"><br><br><br><br>
         <button><a href="index.php">Voltar</a></button>
