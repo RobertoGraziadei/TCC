@@ -1,20 +1,19 @@
 <?php
 if (!isset($_SESSION['user'])) {
-    session_start();
+  session_start();
 }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<img id="olho" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII="
-/>
-    <link rel="stylesheet" href="css/login.css">
-    <title>Login</title> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <img id="olho" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII=" />
+  <link rel="stylesheet" href="css/login.css">
+  <title>Login</title>
 </head>
 
 <body class="align">
@@ -43,10 +42,10 @@ if (!isset($_SESSION['user'])) {
 
     </form>
 
-<!--     <p class="text--center">Você não tem um cadastro? <a href="inscreve.php">Cadastre-se</a> <svg class="icon">
+    <!--     <p class="text--center">Você não tem um cadastro? <a href="inscreve.php">Cadastre-se</a> <svg class="icon">
         <use xlink:href="#icon-arrow-right"></use>
       </svg></p> -->
-      <p class="text--center">Esqueceu sua senha? <a href="#">Recuperar senha</a> <svg>
+    <p class="text--center">Esqueceu sua senha? <a href="#">Recuperar senha</a> <svg>
         <!-- <use xlink:href="#icon-arrow-right"></use> -->
       </svg></p>
 
@@ -63,59 +62,59 @@ if (!isset($_SESSION['user'])) {
       <path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z" />
     </symbol>
   </svg>
-<script>
-  var senha = $('#senha');
-var olho= $("#olho");
+  <script>
+    var senha = $('#senha');
+    var olho = $("#olho");
 
-olho.mousedown(function() {
-  senha.attr("type", "text");
-});
+    olho.mousedown(function() {
+      senha.attr("type", "text");
+    });
 
-olho.mouseup(function() {
-  senha.attr("type", "password");
-});
-// para evitar o problema de arrastar a imagem e a senha continuar exposta, 
-//citada pelo nosso amigo nos comentários
-$( "#olho" ).mouseout(function() { 
-  $("#senha").attr("type", "password");
-});
-</script>
+    olho.mouseup(function() {
+      senha.attr("type", "password");
+    });
+    // para evitar o problema de arrastar a imagem e a senha continuar exposta, 
+    //citada pelo nosso amigo nos comentários
+    $("#olho").mouseout(function() {
+      $("#senha").attr("type", "password");
+    });
+  </script>
 </body>
 
 </html>
 <?php
 if ($_POST) {
-    include "conecta.php";
+  include "conecta.php";
 
 
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+  $email = $_POST['email'];
+  $senha = $_POST['senha'];
 
-    $sql = "SELECT * FROM usuario where email = '$email'";
-    $resultado = mysqli_query($conexao, $sql);
+  $sql = "SELECT * FROM usuario where email = '$email'";
+  $resultado = mysqli_query($conexao, $sql);
 
-    if (mysqli_num_rows($resultado) == 0) {
-        echo '<script>alert("Email Invalida, Tente novamente!")</script>';
-        die();
-    }
-    
-    $usuario = $resultado->fetch_assoc();
-    $_SESSION['nivel'] = $usuario['nivel'];
+  if (mysqli_num_rows($resultado) == 0) {
+    echo '<script>alert("Email Invalida, Tente novamente!")</script>';
+    die();
+  }
 
-    $hash = $usuario['senha'];
-    $user = $usuario['nome_usuario'];
-    
-    $_SESSION['user'] = $user;
+  $usuario = $resultado->fetch_assoc();
+  $_SESSION['nivel'] = $usuario['nivel'];
 
-    if ($usuario == null) {
-        die("Este usuario nao existe");
-    }
+  $hash = $usuario['senha'];
+  $user = $usuario['nome_usuario'];
 
-    if (password_verify($senha, $hash) == true) {
-        header('location: login/redire.php');
-        var_dump($_SESSION['nivel']);
-    } else {
-        echo '<script>alert("Senha Invalida, Tente novamente!")</script>';
-    }
+  $_SESSION['user'] = $user;
+
+  if ($usuario == null) {
+    die("Este usuario nao existe");
+  }
+
+  if (password_verify($senha, $hash) == true) {
+    header('location: login/redire.php');
+    var_dump($_SESSION['nivel']);
+  } else {
+    echo '<script>alert("Senha Invalida, Tente novamente!")</script>';
+  }
 }
 ?>

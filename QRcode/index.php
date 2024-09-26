@@ -36,7 +36,8 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
         <main>
             <section>
                 <p>Olá, professor(a) <?php echo $_SESSION['user']; ?>.</p>
-                <p style="text-align: center;">                    <select name="sala" required>
+                <!-- <input type="text" name="sala"> -->
+                <p style="text-align: center;"><select name="sala" required>
                         <option disabled selected>Selecione a sala</option>
                         <?php
                         $sql = "SELECT * FROM sala";
@@ -48,6 +49,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                         }
                         ?>
                     </select></p>
+
             </section>
         </main>
 
@@ -73,9 +75,11 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 
         function onScanSuccess(decodedText, decodedResult) {
             if (decodedText !== lastResult) {
+                let inputSala = document.getElementsByName("sala")[0];
+                let sala = inputSala.value;
                 ++countResults;
                 lastResult = decodedText;
-                location.href = `../teste/processa.php?matricula=${decodedText}`, decodedResult;
+                location.href = `processa.php?sala=${sala}&matricula=${decodedText}`, decodedResult;
                 console.log(`Scan result ${decodedText}`, decodedResult);
             }
         }
