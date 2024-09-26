@@ -36,6 +36,40 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
         <main>
             <section>
                 <p>Olá, professor(a) <?php echo $_SESSION['user']; ?>.</p>
+
+
+
+
+                <?php
+                $sql = "SELECT * FROM aluno
+    inner join turma on turma = id_turma";
+                $resultado = mysqli_query($conexao, $sql);
+
+
+                //Lista os itens
+                echo "<br>";
+                echo '<table class="table table-white table-striped">
+<tr>
+<th scope="col">Matricula</th>
+<th scope="col">Nome</th>
+<th scope="col">Turma</th>
+</tr>';
+
+                while ($dados = mysqli_fetch_assoc($resultado)) {
+                    echo '<tr>';
+                    echo '<td>' . $dados['matricula'] . '</td>';
+                    echo '<td>' . $dados['nome'] . '</td>';
+                    echo '<td>' . $dados['nome_turma'] . '</td>';
+                    echo '</tr>';
+                } 
+                ?>
+
+
+
+
+
+
+
                 <!-- <input type="text" name="sala"> -->
                 <p style="text-align: center;"><select name="sala" required>
                         <option disabled selected>Selecione a sala</option>
