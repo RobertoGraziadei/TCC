@@ -15,6 +15,12 @@ if (mysqli_num_rows($exe) == 0) {
     echo 'Numero de matricula inválida';
     die;
 }
+/* $verifi_sala = "SELECT * FROM horario
+INNER JOIN sala ON horario.fk_sala_n_sala = sala.n_sala
+Where sala.n_sala = $sala";
+$exe_sala = mysqli_query($conexao, $exe_sala);
+
+if($olhar_sala = mysqli_num_rows($exe_sala) ==) */
 
 $dados = mysqli_fetch_assoc($exe);
 echo $dados['turma'] . "<br>";
@@ -49,10 +55,6 @@ $dia_semana_ing = $data->format('l');
 $dia_semana = $dia_semana_pt[$dia_semana_ing];
 echo "<br>" . $dia_semana;
 
-//TESTANDO NOVOS DIAS
-$dia_semana2 = 'Quarta-Feira';
-echo "<br>" . $dia_semana2;
-
 //  ATÉ ESTA LINHA ESTA FEITO A INTEGRAÇÃO DA MATRICULA COM A TURMA DO ALUNO
 //  PEGANDO A DATA E HORA COM O DIA DA SEMANA DA BATIDA DO QR CODE
 
@@ -61,19 +63,30 @@ echo "<br>" . $dia_semana2;
 
 
 echo "<link rel='stylesheet' href='../css/bootstrap.min.css'>";
+//TESTANDO NOVOS DIAS
+$dia_semana2 = 'Quarta-Feira';
+echo "<br>" . $dia_semana2;
 
 $sql4 = "SELECT * FROM horario  
 INNER JOIN sala ON horario.fk_sala_n_sala = sala.n_sala
 INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas
 INNER join turma on horario.fk_turma_id_turma = turma.id_turma
-WHERE horario.fk_sala_n_sala = $sala AND horario.fk_turma_id_turma =" . $dados['turma'] ."
-AND horario.horario_inicio < NOW() AND horario.horario_fim > NOW() AND horario.dia = '$dia_semana2'";
+WHERE horario.fk_sala_n_sala = $sala AND horario.fk_turma_id_turma =" . $dados['turma'] . "
+AND horario.horario_inicio < NOW() AND horario.horario_fim > NOW() AND horario.dia = '$dia_semana'";
 $exe4 = mysqli_query($conexao, $sql4);
+
+if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
+    echo "<script>
+    alert('Sala não correspondente');
+    window.location.href = 'index.php';
+    </script>";
+    die;
+}
 
 $pega_id = mysqli_fetch_assoc($exe4);
 
 $cadastra_presenca = "INSERT INTO presenca (hr_batida, fk_horario_id_horario, fk_aluno_matricula)
-VALUES ('$agora',". $pega_id['id_horario'].", $matricula)";
+VALUES ('$agora'," . $pega_id['id_horario'] . ", $matricula)";
 $exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
 
 $resultado = mysqli_query($conexao, $sql4);
@@ -90,17 +103,17 @@ echo '<table class="table">
 <th scope="col">Horário de fim</th>
 </tr>';
 
-while($dados4 = mysqli_fetch_assoc($resultado)){
-echo '<tr>';
-echo '<td>' . $dados4['id_horario'] . '</td>';
-echo '<td>' . $dados4['dia'] . '</td>';
-echo '<td>' . $dados2['nome_turma'] . '</td>';
-echo '<td>' . $dados4['nome_disciplina'] . '</td>'; // fk_disciplina_id_disciplina
-echo '<td>' . $dados4['professor'] . '</td>';
-echo '<td>' . $dados4['descricao'] . '</td>';
-echo '<td>' . $dados4['horario_inicio'] . '</td>';
-echo '<td>' . $dados4['horario_fim'] . '</td>';
-echo '</tr>';
+while ($dados4 = mysqli_fetch_assoc($resultado)) {
+    echo '<tr>';
+    echo '<td>' . $dados4['id_horario'] . '</td>';
+    echo '<td>' . $dados4['dia'] . '</td>';
+    echo '<td>' . $dados2['nome_turma'] . '</td>';
+    echo '<td>' . $dados4['nome_disciplina'] . '</td>'; // fk_disciplina_id_disciplina
+    echo '<td>' . $dados4['professor'] . '</td>';
+    echo '<td>' . $dados4['descricao'] . '</td>';
+    echo '<td>' . $dados4['horario_inicio'] . '</td>';
+    echo '<td>' . $dados4['horario_fim'] . '</td>';
+    echo '</tr>';
 }
 echo '</table>' . "<br>";
 

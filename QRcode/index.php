@@ -35,7 +35,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
         </header>
         <main>
             <section>
-                <p>Olá, professor(a) <?php echo $_SESSION['user']; ?>.</p>
+                <p>Olá, <?php echo $_SESSION['user']; ?></p>
 
 
 
