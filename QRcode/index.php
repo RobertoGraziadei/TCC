@@ -17,13 +17,12 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     <link rel="stylesheet" href="../css/layout.css">
 
     <title>Escaner - QR Code</title>
-
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h2>Página do professor </h2>
+            <h2 style="font-size: 35px;">Página do professor </h2>
             <nav>
                 <ul>
                     <!-- <li><a href="../nova-senha.php"><button type="button" class="btn btn-outline-info">Alterar senha   </button></a></td></a></li> -->
@@ -35,7 +34,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
         </header>
         <main>
             <section>
-                <p>Olá, <?php echo $_SESSION['user']; ?></p>
+                <p style="font-size: 25;">Olá, <?php echo $_SESSION['user']; ?></p>
 
 
 
@@ -49,11 +48,11 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                 //Lista os itens
                 echo "<br>";
                 echo '<table class="table table-white table-striped">
-<tr>
-<th scope="col">Matricula</th>
-<th scope="col">Nome</th>
-<th scope="col">Turma</th>
-</tr>';
+                <tr>
+                <th scope="col">Matricula</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Turma</th>
+                </tr>';
 
                 while ($dados = mysqli_fetch_assoc($resultado)) {
                     echo '<tr>';
@@ -61,30 +60,30 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                     echo '<td>' . $dados['nome'] . '</td>';
                     echo '<td>' . $dados['nome_turma'] . '</td>';
                     echo '</tr>';
-                } 
+                }
                 ?>
 
 
-
-
-
-
-
-                <!-- <input type="text" name="sala"> -->
-                <p style="text-align: center;"><select name="sala" required>
-                        <option disabled selected>Selecione a sala</option>
-                        <?php
-                        $sql = "SELECT * FROM sala";
-                        $executaSQL = mysqli_query($conexao, $sql);
-                        while ($dados = mysqli_fetch_assoc($executaSQL)) {
-                        ?>
-                            <option value="<?php echo $dados['n_sala']; ?>" required><?php echo $dados['descricao']; ?></option>
-                        <?php
-                        }
-                        ?>
-                    </select></p>
+                <form action="processa.php" method="get">
+                    <p style="text-align: center; font-size: 25px;"><select name="sala" required>
+                            <option disabled selected>Selecione a sala</option>
+                            <?php
+                            $sql = "SELECT * FROM sala";
+                            $executaSQL = mysqli_query($conexao, $sql);
+                            while ($dados = mysqli_fetch_assoc($executaSQL)) {
+                            ?>
+                                <option value="<?php echo $dados['n_sala']; ?>" required><?php echo $dados['descricao']; ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select></p>
 
             </section>
+            <div style="text-align: center; font-size: 20px" ;>
+                <input type="number" name="matricula" placeholder="Matricula" required>
+                <input type="submit" value="Enviar">
+                </form>
+            </div>
         </main>
 
 
