@@ -9,9 +9,12 @@ $id_disciplinas = $_POST['id_disciplinas'];
 $nome = $_POST['nome_disciplina'];
 $professor = $_POST['professor'];
 
+$sql2 = "SELECT nome_usuario FROM usuario INNER JOIN disciplina ON disciplina.professor = usuario.nome_usuario WHERE usuario.id_usuario = $professor";
+$exe2 = mysqli_query($conexao, $sql2);
+$olha_nome_professor = mysqli_fetch_assoc($exe2);
+$nome_professor = implode('', $olha_nome_professor);
 
-//comando sql.
-$sql = "INSERT INTO disciplina (nome_disciplina, professor) VALUES ('$nome', '$professor')";
+$sql = "INSERT INTO disciplina (nome_disciplina, professor) VALUES ('$nome', '$nome_professor')";
 mysqli_query($conexao, $sql);
 header("location: listar.php");
 ?>
