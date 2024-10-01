@@ -31,6 +31,21 @@ $dados = mysqli_fetch_assoc($resultado);
         <h2>Editar Aluno</h2>
         <label>Matricula<input type="number" name="matricula" value="<?php echo $dados['matricula']; ?>"></label><br><br>
         <label>Edite o nome<input type="text" name="nome" value="<?php echo $dados['nome']; ?>"></label><br><br>
+
+        <p><select name="turma" required>
+        <?php
+        $sql = "SELECT * FROM aluno inner join turma on aluno.turma = turma.id_turma WHERE aluno.turma = id_turma";
+        $executaSQL = mysqli_query($conexao, $sql);
+        while ($dados = mysqli_fetch_assoc($executaSQL)) {
+        ?>
+            <option value="<?php echo $dados['id_turma']; ?>" required><?php echo $dados['nome_turma']; ?></option>
+        <?php
+        }
+        ?>
+        </select></p>
+
+        </section>
+
         <button type="submit" class="btn btn-outline-success">Editar</button>
         <a href="listar.php" class="btn btn-outline-danger">Cancelar</button>
 

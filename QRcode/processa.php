@@ -1,5 +1,6 @@
 <?php
 /* if ($_POST) { */
+echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
 include "../conecta.php";
 $matricula = $_GET['matricula'];
 $sala = $_GET['sala'];
@@ -12,7 +13,7 @@ $sql = "SELECT turma FROM aluno where matricula = $matricula";
 $exe = mysqli_query($conexao, $sql);
 
 if (mysqli_num_rows($exe) == 0) {
-    echo 'Numero de matricula inválida';
+    echo 'Número de matricula inválido';
     die;
 }
 /* $verifi_sala = "SELECT * FROM horario
@@ -64,7 +65,7 @@ echo "<br>" . $dia_semana;
 
 echo "<link rel='stylesheet' href='../css/bootstrap.min.css'>";
 //TESTANDO NOVOS DIAS
-$dia_semana2 = 'Segunda-Feira';
+$dia_semana2 = 'Quarta-Feira';
 echo "<br>" . $dia_semana2;
 
 $sql4 = "SELECT * FROM horario  
@@ -83,6 +84,17 @@ if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
     die;
 }
 
+/* if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
+    echo "<script>Swal.fire({
+    icon: 'error',
+    title: 'Ops...',
+    text: 'Aula inválida'
+});
+</script>";
+    die;
+} */
+
+
 $pega_id = mysqli_fetch_assoc($exe4);
 
 $cadastra_presenca = "INSERT INTO presenca (hr_batida, fk_horario_id_horario, fk_aluno_matricula)
@@ -94,7 +106,15 @@ echo "<script>
     alert('Presença cadastrada do aluno $nome_aluno');
     window.location.href = 'index.php';
     </script>";
-    die;
+die;
+
+/* echo "<script>Swal.fire({
+    icon: 'success',
+    title: 'Sucesso.',
+    text: 'Presença cadastrada do aluno $nome_aluno'
+    })
+</script>";
+die; */
 
 echo '<table class="table">
 <tr>
