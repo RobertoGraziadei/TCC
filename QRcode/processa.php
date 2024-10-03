@@ -65,7 +65,7 @@ echo "<br>" . $dia_semana;
 
 echo "<link rel='stylesheet' href='../css/bootstrap.min.css'>";
 //TESTANDO NOVOS DIAS
-$dia_semana2 = 'Quarta-Feira';
+$dia_semana2 = 'Segunda-Feira';
 echo "<br>" . $dia_semana2;
 
 $sql4 = "SELECT * FROM horario  

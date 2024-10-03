@@ -10,11 +10,14 @@ $dia = $_POST['dia'];
 $sala = $_POST['sala'];
 $turma = $_POST['turma'];
 $disciplina = $_POST['disciplina'];
+$professor = $_POST['professor'];
 $horario_i = $_POST['horario_inicio'];
 $horario_f = $_POST['horario_fim'];
 
-$sql = "INSERT INTO horario (dia, fk_sala_n_sala, fk_disciplina_id_disciplina, fk_turma_id_turma, horario_inicio, horario_fim)
-VALUES ('$dia', '$sala', '$disciplina', '$turma', '$horario_i', '$horario_f')";
+
+
+$sql = "INSERT INTO horario (dia, fk_sala_n_sala, fk_disciplina_id_disciplina, fk_turma_id_turma, horario_inicio, horario_fim, professor)
+VALUES ('$dia', '$sala', '$disciplina', '$turma', '$horario_i', '$horario_f', '$professor')";
 mysqli_query($conexao, $sql);
 /* var_dump($sql);die; */
 header("location: listar.php");

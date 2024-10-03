@@ -59,6 +59,19 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             ?>
         </select><br><br>
 
+        <select name="professor" required>
+            <option disabled selected>Selecione o professor</option>
+            <?php
+            $sql = "SELECT professor FROM disciplina";
+            $executaSQL = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($executaSQL)) {
+            ?>
+                <option value="<?php echo $dados['professor']; ?>"><?php echo $dados['professor']; ?></option>
+            <?php
+            }
+            ?>
+        </select><br><br>
+
         <select name="sala" required>
             <option disabled selected>Selecione a sala</option>
             <?php

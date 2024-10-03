@@ -34,6 +34,7 @@ echo '<table class="table">
 <th scope="col">Dia</th>
 <th scope="col">Turma</th>
 <th scope="col">Disciplina</th>
+<th scope="col">Professor</th>
 <th scope="col">Sala</th>
 <th scope="col">Horário de inicio</th>
 <th scope="col">Horário de fim</th>
@@ -45,6 +46,7 @@ while ($dados = mysqli_fetch_assoc($resultado)) {
     echo '<td>' . $dados['dia'] . '</td>';
     echo '<td>' . $dados['nome_turma'] . '</td>';
     echo '<td>' . $dados['nome_disciplina'] . '</td>';
+    echo '<td>' . $dados['professor'] . '</td>';
     echo '<td>' . $dados['descricao'] . '</td>';
     echo '<td>' . $dados['horario_inicio'] . '</td>';
     echo '<td>' . $dados['horario_fim'] . '</td>';
