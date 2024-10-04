@@ -1,8 +1,10 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['user'])) {
-    die("Você precisa estar logado para acessar esta página" . '<p><a href="index.php">Voltar</a></p>');
-    exit();
+if(!isset ($_SESSION)){
+    session_start();
 }
-?>
+if (!isset($_SESSION['user'])) {
+    die("<script>
+    alert('Você precisa estar logado para acessar esta pagina');
+    window.location.href = window.location.origin + '/roberto/TCC/index.php';
+    </script>");
+}

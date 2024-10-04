@@ -1,8 +1,7 @@
 <?php
 include "../conecta.php";
-include "../login/verif-log.php";
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
-    /* header('location: redire.php'); */
+    include "../login/verif-log.php";
 }
 ?>
 <!DOCTYPE HTML>

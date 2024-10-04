@@ -1,8 +1,8 @@
 <?php
 include "verif-log.php";
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
-    header('location: ../QRcode/index.php');
-}
+        header('location: ../QRcode/index.php');
+    }
 ?>
 
 <!DOCTYPE html>

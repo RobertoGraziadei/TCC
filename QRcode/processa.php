@@ -1,5 +1,10 @@
 <?php
-/* if ($_POST) { */
+
+if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
+    include "../login/verif-log.php";
+    die();
+}
+
 echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
 include "../conecta.php";
 $matricula = $_GET['matricula'];

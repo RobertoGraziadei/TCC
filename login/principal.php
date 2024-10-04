@@ -1,7 +1,8 @@
 <?php
 include "verif-log.php";
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
-    header('location: redire.php');
+    include "verif-log.php";
+    die();
 }
 ?>
 <!DOCTYPE html>

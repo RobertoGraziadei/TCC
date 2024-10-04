@@ -1,7 +1,7 @@
 <?php include('../../conecta.php');
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
-    header('location: ../../index.php');
+    include "../../login/verif-log.php";
     die();
 }
 $id_horario = $_GET['id_horario'];
