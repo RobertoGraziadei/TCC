@@ -2,7 +2,6 @@
 
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     include "../login/verif-log.php";
-    die();
 }
 
 echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
@@ -29,7 +28,7 @@ $exe_sala = mysqli_query($conexao, $exe_sala);
 if($olhar_sala = mysqli_num_rows($exe_sala) ==) */
 
 $dados = mysqli_fetch_assoc($exe);
-echo $dados['turma'] . "<br>";
+//echo $dados['turma'] . "<br>";
 $sql3 = "SELECT * FROM aluno where matricula = $matricula";
 $exe3 = mysqli_query($conexao, $sql3);
 $dados3 = mysqli_fetch_assoc($exe3);
@@ -37,7 +36,7 @@ $dados3 = mysqli_fetch_assoc($exe3);
 $sql2 = "SELECT * FROM aluno inner join turma on id_turma =" . $dados3['turma'];
 $exe2 = mysqli_query($conexao, $sql2);
 $dados2 = mysqli_fetch_assoc($exe2);
-echo $dados3['nome'] . " pertence a turma " . $dados2['nome_turma'] . "<br>";
+//echo $dados3['nome'] . " pertence a turma " . $dados2['nome_turma'] . "<br>";
 
 $sql5 = "SELECT * FROM horario";
 $exe5 = mysqli_query($conexao, $sql5);
@@ -45,7 +44,7 @@ $exe5 = mysqli_query($conexao, $sql5);
 date_default_timezone_set('America/Sao_Paulo');
 $data = new DateTime('now');
 $agora = $data->format('Y-m-d H:i:s');
-echo $agora;
+//echo $agora;
 
 $dia_semana_pt = array(
     'Sunday' => 'Domingo',
@@ -59,7 +58,7 @@ $dia_semana_pt = array(
 
 $dia_semana_ing = $data->format('l');
 $dia_semana = $dia_semana_pt[$dia_semana_ing];
-echo "<br>" . $dia_semana;
+//echo "<br>" . $dia_semana;
 
 //  ATÉ ESTA LINHA ESTA FEITO A INTEGRAÇÃO DA MATRICULA COM A TURMA DO ALUNO
 //  PEGANDO A DATA E HORA COM O DIA DA SEMANA DA BATIDA DO QR CODE
@@ -71,7 +70,7 @@ echo "<br>" . $dia_semana;
 echo "<link rel='stylesheet' href='../css/bootstrap.min.css'>";
 //TESTANDO NOVOS DIAS
 $dia_semana2 = 'Segunda-Feira';
-echo "<br>" . $dia_semana2;
+//echo "<br>" . $dia_semana2;
 
 $sql4 = "SELECT * FROM horario  
 INNER JOIN sala ON horario.fk_sala_n_sala = sala.n_sala
@@ -86,7 +85,7 @@ if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
     alert('Aula inválida');
     window.location.href = 'index.php';
     </script>";
-    die;
+    die();
 }
 
 /* if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
@@ -148,7 +147,3 @@ while ($dados4 = mysqli_fetch_assoc($resultado)) {
 echo '</table>' . "<br>";
 
 echo '<button><a href="index.php">Voltar</a></button>';
-
-/*} else {
-    header('location: form.php');
-} */

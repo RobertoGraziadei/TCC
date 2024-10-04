@@ -95,7 +95,7 @@ if ($_POST) {
   $resultado = mysqli_query($conexao, $sql);
 
   if (mysqli_num_rows($resultado) == 0) {
-    echo '<script>alert("Email Invalida, Tente novamente!")</script>';
+    echo '<script>alert("Email Invalido, Tente novamente!")</script>';
     die();
   }
 
