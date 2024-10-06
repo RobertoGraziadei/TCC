@@ -1,7 +1,9 @@
 <?php
 include "verif-log.php";
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
-        header('location: ../QRcode/index.php');
+    die("<script>
+    window.location.href = window.location.origin + '/roberto/TCC/QRcode/index.php';
+    </script>");
     }
 ?>
 
@@ -33,13 +35,14 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         <p>
         <p>
         <p>Olá, <?php echo $_SESSION['user']; ?></p>
-        <span><a href="../crud/crud_aluno/"><button type="button" class="btn btn-primary">Cadastrar aluno</button><br><br></a>
-            <a href="../crud/crud_disciplina/"><button type="button" class="btn btn-primary">Cadastrar disciplinas</button><br><br></a>
+        <span>
+        <a href="../crud/crud_usuario/"><button type="button" class="btn btn-primary">Cadastrar usuário</button><br><br></a>
+        <a href="../crud/crud_turma/"><button type="button" class="btn btn-primary">Cadastrar turma</button><br><br></a>
+        <a href="../crud/crud_sala/"><button type="button" class="btn btn-primary">Cadastrar sala</button><br><br></a>
+        <a href="../crud/crud_disciplina/"><button type="button" class="btn btn-primary">Cadastrar disciplinas</button><br><br></a>
+        <a href="../crud/crud_aluno/"><button type="button" class="btn btn-primary">Cadastrar aluno</button><br><br></a>
             <a href="../crud/crud_horario/"><button type="button" class="btn btn-primary">Cadastrar horário</button><br><br></a>
             <!-- <a href="../crud/crud_presenca/"><button type="button" class="btn btn-primary">Cadastrar presença</button><br><br></a> -->
-            <a href="../crud/crud_sala/"><button type="button" class="btn btn-primary">Cadastrar sala</button><br><br></a>
-            <a href="../crud/crud_turma/"><button type="button" class="btn btn-primary">Cadastrar turma</button><br><br></a>
-            <a href="../crud/crud_usuario/"><button type="button" class="btn btn-primary">Cadastrar usuário</button><br><br><br></a>
         </span>
     </div>
 </body>

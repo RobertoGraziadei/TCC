@@ -22,7 +22,7 @@ include "../../conecta.php";
         <!-- <input type="text" name="professor" placeholder="Professor responsável" required><br><br> -->
 
         <select name="professor" required>
-            <option disabled selected>Selecioneo professor</option>
+            <option disabled selected>Selecione o professor</option>
             <?php
             $sql = "SELECT * FROM usuario WHERE nivel = 2";
             $executaSQL = mysqli_query($conexao, $sql);

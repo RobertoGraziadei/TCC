@@ -1,8 +1,9 @@
 <?php
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
-    include "../../login/verif-log.php";
-    die();
+    die("<script>
+    window.location.href = window.location.origin + '/roberto/TCC/QRcode/index.php';
+    </script>");
 }
 include('../../conecta.php');
 ?>

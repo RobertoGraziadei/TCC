@@ -1,7 +1,11 @@
 <?php
 include "../conecta.php";
+session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
-    include "../login/verif-log.php";
+    die("<script>
+    alert('Página dedicada aos professores');
+    window.location.href = window.location.origin + '/roberto/TCC/login/logout.php';
+    </script>");
 }
 ?>
 <!DOCTYPE HTML>
