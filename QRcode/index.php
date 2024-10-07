@@ -43,8 +43,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 
 
                 <?php
-                $sql = "SELECT * FROM aluno
-    inner join turma on turma = id_turma";
+                $sql = "SELECT * FROM aluno  inner join turma on turma = id_turma";
                 $resultado = mysqli_query($conexao, $sql);
 
 
@@ -68,25 +67,30 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 
 
                 <form action="processa.php" method="get">
-                    <p style="text-align: center; font-size: 25px;"><select name="sala" required>
-                            <option disabled selected>Selecione a sala</option>
+                    <div style="text-align: center; font-size: 25px;">
+                        <select name="sala" required>
+                            <option selected value="">Selecione a sala</option>
                             <?php
                             $sql = "SELECT * FROM sala";
                             $executaSQL = mysqli_query($conexao, $sql);
                             while ($dados = mysqli_fetch_assoc($executaSQL)) {
                             ?>
-                                <option value="<?php echo $dados['n_sala']; ?>" required><?php echo $dados['descricao']; ?></option>
+                                <option value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?></option>
                             <?php
                             }
                             ?>
-                        </select></p>
+                        </select>
+                    </div>
+
+                    <div style="text-align: center; font-size: 20px">
+                        <input type="number" name="matricula" placeholder="Matricula" required>
+                        <input type="submit" value="Enviar">
+
+                    </div>
+                </form>
 
             </section>
-            <div style="text-align: center; font-size: 20px" ;>
-                <input type="number" name="matricula" placeholder="Matricula" required>
-                <input type="submit" value="Enviar">
-                </form>
-            </div>
+
         </main>
 
 

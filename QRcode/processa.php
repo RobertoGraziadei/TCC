@@ -8,17 +8,16 @@ echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
 include "../conecta.php";
 $matricula = $_GET['matricula'];
 $sala = $_GET['sala'];
-if ($sala == null) {
-    echo 'Nenhuma sala selecionada';
-    die;
-}
 
 $sql = "SELECT turma FROM aluno where matricula = $matricula";
 $exe = mysqli_query($conexao, $sql);
 
 if (mysqli_num_rows($exe) == 0) {
-    echo 'Número de matricula inválido';
-    die;
+    echo "<script>
+    alert('Número de matricula inválida');
+    window.location.href = 'index.php';
+    </script>";
+    die();
 }
 /* $verifi_sala = "SELECT * FROM horario
 INNER JOIN sala ON horario.fk_sala_n_sala = sala.n_sala
