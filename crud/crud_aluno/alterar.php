@@ -4,12 +4,8 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     include "../../login/verif-log.php";
     die();
 }
-
-// Conectar ao BD
 include('../../conecta.php');
-
-// receber os dados do formulário
-//$id = $_GET['id_aluno'];
+$id = $_GET['id_aluno'];
 $matricula = $_GET['matricula'];
 $nome = $_GET['nome'];
 

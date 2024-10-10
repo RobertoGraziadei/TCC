@@ -5,7 +5,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     die();
 }
 include('../../conecta.php');
-echo "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>";
+echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
 $sql = "SELECT * FROM aluno
     inner join turma on turma = id_turma";
 $resultado = mysqli_query($conexao, $sql);

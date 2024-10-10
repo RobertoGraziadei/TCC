@@ -35,17 +35,9 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
     <form action="alterar.php" method="get">
 
         <h1>Editar horário</h1>
-        <input type="hidden" name="id_horario">
+        <input type="hidden" name="id_horario" value="<?php echo $dados_horario['id_horario'];?>>
 
         <h2>Crud do horário</h2>
-
-
-
-
-
-
-
-
 
         <label for="turma">Turma</label>
         <select name="turma" required>

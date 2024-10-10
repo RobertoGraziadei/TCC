@@ -1,6 +1,5 @@
 <?php
-
-$sala = $_GET['sala'];
+//$sala = $_GET['sala'];
 include "../conecta.php";
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
@@ -16,10 +15,10 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <link href="../Bootstrap5/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../Bootstrap5/js/bootstrap.min.js"></script>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../css/jquery.min.js"></script>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/layout.css">
 
     <title>Escaner - QR Code</title>
@@ -79,10 +78,10 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                             while ($dados = mysqli_fetch_assoc($executaSQL)) {
                             ?>
                                 <option
-                                <?php
-                               // if($dados['descricao'] == $sala)
-                                ?>
-                                value="<?php echo $dados['n_sala']; ?>"  ><?php echo $dados['descricao']; ?></option>
+                                    <?php
+                                    // if($dados['descricao'] == $sala)
+                                    ?>
+                                    value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?></option>
                             <?php
                             }
                             ?>
@@ -90,8 +89,8 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                     </div><br>
 
                     <div style="text-align: center;">
-                        <button><a href="#" onclick="mostraInput()">Entrada Manual </a></button>
-                        <button><a href="#" onclick="mostraQrcode()">Entrada Automática</a></button>
+                        <a button href="#" onclick="mostraInput()" style="text-decoration: none">Entrada Manual </a>
+                        <a href="#" onclick="mostraQrcode()" style="text-decoration: none">Entrada Automática</a>
                     </div><br>
 
                     <div style="text-align: center; font-size: 20px">
@@ -105,15 +104,17 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 
         </main>
         <script>
-            function mostraInput(){
+            jQuery('#qrcode').show();
+            jQuery('#matricula').hide();
+
+            function mostraInput() {
                 jQuery('#qrcode').hide();
                 jQuery('#matricula').show();
             }
-            function mostraQrcode(){
+            function mostraQrcode() {
                 jQuery('#qrcode').show();
                 jQuery('#matricula').hide();
             }
-
         </script>
 
 

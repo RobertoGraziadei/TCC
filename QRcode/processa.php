@@ -137,7 +137,7 @@ while ($dados4 = mysqli_fetch_assoc($resultado)) {
     echo '<td>' . $dados4['dia'] . '</td>';
     echo '<td>' . $dados2['nome_turma'] . '</td>';
     echo '<td>' . $dados4['nome_disciplina'] . '</td>'; // fk_disciplina_id_disciplina
-    echo '<td>' . $dados4['professor'] . '</td>';
+    echo '<td>' . $dados4['fk_professor'] . '</td>';
     echo '<td>' . $dados4['descricao'] . '</td>';
     echo '<td>' . $dados4['horario_inicio'] . '</td>';
     echo '<td>' . $dados4['horario_fim'] . '</td>';

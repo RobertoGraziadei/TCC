@@ -1,5 +1,5 @@
 <?php
-echo "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>";
+echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     include "../../login/verif-log.php";
@@ -36,7 +36,7 @@ while ($dados = mysqli_fetch_assoc($resultado)) {
     echo '<td>' . $dados['dia'] . '</td>';
     echo '<td>' . $dados['nome_turma'] . '</td>';
     echo '<td>' . $dados['nome_disciplina'] . '</td>';
-    echo '<td>' . $dados['professor'] . '</td>';
+    echo '<td>' . $dados['fk_professor'] . '</td>';
     echo '<td>' . $dados['descricao'] . '</td>';
     echo '<td>' . $dados['horario_inicio'] . '</td>';
     echo '<td>' . $dados['horario_fim'] . '</td>';
