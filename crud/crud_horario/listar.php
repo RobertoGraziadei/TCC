@@ -19,6 +19,7 @@ $resultado = mysqli_query($conexao, $sql);
 //Lista os itens
 echo '<table class="table">
 <tr>
+<th scope="col">#</th>
 <th scope="col">Dia</th>
 <th scope="col">Turma</th>
 <th scope="col">Disciplina</th>
@@ -31,6 +32,7 @@ echo '<table class="table">
 
 while ($dados = mysqli_fetch_assoc($resultado)) {
     echo '<tr>';
+    echo '<td>' . $dados['id_horario'] . '</td>';
     echo '<td>' . $dados['dia'] . '</td>';
     echo '<td>' . $dados['nome_turma'] . '</td>';
     echo '<td>' . $dados['nome_disciplina'] . '</td>';

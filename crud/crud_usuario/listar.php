@@ -20,7 +20,7 @@ while ($dados = mysqli_fetch_assoc($resultado)) {
     echo '<tr>';
     echo '<td>' . $dados['nome_usuario'] . '</td>';
     echo '<td>' . $dados['email'] . '</td>';
-    echo '<td>' . $dados['senha'] . '</td>';
+    echo '<td>' . '************' . '</td>';
     echo '<td>' . $dados['nivel'] . '</td>';
     echo '<td> <a href="formedit.php?email=' . $dados['email'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
     echo '<td> <a href="excluir?email=' . $dados['email'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';

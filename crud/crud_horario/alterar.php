@@ -6,16 +6,17 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 }
 include('../../conecta.php');
 $id_horario = $_GET['id_horario'];
-$dia = $_GET['dia'];
-$sala = $_GET['n_sala'];
 $turma = $_GET['turma'];
+$dia = $_GET['dia'];
 $disciplina = $_GET['disciplina'];
+$professor = $_GET['professor'];
+$sala = $_GET['n_sala'];
 $horario_i = $_GET['horario_inicio'];
 $horario_f = $_GET['horario_fim'];
 
 $sql = "UPDATE horario SET 
-dia = '$dia', horario_inicio = '$horario_i', horario_fim = '$horario_f', fk_disciplina_id_disciplina = '$disciplina',
-fk_turma_id_turma = '$turma', fk_sala_n_sala = '$sala' WHERE id_horario = $id_horario";
+fk_turma_id_turma = '$turma', dia = '$dia', fk_disciplina_id_disciplina = '$disciplina', professor = '$professor',
+fk_sala_n_sala = '$sala', horario_inicio = '$horario_i', horario_fim = '$horario_f' WHERE id_horario = $id_horario";
 /* var_dump($sql);die; */
 mysqli_query($conexao,$sql);
 
