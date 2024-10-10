@@ -11,7 +11,7 @@ INNER JOIN disciplina ON id_disciplinas = fk_disciplina_id_disciplina
 INNER JOIN turma ON id_turma = fk_turma_id_turma 
 WHERE id_horario = $id_horario;";
 $resultado = mysqli_query($conexao, $selecione_horario);
-/* $dados_turma = mysqli_fetch_assoc($resultado); */
+$dados_horario = mysqli_fetch_assoc($resultado);
 
 /* $selecione_horario2 = "SELECT * FROM horario Where id_horario = $id_horario;";
 $exe2 = mysqli_query($conexao, $selecione_horario2); */
@@ -39,96 +39,79 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
 
         <h2>Crud do horário</h2>
 
+
+
+
+
+
+
+
+
         <label for="turma">Turma</label>
         <select name="turma" required>
-
             <?php
-            while ($dados_turma = mysqli_fetch_assoc($resultado)) { ?>
-                <option value="<?php echo $dados_turma['nome_turma']; ?>">
-                    <?php echo $dados_turma['nome_turma']; ?>
-                </option>
-            <?php } ?>
-
-            <?php
-            $sql = "SELECT * FROM horario INNER JOIN turma ON horario.fk_turma_id_turma = turma.id_turma";
-            $exe2 = mysqli_query($conexao, $sql);
-            while ($dados_horario = mysqli_fetch_assoc($exe2)) { ?>
-                <option value="<?php echo $dados_horario['nome_turma']; ?>">
-                    <?php echo $dados_horario['nome_turma']; ?>
+            $sql = "SELECT * FROM turma";
+            $exe = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                <option value="<?php echo $dados['id_turma']; ?>" 
+                <?php if ($dados_horario['nome_turma'] == $dados['nome_turma']){ echo 'selected';} ?>>
+                <?php echo $dados['nome_turma']; ?>
                 </option>
             <?php } ?>
         </select><br><br>
+
 
         <label for="dia">Dia</label>
         <select name="dia" required>
-
-            <?php
-            while ($dados_turma = mysqli_fetch_assoc($resultado)) { ?>
-                <option value="<?php echo $dados_turma['dia']; ?>">
-                    <?php echo $dados_turma['dia']; ?>
-                </option>
-            <?php } ?>
-
-            <?php
-            $sql = "SELECT * FROM horario";
-            $exe2 = mysqli_query($conexao, $sql);
-            while ($dados_horario = mysqli_fetch_assoc($exe2)) { ?>
-                <option value="<?php echo $dados_horario['dia']; ?>">
-                    <?php echo $dados_horario['dia']; ?>
+        <?php
+            $sql = "SELECT dia FROM horario";
+            $exe = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                <option value="<?php echo $dados['dia']; ?>" 
+                <?php if ($dados_horario['dia'] == $dados['dia']){ echo 'selected';} ?>>
+                <?php echo $dados['dia']; ?>
                 </option>
             <?php } ?>
         </select><br><br>
+
 
         <label for="disciplina">Disciplina</label>
         <select name="disciplina" required>
-            <?php
-            while ($dados_dia = mysqli_fetch_assoc($resultado)) { ?>
-                <option value="<?php echo $dados_dia['nome_disciplina']; ?>">
-                    <?php echo $dados_dia['nome_disciplina']; ?>
-                </option>
-            <?php } ?>
-            <?php
-            $sql = "SELECT * FROM horario INNER JOIN disciplina ON id_disciplinas = fk_disciplina_id_disciplina";
-            $exe2 = mysqli_query($conexao, $sql);
-            while ($dados_dia = mysqli_fetch_assoc($exe2)) { ?>
-                <option value="<?php echo $dados_dia['nome_disciplina']; ?>">
-                    <?php echo $dados_dia['nome_disciplina']; ?>
+        <?php
+            $sql = "SELECT * FROM disciplina";
+            $exe = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                <option value="<?php echo $dados['id_disciplinas']; ?>" 
+                <?php if ($dados_horario['nome_disciplina'] == $dados['nome_disciplina']){ echo 'selected';} ?>>
+                <?php echo $dados['nome_disciplina']; ?>
                 </option>
             <?php } ?>
         </select><br><br>
+
 
         <label for="professor">Professor</label>
         <select name="professor" required>
-            <?php
-            while ($dados_turma = mysqli_fetch_assoc($resultado)) { ?>
-                <option value="<?php echo $dados_turma['professor']; ?>">
-                    <?php echo $dados_turma['professor']; ?>
-                </option>
-            <?php } ?>
-            <?php
-            $sql = "SELECT professor FROM horario";
-            $exe2 = mysqli_query($conexao, $sql);
-            while ($dados_horario = mysqli_fetch_assoc($exe2)) { ?>
-                <option value="<?php echo $dados_horario['professor']; ?>">
-                    <?php echo $dados_horario['professor']; ?>
+        <?php
+            $sql = "SELECT professor FROM disciplina";
+            $exe = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                <option value="<?php echo $dados['professor']; ?>" 
+                <?php if ($dados_horario['professor'] == $dados['professor']){ echo 'selected';} ?>>
+                <?php echo $dados['professor']; ?>
                 </option>
             <?php } ?>
         </select><br><br>
 
+
         <label for="sala">Sala</label>
         <select name="sala" required>
-            <?php
-            while ($dados_turma = mysqli_fetch_assoc($resultado)) { ?>
-                <option value="<?php echo $dados_turma['descricao']; ?>">
-                    <?php echo $dados_turma['descricao']; ?>
-                </option>
-            <?php } ?>
-            <?php
-            $sql = "SELECT * FROM horario INNER JOIN sala ON fk_sala_n_sala = n_sala";
-            $exe2 = mysqli_query($conexao, $sql);
-            while ($dados_horario = mysqli_fetch_assoc($exe2)) { ?>
-                <option value="<?php echo $dados_horario['descricao']; ?>">
-                    <?php echo $dados_horario['descricao']; ?>
+        <?php
+            $sql = "SELECT * FROM sala";
+            $exe = mysqli_query($conexao, $sql);
+            while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                <option value="<?php echo $dados['n_sala']; ?>" 
+                <?php if ($dados_horario['descricao'] == $dados['descricao']){ echo 'selected';} ?>>
+                <?php echo $dados['descricao']; ?>
                 </option>
             <?php } ?>
         </select><br><br>

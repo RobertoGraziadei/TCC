@@ -107,7 +107,7 @@ $resultado = mysqli_query($conexao, $sql4);
 $nome_aluno = $dados3['nome'];
 echo "<script>
     alert('Presença cadastrada do aluno $nome_aluno');
-    window.location.href = 'index.php';
+    window.location.href = 'index.php?sala=$sala'  ;
     </script>";
 die;
 

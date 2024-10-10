@@ -19,18 +19,20 @@ if (!isset($_SESSION['user'])) {
 
 <body class="align">
 
+
+
   <div class="grid">
 
     <form action="" method="POST" class="form login">
 
-      <div class="form__field">
+      <div id="inputemail" class="form__field">
         <label for="login__username"><svg class="icon">
             <use xlink:href="#icon-user"></use>
           </svg><span class="hidden">Username</span></label>
         <input autocomplete="username" id="login__username" type="email" name="email" class="form__input" placeholder="Email" required>
       </div>
 
-      <div class="form__field">
+      <div id="inputsenha" class="form__field">
         <label for="login__password"><svg class="icon">
             <use xlink:href="#icon-lock"></use>
           </svg><span class="hidden">Password</span></label>
