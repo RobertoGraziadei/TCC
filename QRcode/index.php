@@ -31,6 +31,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
             <nav>
                 <ul>
                     <!-- <li><a href="../nova-senha.php"><button type="button" class="btn btn-outline-info">Alterar senha   </button></a></td></a></li> -->
+                    <li><a href="chamada.php"><button type="button" class="btn btn-outline-alert">Chamada <img src="../img/logout.png" width="20" height="20"></button></a></td></a></li>
                     <li><a href="../login/logout.php"><button type="button" class="btn btn-outline-danger">Sair <img src="../img/logout.png" width="20" height="20"></button></a></td></a></li>
                     <!-- <li><a href="#">Sobre</a></li>
                     <li><a href="#">Contato</a></li> -->
@@ -41,81 +42,39 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
             <section>
                 <p style="font-size: 25;">Olá, <?php echo $_SESSION['user']; ?></p>
 
-
-
-
+                <br><br>
+                <h3>Disciplinas ministradas</h3><br>
                 <?php
-                $sql = "SELECT * FROM aluno  inner join turma on turma = id_turma";
-                $resultado = mysqli_query($conexao, $sql);
+                $nome_prof = $_SESSION['user'];
+                $select_professor = "SELECT * FROM disciplina WHERE professor = '$nome_prof'";
+                $exe_prof = mysqli_query($conexao, $select_professor);
+                while ($dados_prof = mysqli_fetch_assoc($exe_prof)) { ?>
+                    <a style="text-decoration: none" href="#" onclick="mostraTurma()"><?php echo $dados_prof['nome_disciplina'] ?></a><br>
+                <?php
+                }
+                $select_professor2 = "SELECT * FROM disciplina WHERE professor = '$nome_prof'";
+                $exe_prof2 = mysqli_query($conexao, $select_professor2);
+                $dados_prof2 = mysqli_fetch_assoc($exe_prof2);
 
-
-                //Lista os itens
-                echo "<br>";
-                echo '<table class="table table-white table-striped">
-                <tr>
-                <th scope="col">Matricula</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Turma</th>
-                </tr>';
-
-                while ($dados = mysqli_fetch_assoc($resultado)) {
-                    echo '<tr>';
-                    echo '<td>' . $dados['matricula'] . '</td>';
-                    echo '<td>' . $dados['nome'] . '</td>';
-                    echo '<td>' . $dados['nome_turma'] . '</td>';
-                    echo '</tr>';
+                $select_turma = "SELECT * FROM horario INNER JOIN disciplina ON fk_disciplina_id_disciplina = id_disciplinas
+                INNER JOIN turma ON fk_turma_id_turma = id_turma WHERE fk_disciplina_id_disciplina =" . $dados_prof2['id_disciplinas'];
+                $exe_turma = mysqli_query($conexao, $select_turma);
+                while ($dados_turma = mysqli_fetch_assoc($exe_turma)) { ?>
+                    <a id="nome_turma" style="text-decoration: none" href="#"><?php echo $dados_turma['nome_turma'] ?></a>
+                <?php
                 }
                 ?>
 
 
-                <form action="processa.php" method="get">
-                    <div style="text-align: center; font-size: 25px;">
-                        <select name="sala" required>
-                            <option selected value="">Selecione a sala</option>
-                            <?php
-                            $sql = "SELECT * FROM sala";
-                            $executaSQL = mysqli_query($conexao, $sql);
-                            while ($dados = mysqli_fetch_assoc($executaSQL)) {
-                            ?>
-                                <option
-                                    <?php
-                                    // if($dados['descricao'] == $sala)
-                                    ?>
-                                    value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                    </div><br>
-
-                        <button class="link1"><a href="#" onclick="mostraInput()" style="text-decoration: none"> Entrada Manual </a></button>
-                        <button class="link2"><a href="#" onclick="mostraQrcode()" style="text-decoration: none"> Entrada Automática</a></button>
-                        <br>
-
-                    <div style="text-align: center; font-size: 20px">
-                        <input id="matricula" type="number" name="matricula" placeholder="Matricula" required>
-                        <input id="enviar" type="submit" value="Enviar">
-
-                    </div>
                 </form>
 
             </section>
 
         </main>
         <script>
-            jQuery('#qrcode').show();
-            jQuery('#matricula').hide();
-            jQuery('#enviar').hide();
-
-            function mostraInput() {
-                jQuery('#qrcode').hide();
-                jQuery('#matricula').show();
-                jQuery('#enviar').show();
-            }
-            function mostraQrcode() {
-                jQuery('#qrcode').show();
-                jQuery('#matricula').hide();
-                jQuery('#enviar').hide();
+            jQuery('#nome_turma').hide();
+            function mostraTurma(){
+                jQuery('#nome_turma').show();
             }
         </script>
 
@@ -126,38 +85,6 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 
         </div>
 </body>
-<script src="html5-qrcode.min.js"></script>
-<script>
-    function docReady(fn) {
-        if (document.readyState === "complete" ||
-            document.readyState === "interactive") {
-            setTimeout(fn, 1);
-        } else {
-            document.addEventListener("DOMContentLoaded", fn);
-        }
-    }
-    docReady(function() {
-        var resultContainer = document.getElementById('qr-reader-results');
-        var lastResult, countResults = 0;
-
-        function onScanSuccess(decodedText, decodedResult) {
-            if (decodedText !== lastResult) {
-                let inputSala = document.getElementsByName("sala")[0];
-                let sala = inputSala.value;
-                ++countResults;
-                lastResult = decodedText;
-                location.href = `processa.php?sala=${sala}&matricula=${decodedText}`, decodedResult;
-                console.log(`Scan result ${decodedText}`, decodedResult);
-            }
-        }
-        var html5QrcodeScanner = new Html5QrcodeScanner(
-            "qr-reader", {
-                fps: 10,
-                qrbox: 250
-            });
-        html5QrcodeScanner.render(onScanSuccess);
-    });
-</script>
 </div>
 
 </html>
