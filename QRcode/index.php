@@ -88,14 +88,13 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                         </select>
                     </div><br>
 
-                    <div style="text-align: center;">
-                        <a button href="#" onclick="mostraInput()" style="text-decoration: none">Entrada Manual </a>
-                        <a href="#" onclick="mostraQrcode()" style="text-decoration: none">Entrada Automática</a>
-                    </div><br>
+                        <button class="link1"><a href="#" onclick="mostraInput()" style="text-decoration: none"> Entrada Manual </a></button>
+                        <button class="link2"><a href="#" onclick="mostraQrcode()" style="text-decoration: none"> Entrada Automática</a></button>
+                        <br>
 
                     <div style="text-align: center; font-size: 20px">
                         <input id="matricula" type="number" name="matricula" placeholder="Matricula" required>
-                        <input type="submit" value="Enviar">
+                        <input id="enviar" type="submit" value="Enviar">
 
                     </div>
                 </form>
@@ -106,14 +105,17 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
         <script>
             jQuery('#qrcode').show();
             jQuery('#matricula').hide();
+            jQuery('#enviar').hide();
 
             function mostraInput() {
                 jQuery('#qrcode').hide();
                 jQuery('#matricula').show();
+                jQuery('#enviar').show();
             }
             function mostraQrcode() {
                 jQuery('#qrcode').show();
                 jQuery('#matricula').hide();
+                jQuery('#enviar').hide();
             }
         </script>
 
