@@ -15,7 +15,7 @@ $exe = mysqli_query($conexao, $sql);
 if (mysqli_num_rows($exe) == 0) {
     echo "<script>
     alert('Número de matricula inválida');
-    window.location.href = 'index.php';
+    window.location.href = 'chamada.php';
     </script>";
     die();
 }
@@ -82,7 +82,7 @@ $exe4 = mysqli_query($conexao, $sql4);
 if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
     echo "<script>
     alert('Aula inválida');
-    window.location.href = 'index.php';
+    window.location.href = 'chamada.php';
     </script>";
     die();
 }
@@ -107,7 +107,7 @@ $resultado = mysqli_query($conexao, $sql4);
 $nome_aluno = $dados3['nome'];
 echo "<script>
     alert('Presença cadastrada do aluno $nome_aluno');
-    window.location.href = 'index.php?sala=$sala'  ;
+    window.location.href = 'chamada.php?sala=$sala'  ;
     </script>";
 die;
 
@@ -145,4 +145,4 @@ while ($dados4 = mysqli_fetch_assoc($resultado)) {
 }
 echo '</table>' . "<br>";
 
-echo '<button><a href="index.php">Voltar</a></button>';
+echo '<button><a href="chamada.php">Voltar</a></button>';

@@ -1,5 +1,7 @@
 <?php
-//$sala = $_GET['sala'];
+if (isset($_GET['sala']) and $_GET['sala'] !== null) {
+    $sala = $_GET['sala'];
+}
 include "../conecta.php";
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
@@ -44,25 +46,35 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                 <form action="processa.php" method="get">
                     <div style="text-align: center; font-size: 25px;">
                         <select name="sala" required>
+
+
                             <option selected value="">Selecione a sala</option>
                             <?php
                             $sql = "SELECT * FROM sala";
                             $executaSQL = mysqli_query($conexao, $sql);
-                            while ($dados = mysqli_fetch_assoc($executaSQL)) {
-                            ?>
+                            while ($dados = mysqli_fetch_assoc($executaSQL)) { ?>
                                 <option
                                     <?php
-                                    // if($dados['descricao'] == $sala)
-                                    ?>
-                                    value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?></option>
-                            <?php
-                            }
-                            ?>
+                                    if (isset($_GET['sala']) and $_GET['sala'] !== null) {
+                                        //if ($sala == $dados['n_sala']) {
+                                           // echo "selected"; ?>
+                                    value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?>
+                                </option>
+                    <?php
+                                        }
+                                    }
+                                //}
+                    ?>
+
                         </select>
+
+
+
                     </div><br>
 
-                    <button class="link1"><a href="#" onclick="mostraInput()" style="text-decoration: none"> Entrada Manual </a></button>
-                    <button class="link2"><a href="#" onclick="mostraQrcode()" style="text-decoration: none"> Entrada Automática</a></button>
+
+                    <a class="btn btn-secondary link1" role="button" href="#" onclick="mostraInput()" style="text-decoration: none"> Entrada Manual </a>
+                    <a class="btn btn-secondary link2" href="#" role="button" onclick="mostraQrcode()" style="text-decoration: none"> Entrada Automática</a>
                     <br><br>
 
                     <div style="text-align: center; font-size: 20px">
@@ -76,30 +88,25 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 
         </main>
         <script>
-            jQuery('#qrcode').show();
+            jQuery('#qr-reader').show();
             jQuery('#matricula').hide();
             jQuery('#enviar').hide();
 
             function mostraInput() {
-                jQuery('#qrcode').hide();
+                jQuery('#qr-reader').hide();
                 jQuery('#matricula').show();
                 jQuery('#enviar').show();
             }
 
             function mostraQrcode() {
-                jQuery('#qrcode').show();
+                jQuery('#qr-reader').show();
                 jQuery('#matricula').hide();
                 jQuery('#enviar').hide();
-                WAwwwww
             }
         </script>
 
 
-        <div id="qrcode">
-            <div id="qr-reader"></div>
-            <div id="qr-reader-results"></div>
-
-        </div>
+        <div id="qr-reader">
 </body>
 <script src="html5-qrcode.min.js"></script>
 <script>

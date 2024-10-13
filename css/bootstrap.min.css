@@ -3,7 +3,13 @@
     margin-left: 450px;
 }
 .link2{
-    margin-left: 130px;
+    margin-left: 110px;
+}
+#qr-reader{
+    width: 600px; /* Tamanho desejado */
+    height: 490px; /* Tamanho desejado */
+    margin: 0 auto; /* Centraliza a div */
+    overflow: hidden /* Não deixa sair da div */
 }
 
 
