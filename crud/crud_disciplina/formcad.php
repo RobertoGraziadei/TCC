@@ -18,20 +18,7 @@ include "../../conecta.php";
     
     <form action="cadastrar.php" method="post">
     <input type="hidden" name="id_disciplinas">
-        <input type="text" name="nome_disciplina" placeholder="Nome da disciplina" required><br><br>
-        <!-- <input type="text" name="professor" placeholder="Professor responsável" required><br><br> -->
-
-        <select name="professor" required>
-            <option disabled selected>Selecione o professor</option>
-            <?php
-            $sql = "SELECT * FROM usuario WHERE nivel = 2";
-            $executaSQL = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($executaSQL)) {
-            ?>
-                <option value="<?php echo $dados['id_usuario']; ?>"><?php echo $dados['nome_usuario']; ?></option>
-            <?php
-            }
-            ?>
+        <input type="text" name="nome_disciplina" placeholder="Nome da disciplina" required><br>
         </select><br><br>
 
         <input type="submit" value="Cadastrar"><br><br><br><br>

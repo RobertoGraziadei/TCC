@@ -11,6 +11,7 @@ $sql = "SELECT * FROM horario
 INNER JOIN sala ON fk_sala_n_sala = n_sala
 INNER JOIN disciplina ON id_disciplinas = fk_disciplina_id_disciplina
 INNER JOIN turma ON id_turma = fk_turma_id_turma
+INNER JOIN usuario ON id_usuario = fk_professor
 ;";
 
 // Executa o Select
@@ -36,7 +37,7 @@ while ($dados = mysqli_fetch_assoc($resultado)) {
     echo '<td>' . $dados['dia'] . '</td>';
     echo '<td>' . $dados['nome_turma'] . '</td>';
     echo '<td>' . $dados['nome_disciplina'] . '</td>';
-    echo '<td>' . $dados['fk_professor'] . '</td>';
+    echo '<td>' . $dados['nome_usuario'] . '</td>';
     echo '<td>' . $dados['descricao'] . '</td>';
     echo '<td>' . $dados['horario_inicio'] . '</td>';
     echo '<td>' . $dados['horario_fim'] . '</td>';

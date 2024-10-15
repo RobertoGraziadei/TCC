@@ -14,21 +14,15 @@ $sala = $_GET['sala'];
 $horario_i = $_GET['horario_inicio'];
 $horario_f = $_GET['horario_fim'];
 
-$sql = "UPDATE horario SET fk_turma_id_turma = '$turma', dia = '$dia', fk_disciplina_id_disciplina = '$disciplina',
-fk_professor = '$professor', fk_sala_n_sala = '$sala', horario_inicio = '$horario_i',  horario_fim = '$horario_f' WHERE id_horario = $id_horario;";
+$sql = "UPDATE horario 
+          SET fk_turma_id_turma = '$turma', dia = '$dia', fk_disciplina_id_disciplina = '$disciplina',
+              fk_professor = '$professor', fk_sala_n_sala = '$sala', horario_inicio = '$horario_i',  
+              horario_fim = '$horario_f' 
+          WHERE id_horario = '$id_horario'";
 $exe = mysqli_query($conexao, $sql);
-
-$sql2 = "SELECT * FROM horario WHERE id_horario = $id_horario;";
-$exe2 = mysqli_query($conexao, $sql2);
-
-$sql3 = "UPDATE disciplina SET professor =" . $dados['fk_professor'] . "WHERE id_horario = '$id_horario'";
-$exe3 = mysqli_query($conexao, $sql2);
-
 if ($conexao->error) {
 
-    die("Falha ao editar usuário no sistema:". $conexao->error);
-
-}else {
+    die("Falha ao editar usuário no sistema:" . $conexao->error);
+} else {
     header("location: listar.php");
 }
-?>

@@ -64,11 +64,11 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         <select name="professor" required>
             <option disabled selected>Selecione o professor</option>
             <?php
-            $sql = "SELECT professor FROM disciplina";
+            $sql = "SELECT DISTINCT id_usuario,nome_usuario FROM horario INNER JOIN usuario ON id_usuario = fk_professor";
             $executaSQL = mysqli_query($conexao, $sql);
             while ($dados = mysqli_fetch_assoc($executaSQL)) {
             ?>
-                <option value="<?php echo $dados['professor']; ?>"><?php echo $dados['professor']; ?></option>
+                <option value="<?php echo $dados['id_usuario']; ?>"><?php echo $dados['nome_usuario']; ?></option>
             <?php
             }
             ?>

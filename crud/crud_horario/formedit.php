@@ -35,7 +35,7 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
     <form action="alterar.php" method="get">
 
         <h1>Editar horário</h1>
-        <input type="hidden" name="id_horario" value="<?php echo $dados_horario['id_horario'];?>>
+        <input type="hidden" name="id_horario" value="<?php echo $dados_horario['id_horario'];?>">
 
         <h2>Crud do horário</h2>
 
@@ -84,12 +84,12 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
         <label for="professor">Professor</label>
         <select name="professor" required>
         <?php
-            $sql = "SELECT professor FROM disciplina";
+            $sql = "SELECT * FROM horario INNER JOIN usuario ON id_usuario = fk_professor";
             $exe = mysqli_query($conexao, $sql);
             while ($dados = mysqli_fetch_assoc($exe)) { ?>
-                <option value="<?php echo $dados['professor']; ?>" 
-                <?php if ($dados_horario['professor'] == $dados['professor']){ echo 'selected';} ?>>
-                <?php echo $dados['professor']; ?>
+                <option value="<?php echo $dados['fk_professor']; ?>" 
+                <?php if ($dados_horario['fk_professor'] == $dados['fk_professor']){ echo 'selected';} ?>>
+                <?php echo $dados['nome_usuario']; ?>
                 </option>
             <?php } ?>
         </select><br><br>
