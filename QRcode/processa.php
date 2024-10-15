@@ -15,7 +15,7 @@ $exe = mysqli_query($conexao, $sql);
 if (mysqli_num_rows($exe) == 0) {
     echo "<script>
     alert('Número de matricula inválida');
-    window.location.href = 'chamada.php';
+    window.location.href = 'chamada.php?sala=$sala';
     </script>";
     die();
 }
@@ -82,7 +82,7 @@ $exe4 = mysqli_query($conexao, $sql4);
 if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
     echo "<script>
     alert('Aula inválida');
-    window.location.href = 'chamada.php';
+    window.location.href = 'chamada.php?sala=$sala';
     </script>";
     die();
 }

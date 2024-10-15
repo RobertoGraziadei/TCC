@@ -56,15 +56,16 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                                 <option
                                     <?php
                                     if (isset($_GET['sala']) and $_GET['sala'] !== null) {
-                                        //if ($sala == $dados['n_sala']) {
-                                           // echo "selected"; ?>
-                                    value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?>
-                                </option>
-                    <?php
+                                        if ($_GET['sala'] == $dados['n_sala']) {
+                                            echo " selected ";
                                         }
                                     }
-                                //}
-                    ?>
+                                    ?>
+                                    value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?>
+                                </option>
+                            <?php
+                            }
+                            ?>
 
                         </select>
 

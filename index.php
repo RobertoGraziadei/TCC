@@ -107,15 +107,16 @@ if ($_POST) {
   $hash = $usuario['senha'];
   $user = $usuario['nome_usuario'];
 
-  $_SESSION['user'] = $user;
 
   if ($usuario == null) {
     die("Este usuario nao existe");
   }
 
   if (password_verify($senha, $hash) == true) {
+    $_SESSION['id_usuario'] = $usuario['id_usuario'];
+    $_SESSION['user'] = $user;
     header('location: login/redire.php');
-    var_dump($_SESSION['nivel']);
+    //var_dump($_SESSION['nivel']);
   } else {
     echo '<script>alert("Senha Invalida, Tente novamente!")</script>';
   }

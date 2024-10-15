@@ -45,24 +45,20 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                 <br><br>
                 <h3>Disciplinas ministradas</h3><br>
                 <?php
-                $nome_prof = $_SESSION['user'];
-                $select_professor = "SELECT * FROM disciplina WHERE professor = '$nome_prof'";
+                $select_professor = "SELECT * FROM disciplina INNER JOIN horario ON fk_disciplina_id_disciplina = id_disciplinas WHERE fk_professor = " . $_SESSION['id_usuario'];
+                //var_dump($select_professor);die;
                 $exe_prof = mysqli_query($conexao, $select_professor);
                 while ($dados_prof = mysqli_fetch_assoc($exe_prof)) { ?>
                     <a style="text-decoration: none" href="#" onclick="mostraTurma()"><?php echo $dados_prof['nome_disciplina'] ?></a><br>
                 <?php
                 }
-                $select_professor2 = "SELECT * FROM disciplina WHERE professor = '$nome_prof'";
-                $exe_prof2 = mysqli_query($conexao, $select_professor2);
-                $dados_prof2 = mysqli_fetch_assoc($exe_prof2);
-
-                $select_turma = "SELECT * FROM horario INNER JOIN disciplina ON fk_disciplina_id_disciplina = id_disciplinas
+                /*$select_turma = "SELECT * FROM horario INNER JOIN disciplina ON fk_disciplina_id_disciplina = id_disciplinas
                 INNER JOIN turma ON fk_turma_id_turma = id_turma WHERE fk_disciplina_id_disciplina =" . $dados_prof2['id_disciplinas'];
                 $exe_turma = mysqli_query($conexao, $select_turma);
                 while ($dados_turma = mysqli_fetch_assoc($exe_turma)) { ?>
                     <a id="nome_turma" style="text-decoration: none" href="#"><?php echo $dados_turma['nome_turma'] ?></a>
                 <?php
-                }
+                }*/
                 ?>
 
 
@@ -73,7 +69,8 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
         </main>
         <script>
             jQuery('#nome_turma').hide();
-            function mostraTurma(){
+
+            function mostraTurma() {
                 jQuery('#nome_turma').show();
             }
         </script>
