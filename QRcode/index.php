@@ -49,7 +49,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                 //var_dump($select_professor);die;
                 $exe_prof = mysqli_query($conexao, $select_professor);
                 while ($dados_prof = mysqli_fetch_assoc($exe_prof)) { ?>
-                    <a style="text-decoration: none" href="#" onclick="mostraTurma()"><?php echo $dados_prof['nome_disciplina'] ?></a><br>
+                    <a style="text-decoration: none" href="../crud/crud_presenca/listar.php" onclick="mostraTurma()"><?php echo $dados_prof['nome_disciplina'] ?></a><br>
                 <?php
                 }
                 /*$select_turma = "SELECT * FROM horario INNER JOIN disciplina ON fk_disciplina_id_disciplina = id_disciplinas
@@ -68,11 +68,11 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 
         </main>
         <script>
-            jQuery('#nome_turma').hide();
+            //jQuery('#nome_turma').hide();
 
-            function mostraTurma() {
-                jQuery('#nome_turma').show();
-            }
+            //function mostraTurma() {
+             //   jQuery('#nome_turma').show();
+            //}
         </script>
 
 
