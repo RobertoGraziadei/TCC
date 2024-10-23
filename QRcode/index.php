@@ -45,11 +45,14 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                 <br><br>
                 <h3>Disciplinas ministradas</h3><br>
                 <?php
-                $select_professor = "SELECT * FROM disciplina INNER JOIN horario ON fk_disciplina_id_disciplina = id_disciplinas WHERE fk_professor = " . $_SESSION['id_usuario'];
+                $select_professor = "SELECT * FROM disciplina 
+                INNER JOIN horario ON fk_disciplina_id_disciplina = id_disciplinas 
+                INNER JOIN turma ON id_turma = fk_turma_id_turma
+                WHERE fk_professor = " . $_SESSION['id_usuario'];
                 //var_dump($select_professor);die;
                 $exe_prof = mysqli_query($conexao, $select_professor);
-                while ($dados_prof = mysqli_fetch_assoc($exe_prof)) { ?>
-                    <a style="text-decoration: none" href="../crud/crud_presenca/listar.php" onclick="mostraTurma()"><?php echo $dados_prof['nome_disciplina'] ?></a><br>
+                while ($dados_prof = mysqli_fetch_assoc($exe_prof)) { '<br>' ?>
+                    <a style="text-decoration: none" href="../crud/crud_presenca/listar.php" onclick="mostraTurma()"><button> <?php echo $dados_prof['nome_disciplina']; echo " - "; echo $dados_prof['nome_turma'] ?> </button></a><br>
                 <?php
                 }
                 /*$select_turma = "SELECT * FROM horario INNER JOIN disciplina ON fk_disciplina_id_disciplina = id_disciplinas

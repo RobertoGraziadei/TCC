@@ -15,8 +15,8 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/layout.css">
-    <title>Menu</title>
     <link rel="shortcut icon" href="barra.ico" type="image/x-icon">
+    <title>Menu</title>
 </head>
 
 <body>
@@ -36,12 +36,12 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         <p>
         <p>Olá, <?php echo $_SESSION['user']; ?></p>
         <span>
-        <a href="../crud/crud_usuario/"><button type="button" class="btn btn-primary">Cadastrar usuário</button><br><br></a>
-        <a href="../crud/crud_turma/"><button type="button" class="btn btn-primary">Cadastrar turma</button><br><br></a>
-        <a href="../crud/crud_sala/"><button type="button" class="btn btn-primary">Cadastrar sala</button><br><br></a>
-        <a href="../crud/crud_disciplina/"><button type="button" class="btn btn-primary">Cadastrar disciplinas</button><br><br></a>
-        <a href="../crud/crud_aluno/"><button type="button" class="btn btn-primary">Cadastrar aluno</button><br><br></a>
-            <a href="../crud/crud_horario/"><button type="button" class="btn btn-primary">Cadastrar horário</button><br><br></a>
+        <a href="../crud/crud_usuario/formcad.php"><button type="button" class="btn btn-primary">Cadastrar usuário</button><br><br></a>
+        <a href="../crud/crud_turma/formcad.php"><button type="button" class="btn btn-primary">Cadastrar turma</button><br><br></a>
+        <a href="../crud/crud_sala/formcad.php"><button type="button" class="btn btn-primary">Cadastrar sala</button><br><br></a>
+        <a href="../crud/crud_disciplina/formcad.php"><button type="button" class="btn btn-primary">Cadastrar disciplinas</button><br><br></a>
+        <a href="../crud/crud_aluno/formcad.php"><button type="button" class="btn btn-primary">Cadastrar aluno</button><br><br></a>
+            <a href="../crud/crud_horario/formcad.php"><button type="button" class="btn btn-primary">Cadastrar horário</button><br><br></a>
             <!-- <a href="../crud/crud_presenca/"><button type="button" class="btn btn-primary">Cadastrar presença</button><br><br></a> -->
         </span>
     </div>

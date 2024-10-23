@@ -1,14 +1,14 @@
 <?php
-echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     include "../../login/verif-log.php";
     die();
 }
+echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
 include('../../conecta.php');
 $sql = "SELECT * FROM usuario";
 $resultado = mysqli_query($conexao, $sql);
-echo '<table class="table table-white table-striped">
+echo '<table class=" container table table-white table-striped">
 <tr>
 <th scope="col">Nome do usuário</th>
 <th scope="col">Email</th>
@@ -27,4 +27,4 @@ while ($dados = mysqli_fetch_assoc($resultado)) {
     echo '</tr>';
 }
 echo '</table>' . "<br>";
-echo '<button><a href="index.php">Voltar</a></button>';
+echo '<div class="container"><a href="formcad.php"><button>Voltar</button></a></div>';

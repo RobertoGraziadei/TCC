@@ -8,5 +8,8 @@ include('../../conecta.php');
 $email = $_GET['email'];
 $sql = "DELETE FROM usuario WHERE email = '$email'";
 mysqli_query($conexao,$sql);
-header("location: listar.php");
+die("<script>
+alert('Usuário excluído com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+</script>");
 ?>

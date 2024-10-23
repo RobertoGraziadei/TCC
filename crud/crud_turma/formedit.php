@@ -19,21 +19,31 @@ $dados = mysqli_fetch_assoc($resultado);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar turma</title>
-
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <title>Editar Aluno</title>
 </head>
 
 <body>
+    <div class="container">
+        <header>
+            <h2>Alterar Usuário</h2>
+            <nav>
+                <ul>
+                </ul>
+            </nav>
+        </header>
+        <br><br>
+        <div style="text-align: center;">
+            <form action="alterar.php" method="get">
 
-    <form action="alterar.php" method="get">
-
-        <h2>Editar disciplina</h2>
-        <input type="hidden" name="id_turma" value="<?php echo $dados['id_turma']; ?>">
-        <label>Edite o nome<br><input type="text" value="<?php echo $dados['nome_turma']; ?>" name="nome_turma"></label><br><br>
-        <input type="submit" value="Editar"><br><br>
-        <button><a href="index.php">Voltar</a></button>
-
-    </form>
+                <h2>Editar disciplina</h2>
+                <input type="hidden" name="id_turma" value="<?php echo $dados['id_turma']; ?>">
+                <label style="text-align: left;">Edite o nome<br><input type="text" value="<?php echo $dados['nome_turma']; ?>" name="nome_turma"></label><br><br>
+                <button type="submit" class="btn btn-outline-success">Editar</button>
+                <a href="formcad.php" class="btn btn-outline-danger">Cancelar</a>
+        </div>
+        </form>
 
 </body>
 

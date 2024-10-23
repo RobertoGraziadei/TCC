@@ -8,5 +8,8 @@ include('../../conecta.php');
 $id_turma = $_GET['id_turma'];
 $sql = "DELETE FROM turma WHERE id_turma = $id_turma";
 mysqli_query($conexao, $sql);
-header("location: listar.php");
+die("<script>
+alert('Turma excluída com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+</script>");
 ?>

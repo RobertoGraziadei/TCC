@@ -1,10 +1,10 @@
 <?php
-echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     include "../../login/verif-log.php";
     die();
 }
+echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
 include('../../conecta.php');
 $sql = "SELECT * FROM turma";
 $resultado = mysqli_query($conexao, $sql);

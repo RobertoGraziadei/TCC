@@ -24,4 +24,7 @@ $resultado = mysqli_query($conexao, $sql);
     die();
   }
 } */
-header("location: listar.php");
+die("<script>
+alert('Usuário cadastrado com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
+</script>");

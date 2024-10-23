@@ -100,8 +100,8 @@ if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
 
 $pega_id = mysqli_fetch_assoc($exe4);
 
-$cadastra_presenca = "INSERT INTO presenca (hr_batida, fk_horario_id_horario, fk_aluno_matricula)
-VALUES ('$agora'," . $pega_id['id_horario'] . ", $matricula)";
+$cadastra_presenca = "INSERT INTO presenca (hr_batida, fk_horario_id_horario, fk_aluno_matricula, presenca)
+VALUES ('$agora'," . $pega_id['id_horario'] . ", $matricula , 1)";
 $exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
 $resultado = mysqli_query($conexao, $sql4);
 $nome_aluno = $dados3['nome'];

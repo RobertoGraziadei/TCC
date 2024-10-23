@@ -17,13 +17,9 @@ $sql = "UPDATE turma SET
 nome_turma = '$nome' WHERE id_turma = $id_turma";
 mysqli_query($conexao,$sql);
 
-if ($conexao->error) {
-
-    die("Falha ao editar usuário no sistema:". $conexao->error);
-
-}else {
-    header("location: listar.php");
-}
-// executa o comando no BD
+die("<script>
+alert('Turma alterada com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+</script>");
 
 ?>

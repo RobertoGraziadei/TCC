@@ -23,27 +23,50 @@ $dados = mysqli_fetch_assoc($resultado);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/layout.css">
     <title>Editar Aluno</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
 </head>
 
 <body>
+    <div class="container">
+        <header>
+            <h2>Alterar Usuário</h2>
+            <nav>
+                <ul>
+                </ul>
+            </nav>
+        </header>
+        <br><br>
+        <div style="text-align: center;">
+            <form action="alterar.php" method="get">
+                <label style="text-align: left;">Email<br><input type="email" name="email" value="<?php echo $dados['email']; ?>"></label><br><br>
+                <label style="text-align: left;">Nome do usuário<br><input name="nome_usuario" type="text" value="<?php echo $dados['nome_usuario']; ?>"></label><br><br>
+                <label style="text-align: left;">Editar o nivel<br>
+                    <input name="nivel" type="number" value="<?php echo $dados['nivel']; ?>"></label><br><br>
 
-    <form action="alterar.php" method="get">
 
-        <h2>Editar Usuário</h2>
-        <label>Email<br><input type="email" name="email" value="<?php echo $dados['email']; ?>"></label><br><br>
-        <label>Nome do usuario<br><input name="nome_usuario" type="text" value="<?php echo $dados['nome_usuario']; ?>"></label><br><br>
-        <label>Editar o nivel<br><input name="nivel" type="number" value="<?php echo $dados['nivel']; ?>"></label><br><br>
+                <label for="nivel">Nivel</label>
+                <select name="nivel" required>
+                    <?php
+                    foreach ($dados as $val) { ?>
+                        <option value="<?php echo $val['nivel']; ?>"
+                            <?php if ($dados['nivel'] == $val['nivel']) {
+                                echo 'selected';
+                            } ?>>
+                            <?php echo $val['nivel']; ?>
+                        </option>
+                    <?php } ?>
+                </select><br><br>
 
 
-        <button type="submit" class="btn btn-outline-success">Editar</button>
-        <a href="listar.php" class="btn btn-outline-danger">Cancelar</button>
+                <button type="submit" class="btn btn-outline-success">Editar</button>
+                <a href="formcad.php" class="btn btn-outline-danger">Cancelar</a>
+        </div>
 
-    </form>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        </form>
+        <script src="../../css/popper.min.js"></script>
+        <script src="../../css/bootstrap.min.js"></script>
 </body>
 
 </html>
