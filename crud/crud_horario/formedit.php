@@ -26,127 +26,116 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar horário</title>
-
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <title>Alterar</title>
 </head>
 
 <body>
-
-    <form action="alterar.php" method="get">
-
-        <h1>Editar horário</h1>
-        <input type="hidden" name="id_horario" value="<?php echo $dados_horario['id_horario'];?>">
-
-        <h2>Crud do horário</h2>
-
-        <label for="turma">Turma</label>
-        <select name="turma" required>
-            <?php
-            $sql = "SELECT * FROM turma";
-            $exe = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($exe)) { ?>
-                <option value="<?php echo $dados['id_turma']; ?>" 
-                <?php if ($dados_horario['nome_turma'] == $dados['nome_turma']){ echo 'selected';} ?>>
-                <?php echo $dados['nome_turma']; ?>
-                </option>
-            <?php } ?>
-        </select><br><br>
-
-
-        <label for="dia">Dia</label>
-        <select name="dia" required>
-        <?php
-            $sql = "SELECT dia FROM horario";
-            $exe = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($exe)) { ?>
-                <option value="<?php echo $dados['dia']; ?>" 
-                <?php if ($dados_horario['dia'] == $dados['dia']){ echo 'selected';} ?>>
-                <?php echo $dados['dia']; ?>
-                </option>
-            <?php } ?>
-        </select><br><br>
+    <div class="container">
+        <header>
+            <h2>Alterar horário</h2>
+            <nav>
+                <ul>
+                </ul>
+            </nav>
+        </header>
+        <br><br>
+        <div style="text-align: center;">
+            <form action="alterar.php" method="get">
+                <input type="hidden" name="id_horario" value="<?php echo $dados_horario['id_horario']; ?>">
+                <label for="turma">Turma</label><br>
+                <select name="turma" required>
+                    <?php
+                    $sql = "SELECT * FROM turma";
+                    $exe = mysqli_query($conexao, $sql);
+                    while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                        <option value="<?php echo $dados['id_turma']; ?>"
+                            <?php if ($dados_horario['nome_turma'] == $dados['nome_turma']) {
+                                echo 'selected';
+                            } ?>>
+                            <?php echo $dados['nome_turma']; ?>
+                        </option>
+                    <?php } ?>
+                </select><br><br>
 
 
-        <label for="disciplina">Disciplina</label>
-        <select name="disciplina" required>
-        <?php
-            $sql = "SELECT * FROM disciplina";
-            $exe = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($exe)) { ?>
-                <option value="<?php echo $dados['id_disciplinas']; ?>" 
-                <?php if ($dados_horario['nome_disciplina'] == $dados['nome_disciplina']){ echo 'selected';} ?>>
-                <?php echo $dados['nome_disciplina']; ?>
-                </option>
-            <?php } ?>
-        </select><br><br>
+                <label style="text-align: left;" for="dia">Dia</label><br>
+                <select name="dia" required>
+                    <?php
+                    $sql = "SELECT dia FROM horario";
+                    $exe = mysqli_query($conexao, $sql);
+                    while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                        <option value="<?php echo $dados['dia']; ?>"
+                            <?php if ($dados_horario['dia'] == $dados['dia']) {
+                                echo 'selected';
+                            } ?>>
+                            <?php echo $dados['dia']; ?>
+                        </option>
+                    <?php } ?>
+                </select><br><br>
 
 
-        <label for="professor">Professor</label>
-        <select name="professor" required>
-        <?php
-            $sql = "SELECT * FROM horario INNER JOIN usuario ON id_usuario = fk_professor";
-            $exe = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($exe)) { ?>
-                <option value="<?php echo $dados['fk_professor']; ?>" 
-                <?php if ($dados_horario['fk_professor'] == $dados['fk_professor']){ echo 'selected';} ?>>
-                <?php echo $dados['nome_usuario']; ?>
-                </option>
-            <?php } ?>
-        </select><br><br>
+                <label style="text-align: left;" for="disciplina">Disciplina</label><br>
+                <select name="disciplina" required>
+                    <?php
+                    $sql = "SELECT * FROM disciplina";
+                    $exe = mysqli_query($conexao, $sql);
+                    while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                        <option value="<?php echo $dados['id_disciplinas']; ?>"
+                            <?php if ($dados_horario['nome_disciplina'] == $dados['nome_disciplina']) {
+                                echo 'selected';
+                            } ?>>
+                            <?php echo $dados['nome_disciplina']; ?>
+                        </option>
+                    <?php } ?>
+                </select><br><br>
 
 
-        <label for="sala">Sala</label>
-        <select name="sala" required>
-        <?php
-            $sql = "SELECT * FROM sala";
-            $exe = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($exe)) { ?>
-                <option value="<?php echo $dados['n_sala']; ?>" 
-                <?php if ($dados_horario['descricao'] == $dados['descricao']){ echo 'selected';} ?>>
-                <?php echo $dados['descricao']; ?>
-                </option>
-            <?php } ?>
-        </select><br><br>
-
-        <?php
-        $sql = "SELECT * FROM horario Where id_horario = $id_horario";
-        $exe2 = mysqli_query($conexao, $sql);
-        $dados = mysqli_fetch_assoc($exe2) ?>
-        <label>Horário inicial <input value="<?php echo $dados['horario_inicio'] ?>" type="time" name="horario_inicio" required></label><br>
-        <label>Horário final <input value="<?php echo $dados['horario_fim'] ?>" type="time" name="horario_fim" required></label><br><br>
+                <label for="professor">Professor</label><br>
+                <select name="professor" required>
+                    <?php
+                    $sql = "SELECT * FROM horario INNER JOIN usuario ON id_usuario = fk_professor";
+                    $exe = mysqli_query($conexao, $sql);
+                    while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                        <option value="<?php echo $dados['fk_professor']; ?>"
+                            <?php if ($dados_horario['fk_professor'] == $dados['fk_professor']) {
+                                echo 'selected';
+                            } ?>>
+                            <?php echo $dados['nome_usuario']; ?>
+                        </option>
+                    <?php } ?>
+                </select><br><br>
 
 
+                <label for="sala">Sala</label><br>
+                <select name="sala" required>
+                    <?php
+                    $sql = "SELECT * FROM sala";
+                    $exe = mysqli_query($conexao, $sql);
+                    while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                        <option value="<?php echo $dados['n_sala']; ?>"
+                            <?php if ($dados_horario['descricao'] == $dados['descricao']) {
+                                echo 'selected';
+                            } ?>>
+                            <?php echo $dados['descricao']; ?>
+                        </option>
+                    <?php } ?>
+                </select><br><br>
 
+                <?php
+                $sql = "SELECT * FROM horario Where id_horario = $id_horario";
+                $exe2 = mysqli_query($conexao, $sql);
+                $dados = mysqli_fetch_assoc($exe2) ?>
+                <label>Horário inicial <input value="<?php echo $dados['horario_inicio'] ?>" type="time" name="horario_inicio" required></label><br>
+                <label>Horário final <input value="<?php echo $dados['horario_fim'] ?>" type="time" name="horario_fim" required></label><br><br>
+                </select><br><br>
 
+                <button type="submit" class="btn btn-outline-success">Editar</button>
+                <a href="formcad.php" class="btn btn-outline-danger">Cancelar</a>
 
-
-
-
-
-
-        </select><br><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <input type="submit" value="Cadastrar"><br><br>
-        <button><a href="index.php">Voltar</a></button>
-
-    </form>
+        </div>
+        </form>
 
 </body>
 

@@ -21,13 +21,13 @@ $dados = mysqli_fetch_assoc($resultado);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <title>Editar Aluno</title>
+    <title>Alterar</title>
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h2>Alterar Usuário</h2>
+            <h2>Alterar turma</h2>
             <nav>
                 <ul>
                 </ul>

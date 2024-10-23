@@ -18,21 +18,31 @@ $dados = mysqli_fetch_assoc($resultado);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar disciplina</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <title>Alterar</title>
 
 </head>
 
 <body>
+    <div class="container">
+        <header>
+            <h2>Alterar Sala</h2>
+            <nav>
+                <ul>
+                </ul>
+            </nav>
+        </header>
+        <br><br>
+        <div style="text-align: center;">
 
-    <form action="alterar.php" method="get">
+            <form action="alterar.php" method="get">
+                <input type="hidden" name="n_sala" value="<?php echo $dados['n_sala']; ?>">
+                <label style="text-align: left;">Descrição<br><input type="text" value="<?php echo $dados['descricao']; ?>" name="descricao"></label><br><br>
+                <button type="submit" class="btn btn-outline-success">Editar</button>
+                <a href="formcad.php" class="btn btn-outline-danger">Cancelar</a>
 
-        <h2>Editar Sala</h2>
-        <input type="hidden" name="n_sala" value="<?php echo $dados['n_sala']; ?>">
-        <label>Descrição<br><input type="text" value="<?php echo $dados['descricao']; ?>" name="descricao"></label><br><br>
-        <input type="submit" value="Editar"><br><br>
-        <button><a href="index.php">Voltar</a></button>
-
-    </form>
+            </form>
 
 </body>
 

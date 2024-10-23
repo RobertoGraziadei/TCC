@@ -16,14 +16,8 @@ $descricao = $_GET['descricao'];
 $sql = "UPDATE sala SET 
 descricao = '$descricao' WHERE n_sala = $n_sala";
 mysqli_query($conexao,$sql);
-
-if ($conexao->error) {
-
-    die("Falha ao editar usuário no sistema:". $conexao->error);
-
-}else {
-    header("location: listar.php");
-}
-// executa o comando no BD
-
+die("<script>
+alert('Sala alterada com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+</script>");
 ?>

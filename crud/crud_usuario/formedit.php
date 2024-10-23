@@ -11,9 +11,6 @@ $email = $_GET['email'];
 $sql = "SELECT * FROM usuario WHERE email = '$email'";
 $resultado = mysqli_query($conexao, $sql);
 $dados = mysqli_fetch_assoc($resultado);
-// var_dump($email);
-// var_dump($nome_usuario);
-// var_dump($nivel);
 ?>
 <!DOCTYPE html>
 <html lang="pt_br">
@@ -25,7 +22,7 @@ $dados = mysqli_fetch_assoc($resultado);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <title>Editar Aluno</title>
+    <title>Alterar</title>>
 </head>
 
 <body>

@@ -8,4 +8,7 @@ include('../../conecta.php');
 $id_disciplina = $_GET['id_disciplinas'];
 $sql = "DELETE FROM disciplina WHERE id_disciplinas = $id_disciplina";
 mysqli_query($conexao, $sql);
-header("location: listar.php");
+die("<script>
+alert('Disciplina excluída com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+</script>");

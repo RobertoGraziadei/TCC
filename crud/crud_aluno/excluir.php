@@ -8,4 +8,7 @@ include('../../conecta.php');
 $matricula = $_GET['matricula'];
 $sql = "DELETE FROM aluno WHERE matricula = $matricula";
 mysqli_query($conexao, $sql);
-header("location: listar.php");
+die("<script>
+alert('Aluno excluído com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+</script>");

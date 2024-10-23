@@ -20,9 +20,7 @@ $sql = "UPDATE horario
               horario_fim = '$horario_f' 
           WHERE id_horario = '$id_horario'";
 $exe = mysqli_query($conexao, $sql);
-if ($conexao->error) {
-
-    die("Falha ao editar usuário no sistema:" . $conexao->error);
-} else {
-    header("location: listar.php");
-}
+die("<script>
+alert('Horário alterado com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+</script>");

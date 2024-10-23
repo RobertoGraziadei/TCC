@@ -16,14 +16,7 @@ $nome = $_GET['nome_disciplina'];
 $sql = "UPDATE disciplina SET 
 nome_disciplina = '$nome' WHERE id_disciplinas = $id_disciplina";
 mysqli_query($conexao,$sql);
-
-if ($conexao->error) {
-
-    die("Falha ao editar usuário no sistema:". $conexao->error);
-
-}else {
-    header("location: listar.php");
-}
-// executa o comando no BD
-
-?>
+die("<script>
+alert('Disciplina alterada com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+</script>");

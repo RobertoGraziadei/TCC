@@ -20,5 +20,8 @@ $sql = "INSERT INTO horario (dia, fk_sala_n_sala, fk_disciplina_id_disciplina, f
 VALUES ('$dia', '$sala', '$disciplina', '$turma', '$horario_i', '$horario_f', $professor)";
 mysqli_query($conexao, $sql);
 /* var_dump($sql);die; */
-header("location: listar.php");
+die("<script>
+alert('Horário cadastrado com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
+</script>");
 ?>

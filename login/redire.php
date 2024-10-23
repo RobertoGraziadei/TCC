@@ -4,7 +4,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     die("<script>
     window.location.href = window.location.origin + '/roberto/TCC/QRcode/index.php';
     </script>");
-    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,14 +34,29 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         </header>
         <p>
         <p>
-        <p>Olá, <?php echo $_SESSION['user']; ?></p>
+        <p>Olá, <?php echo $_SESSION['user']; ?></p><br><Br>
         <span>
-        <a href="../crud/crud_usuario/formcad.php"><button type="button" class="btn btn-primary">Cadastrar usuário</button><br><br></a>
-        <a href="../crud/crud_turma/formcad.php"><button type="button" class="btn btn-primary">Cadastrar turma</button><br><br></a>
-        <a href="../crud/crud_sala/formcad.php"><button type="button" class="btn btn-primary">Cadastrar sala</button><br><br></a>
-        <a href="../crud/crud_disciplina/formcad.php"><button type="button" class="btn btn-primary">Cadastrar disciplinas</button><br><br></a>
-        <a href="../crud/crud_aluno/formcad.php"><button type="button" class="btn btn-primary">Cadastrar aluno</button><br><br></a>
-            <a href="../crud/crud_horario/formcad.php"><button type="button" class="btn btn-primary">Cadastrar horário</button><br><br></a>
+
+            <div style="margin-top: 10px;">
+                <div class="row">
+                    <div class="col s4 m4 "><br> <a style="text-align: left;" href="../crud/crud_usuario/formcad.php"><button style="font-size: 20px; padding: 25px 50px;" type="button" class="btn btn-primary btn-lg">Cadastrar usuário</button></a> </div>
+
+                    <div class="col s4 m4 "><br> <a style="text-align: left;" href="../crud/crud_turma/formcad.php"><button style="font-size: 20px; padding: 25px 50px;" type="button" class="btn btn-primary btn-lg">Cadastrar turma</button></a> </div>
+
+                    <div class="col s4 m4 "><br> <a style="text-align: left;" href="../crud/crud_sala/formcad.php"><button style="font-size: 20px; padding: 25px 50px;" type="button" class="btn btn-primary btn-lg">Cadastrar sala</button></a> </div>
+                </div>
+
+                <div class="row">
+                <div class="col s4 m4 "><br> <a href="../crud/crud_disciplina/formcad.php"><button style="font-size: 20px; padding: 25px 50px;" type="button" class="btn btn-primary btn-lg">Cadastrar disciplinas</button></a> </div>
+
+                <div class="col s4 m4 "><br> <a href="../crud/crud_aluno/formcad.php"><button style="font-size: 20px; padding: 25px 50px;" type="button" class="btn btn-primary btn-lg">Cadastrar aluno</button></a> </div>
+
+                <div class="col s4 m4 "><br> <a href="../crud/crud_horario/formcad.php"><button style="font-size: 20px; padding: 25px 50px;" type="button" class="btn btn-primary btn-lg">Cadastrar horário</button><br><br></a>\ </div>
+                </div>
+            </div>
+            
+            
+            
             <!-- <a href="../crud/crud_presenca/"><button type="button" class="btn btn-primary">Cadastrar presença</button><br><br></a> -->
         </span>
     </div>
