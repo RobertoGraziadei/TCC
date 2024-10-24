@@ -10,5 +10,8 @@ $nome = $_POST['nome_disciplina'];
 
 $sql = "INSERT INTO disciplina (nome_disciplina) VALUES ('$nome')";
 mysqli_query($conexao, $sql);
-header("location: listar.php");
+die("<script>
+alert('Disciplina cadastrada com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_disciplina/formcad.php';
+</script>");
 ?>

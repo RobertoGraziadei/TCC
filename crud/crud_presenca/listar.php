@@ -4,7 +4,7 @@ $id_disciplinas = $_GET['id_disciplinas'];
 $id_turma = $_GET['id_turma'];
 //$hr_batida = $_GET['hr_batida'];
 
-$sql = "SELECT nome, presenca FROM aluno
+$sql = "SELECT DISTINCT nome, presenca FROM aluno
 LEFT JOIN presenca ON (presenca.fk_aluno_matricula = aluno.matricula) and (date (presenca.hr_batida) = '2024-10-22')
 INNER JOIN turma ON turma.id_turma = aluno.turma
 INNER JOIN horario ON horario.fk_turma_id_turma = turma.id_turma

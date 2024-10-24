@@ -11,6 +11,6 @@ $sql = "INSERT INTO sala (n_sala, descricao) VALUES ($n_sala, '$descricao')";
 mysqli_query($conexao, $sql);
 die("<script>
 alert('Sala cadastrada com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_sala/formcad.php';
 </script>");
 ?>

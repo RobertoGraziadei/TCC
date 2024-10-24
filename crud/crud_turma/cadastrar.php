@@ -11,6 +11,6 @@ $sql = "INSERT INTO turma (id_turma, nome_turma) VALUES ($id_turma, '$nome')";
 mysqli_query($conexao, $sql);
 die("<script>
 alert('Turma cadastrada com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_turma/formcad.php';
 </script>");
 ?>

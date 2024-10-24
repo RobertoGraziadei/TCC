@@ -11,5 +11,8 @@ $turma = $_POST['turma'];
 
 $sql = "INSERT INTO aluno (matricula, nome, turma) VALUES ($matricula, '$nome', $turma)";
 mysqli_query($conexao, $sql);
-header("location: listar.php");
+die("<script>
+alert('Aluno cadastrado com sucesso!');
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_aluno/formcad.php';
+</script>");
 ?>

@@ -53,7 +53,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                 $exe_prof = mysqli_query($conexao, $select_professor);
                 while ($dados_prof = mysqli_fetch_assoc($exe_prof)) {
                     '<br>' ?>
-                    <a style="text-decoration: none" href="../crud/crud_presenca/listar.php?id_turma=<?php echo $dados_prof['id_turma']; ?>&id_disciplinas=<?php echo $dados_prof['id_disciplinas']; ?>" onclick="mostraTurma()">
+                    <a style="text-decoration: none" href="../crud/crud_presenca/listar.php?id_disciplinas=<?php echo $dados_prof['id_disciplinas']; ?>&id_turma=<?php echo $dados_prof['id_turma']; ?>" onclick="mostraTurma()">
                         <button><?php echo $dados_prof['nome_disciplina'];
                                 echo " - ";
                                 echo $dados_prof['nome_turma'] ?> </button>

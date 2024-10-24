@@ -8,15 +8,7 @@ include('../../conecta.php');
 $dia = $_GET['dia'];
 $sql = "UPDATE dia SET 
 dia = '$dia' WHERE id_dia = $id_dia";
-mysqli_query($conexao,$sql);
-
-if ($conexao->error) {
-
-    die("Falha ao editar usuário no sistema:". $conexao->error);
-
-}else {
-    header("location: listar.php");
-}
-// executa o comando no BD
-
-?>
+mysqli_query($conexao, $sql);
+echo("<script>
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_presenca/listar.php';
+</script>");

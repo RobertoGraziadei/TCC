@@ -22,6 +22,6 @@ mysqli_query($conexao, $sql);
 /* var_dump($sql);die; */
 die("<script>
 alert('Horário cadastrado com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_horario/formcad.php';
 </script>");
 ?>
