@@ -7,6 +7,16 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     alert('Página dedicada aos professores');
     window.location.href = window.location.origin + '/roberto/TCC/login/logout.php';
     </script>");
+    $pesquisa = "SELECT * FROM disciplina 
+                INNER JOIN horario ON fk_disciplina_id_disciplina = id_disciplinas 
+                INNER JOIN turma ON id_turma = fk_turma_id_turma
+                INNER JOIN presenca ON fk_horario_id_horario = id_horario
+                WHERE fk_professor = " . $_SESSION['id_usuario'];
+    $exe = mysqli_query($conexao, $pesquisa);
+    $olha_dados = mysqli_fetch_assoc($exe);
+    $id_disciplinas = $olha_dados['id_disciplinas'];
+    $id_turma = $olha_dados['id_turma'];
+    $hr_batida = $olha_dados['hr_batida'];
 }
 ?>
 <!DOCTYPE HTML>
@@ -51,8 +61,11 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                 WHERE fk_professor = " . $_SESSION['id_usuario'];
                 //var_dump($select_professor);die;
                 $exe_prof = mysqli_query($conexao, $select_professor);
-                while ($dados_prof = mysqli_fetch_assoc($exe_prof)) { '<br>' ?>
-                    <a style="text-decoration: none" href="../crud/crud_presenca/listar.php" onclick="mostraTurma()"><button> <?php echo $dados_prof['nome_disciplina']; echo " - "; echo $dados_prof['nome_turma'] ?> </button></a><br>
+                while ($dados_prof = mysqli_fetch_assoc($exe_prof)) {
+                    '<br>' ?>
+                    <a style="text-decoration: none" href="../crud/crud_presenca/listar.php" onclick="mostraTurma()"><button> <?php echo $dados_prof['nome_disciplina'];
+                                                                                                                                                                                                    echo " - ";
+                                                                                                                                                                                                    echo $dados_prof['nome_turma'] ?> </button></a><br>
                 <?php
                 }
                 /*$select_turma = "SELECT * FROM horario INNER JOIN disciplina ON fk_disciplina_id_disciplina = id_disciplinas
@@ -74,7 +87,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
             //jQuery('#nome_turma').hide();
 
             //function mostraTurma() {
-             //   jQuery('#nome_turma').show();
+            //   jQuery('#nome_turma').show();
             //}
         </script>
 
