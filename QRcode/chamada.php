@@ -127,10 +127,14 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
             if (decodedText !== lastResult) {
                 let inputSala = document.getElementsByName("sala")[0];
                 let sala = inputSala.value;
-                ++countResults;
-                lastResult = decodedText;
-                location.href = `processa.php?sala=${sala}&matricula=${decodedText}`, decodedResult;
-                console.log(`Scan result ${decodedText}`, decodedResult);
+                if (sala == "") {
+                    alert("Selecione uma sala!");
+                } else {
+                    ++countResults;
+                    lastResult = decodedText;
+                    location.href = `processa.php?sala=${sala}&matricula=${decodedText}`, decodedResult;
+                    console.log(`Scan result ${decodedText}`, decodedResult);
+                }
             }
         }
         var html5QrcodeScanner = new Html5QrcodeScanner(
