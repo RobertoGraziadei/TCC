@@ -41,6 +41,7 @@ while ($dados = mysqli_fetch_assoc($result)) {
         . '</td>';
     }
     echo '</tr>';
+    
 }
-echo '<a href="../../QRcode/index.php"><button>Voltar</button></a>';
+echo '<a href="../../QRcode/index.php"><button>Voltar</button></class=a>';
 ?>
