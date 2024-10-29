@@ -45,7 +45,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
                 <br><br>
                 <h3>Disciplinas ministradas</h3><br>
                 <?php
-                $select_professor = "SELECT * FROM disciplina 
+                $select_professor = "SELECT DISTINCT id_disciplinas, nome_disciplina, nome_turma, id_turma FROM disciplina 
                 INNER JOIN horario ON fk_disciplina_id_disciplina = id_disciplinas 
                 INNER JOIN turma ON id_turma = fk_turma_id_turma
                 WHERE fk_professor = " . $_SESSION['id_usuario'];

@@ -91,7 +91,7 @@ if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
     echo "<script>Swal.fire({
     icon: 'error',
     title: 'Ops...',
-    text: 'Aula inválida'
+    text: 'Aula inválida'  
 });
 </script>";
     die;
