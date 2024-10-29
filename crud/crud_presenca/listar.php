@@ -9,6 +9,32 @@ $data = new DateTime('now');
 $agora = $data->format('Y-m-d');
 
 
+if (empty ($_POST) == false ){
+
+
+    //update dos pares de código do registro e a presenção
+    var_dump($_POST);
+
+    $sql = "";
+    foreach ($_POST['item'] as $g) {    
+     
+
+        //4x
+    //    $g['cod'] .. 
+     //   $g['presenca'] .. 
+
+    $sql = $sql .  " update from pessoas set nome=" . $nome .  " where id = " .  $id .  '; ';
+
+    
+
+    }
+
+    
+    $result = mysqli_query($conexao, $sql); 
+   
+
+    exit;
+}
 
 
 
@@ -21,6 +47,7 @@ WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas AND horario.fk_turma
 $result = mysqli_query($conexao, $sql);
 
 echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
+echo "<form action='./listar.php' method='POST'>";
 echo '<table class="container table table-white table-striped">
 <tr>
 <th scope="col">Nome</th>
@@ -35,13 +62,28 @@ while ($dados = mysqli_fetch_assoc($result)) {
     if ($dados['presenca'] == 1) {
         echo '<td>' . 'Presente' . '</td>';
     }
+   
+
+    //adicionar aqui um hidden input para [$a] o código
+
+
+   //trocar o if debaixo por um select para [$a] a presença
     if ($dados['presenca'] != 1) {
         echo '<td>' .
         'Ausente'
         . '</td>';
     }
+
+
+
     echo '</tr>';
     
 }
+
+
+echo "<input type='submit' value='Salvar' />" ;
+echo "</form>";
+
+
 echo '<a href="../../QRcode/index.php"><button>Voltar</button></class=a>';
 ?>

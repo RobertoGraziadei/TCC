@@ -1,6 +1,4 @@
-<?php
-include('../conecta.php');
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,52 +8,84 @@ include('../conecta.php');
     <title>Teste de matricula</title>
 </head>
 
-<body>
-    <form action="processa.php" method="get">
-        <input type="number" name="matricula" placeholder="Matricula" required><br>
 
-        <select name="sala" required>
-            <option disabled selected>Selecione a sala</option>
-            <?php
-            $sql = "SELECT * FROM sala";
-            $executaSQL = mysqli_query($conexao, $sql);
-            while ($dados = mysqli_fetch_assoc($executaSQL)) {
-            ?>
-                <option value="<?php echo $dados['n_sala']; ?>" required><?php echo $dados['descricao']; ?></option>
-            <?php
-            }
-            ?>
-        </select><br><br>
 
-        <input type="submit" value="Enviar"><br>
-    </form>
-</body>
 
-</html>
-<?php
-echo "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>";
-$sql = "SELECT * FROM aluno
-    inner join turma on turma = id_turma";
-$resultado = mysqli_query($conexao, $sql);
+<?php 
 
+if (empty ($_POST) == false ){
+
+    var_dump($_POST);
+
+    exit;
+
+}
+
+
+$dados = [
+    [
+        "cod" =>  22,
+        "presenca" => 1
+    ],
+    [
+        "cod" =>  25,
+        "presenca" => 1
+    ],
+    [
+        "cod" =>  12,
+        "presenca" => 0
+    ],
+    [
+        "cod" =>  2,
+        "presenca" => 1
+    ]
+
+    ];
 
 //Lista os itens
 echo "<br>";
-echo '<table class="table table-white table-striped">
+echo "<form action='./form.php' method='POST'>" ;
+echo '<table border="1">
 <tr>
-<th scope="col">Matricula</th>
-<th scope="col">Nome</th>
-<th scope="col">Turma</th>
+<th scope="col">Cód.</th>
+<th scope="col">Presença</th>
+
 </tr>';
 
-while ($dados = mysqli_fetch_assoc($resultado)) {
+$a = 0;
+foreach ($dados as $d) {
     echo '<tr>';
-    echo '<td>' . $dados['matricula'] . '</td>';
-    echo '<td>' . $dados['nome'] . '</td>';
-    echo '<td>' . $dados['nome_turma'] . '</td>';
+    echo '<td>' . '<input type="text" name="item['.$a .'][cod]" value="' . $d['cod']   . '" />' .   '</td>';
+    echo '<td>' . '<input type="text" name="item['.$a .'][presenca]" value="' . $d['presenca']   . '" />' .   '</td>';
+    echo '<td>' . $d['presenca'] . '</td>';
+    $a++;
+
     echo '</tr>';
+
+
 }
+/*
+
+item[0][cod]
+item[0][presenca]
+item[1][cod]
+item[1][presenca]
+item[2][cod]
+item[2][presenca]
+
+
+*/
+
+
+
 
 echo '</table>' . "<br>";
+echo "<input type='submit' value='Salvar'> ";
+
+echo "</form>" ;
 echo '<button><a href="index.php">Voltar</a></button>';
 ?>
+
+  
+</body>
+</html>
