@@ -46,23 +46,13 @@ include "navbar.php"; ?>
                 //var_dump($select_professor);die;
                 $exe_prof = mysqli_query($conexao, $select_professor);
                 while ($dados_prof = mysqli_fetch_assoc($exe_prof)) {
-                    '<br>' ?>
-                    <a style="text-decoration: none" href="../crud/crud_presenca/listar.php?id_disciplinas=<?php echo $dados_prof['id_disciplinas']; ?>&id_turma=<?php echo $dados_prof['id_turma']; ?>" onclick="mostraTurma()">
-                        <button><?php echo $dados_prof['nome_disciplina'];
-                                echo " - ";
-                                echo $dados_prof['nome_turma'] ?> </button>
-                    </a> <br>
-
-
+                    "<br>" ?>
+                    <a style="text-decoration: none" class="btn btn-secondary" href="../crud/crud_presenca/listar.php?id_disciplinas=<?php echo $dados_prof['id_disciplinas']; ?>&id_turma=<?php echo $dados_prof['id_turma']; ?>" onclick="mostraTurma()">
+                        <?php echo $dados_prof['nome_disciplina'] . " - " . $dados_prof['nome_turma']; ?>
+                    </a>
+                    <p><p>
                 <?php
                 }
-                /*$select_turma = "SELECT * FROM horario INNER JOIN disciplina ON fk_disciplina_id_disciplina = id_disciplinas
-                INNER JOIN turma ON fk_turma_id_turma = id_turma WHERE fk_disciplina_id_disciplina =" . $dados_prof2['id_disciplinas'];
-                $exe_turma = mysqli_query($conexao, $select_turma);
-                while ($dados_turma = mysqli_fetch_assoc($exe_turma)) { ?>
-                    <a id="nome_turma" style="text-decoration: none" href="#"><?php echo $dados_turma['nome_turma'] ?></a>
-                <?php
-                }*/
                 ?>
 
 
