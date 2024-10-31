@@ -24,19 +24,13 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     <title>Escaner - QR Code</title>
 </head>
 
+<?php
+include "navbar.php"; ?>
+
 <body>
     <div class="container">
         <header>
             <h2 style="font-size: 35px;">Página do professor </h2>
-            <nav>
-                <ul>
-                    <!-- <li><a href="../nova-senha.php"><button type="button" class="btn btn-outline-info">Alterar senha   </button></a></td></a></li> -->
-                    <li><a href="chamada.php"><button type="button" class="btn btn-outline-secundary">Chamada</button></a></td></a></li>
-                    <li><a href="../login/logout.php"><button type="button" class="btn btn-outline-danger">Sair <img src="../img/logout.png" width="20" height="20"></button></a></td></a></li>
-                    <!-- <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contato</a></li> -->
-                </ul>
-            </nav>
         </header>
         <main>
             <section>
