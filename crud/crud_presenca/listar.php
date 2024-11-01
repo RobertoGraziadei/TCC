@@ -6,7 +6,7 @@ $data = new DateTime('now');
 $agora = $data->format('Y-m-d');
 
 if (empty($_POST) == false) {
-    var_dump($_POST);die;
+    //var_dump($_POST);die;
     $altera = "";
     foreach ($_POST['registro'] as $g) {
         $altera = $altera .  "UPDATE presenca SET presenca=" . $g['status'] . " WHERE id_presenca= " . $g['id_presenca'] . "; ";
@@ -24,6 +24,7 @@ INNER JOIN turma ON turma.id_turma = aluno.turma
 INNER JOIN horario ON horario.fk_turma_id_turma = turma.id_turma
 WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas AND horario.fk_turma_id_turma = $id_turma
 ";
+//echo $sql;die;
 $result = mysqli_query($conexao, $sql);
 
 echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
