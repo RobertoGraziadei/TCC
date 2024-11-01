@@ -30,14 +30,11 @@ include "navbar.php"; ?>
 <body>
     <div class="container">
         <header>
-            <h2 style="font-size: 35px;">Página do professor </h2>
+            <h2 style="font-size: 30px;">Olá, <?php echo $_SESSION['user']; ?></h2>
         </header>
         <main>
             <section>
-                <p style="font-size: 25;">Olá, <?php echo $_SESSION['user']; ?></p>
-
-                <br><br>
-                <h3>Disciplinas ministradas</h3><br>
+                <h3 style="text-align: center;">Disciplinas ministradas:</h3><br><p>
                 <?php
                 $select_professor = "SELECT DISTINCT id_disciplinas, nome_disciplina, nome_turma, id_turma FROM disciplina 
                 INNER JOIN horario ON fk_disciplina_id_disciplina = id_disciplinas 
@@ -47,9 +44,10 @@ include "navbar.php"; ?>
                 $exe_prof = mysqli_query($conexao, $select_professor);
                 while ($dados_prof = mysqli_fetch_assoc($exe_prof)) {
                     "<br>" ?>
-                    <a style="text-decoration: none" class="btn btn-secondary" href="../crud/crud_presenca/listar.php?id_disciplinas=<?php echo $dados_prof['id_disciplinas']; ?>&id_turma=<?php echo $dados_prof['id_turma']; ?>" onclick="mostraTurma()">
+                    <div style="text-align: center;">
+                    <a class="btn btn-secondary" href="../crud/crud_presenca/listar.php?id_disciplinas=<?php echo $dados_prof['id_disciplinas']; ?>&id_turma=<?php echo $dados_prof['id_turma']; ?>" onclick="mostraTurma()">
                         <?php echo $dados_prof['nome_disciplina'] . " - " . $dados_prof['nome_turma']; ?>
-                    </a>
+                    </a></div>
                     <p><p>
                 <?php
                 }

@@ -30,11 +30,11 @@ include "navbar.php";?>
 <body>
     <div class="container">
         <header>
-            <h2 style="font-size: 35px;">Página do professor </a></h2>
+            <h2 style="font-size: 35px;">Controle de frequência </a></h2>
         </header>
         <main>
             <section>
-                <p style="font-size: 25;">Olá, <?php echo $_SESSION['user']; ?></p>
+                <p style="font-size: 25;"><?php echo $_SESSION['user']; ?></p>
 
                 <form action="processa.php" method="get">
                     <div style="text-align: center; font-size: 25px;">
