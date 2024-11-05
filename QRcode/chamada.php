@@ -30,7 +30,7 @@ include "navbar.php";?>
 <body>
     <div class="container">
         <header>
-            <h2 style="font-size: 35px;">Controle de frequência </a></h2>
+            <h2 style="font-size: 30px;">Controle de frequência </a></h2>
         </header>
         <main>
             <section>

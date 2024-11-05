@@ -43,7 +43,7 @@ while ($dados = mysqli_fetch_assoc($result)) {
     echo '<td>' . $dados['nome'] . '</td>';
     echo '<td>' . $dados['matricula'] . '</td>';
     echo '<td>';
-    echo '<input type="text" name="registro['.$a.'][id_presenca]" value="' . $dados['id_presenca'] . '" />';
+    echo '<input type="hidden" name="registro['.$a.'][id_presenca]" value="' . $dados['id_presenca'] . '" />';
     echo '<select name="registro['.$a.'][status]" required>';
     echo '  <option value="0" ' . ($dados['presenca']  == 0 ? 'selected' :  '') . ' >Ausente</option>';
     echo '  <option value="1" ' . ($dados['presenca']  == 1 ? 'selected' :  '') . ' >Presente</option>';
