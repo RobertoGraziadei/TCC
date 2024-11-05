@@ -24,7 +24,24 @@ INNER JOIN turma ON turma.id_turma = aluno.turma
 INNER JOIN horario ON horario.fk_turma_id_turma = turma.id_turma
 WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas AND horario.fk_turma_id_turma = $id_turma
 ";
-//echo $sql;die;
+
+/*SELECT 
+    id_presenca,
+    matricula,
+    nome,
+    COALESCE(presenca, 0) AS presenca,
+    turma,
+    COALESCE(id_disciplinas, 0) AS id_disciplinas
+FROM aluno LEFT JOIN(
+    SELECT * FROM presenca
+    INNER JOIN horario ON horario.id_horario = presenca.fk_horario_id_horario
+	INNER JOIN turma ON horario.fk_turma_id_turma = turma.id_turma
+    INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas) AS tabelao
+    ON aluno.matricula = tabelao.fk_aluno_matricula
+    
+    /*WHERE tabelao.id_disciplinas = 16
+    WHERE turma = 210 */
+echo $sql;die;
 $result = mysqli_query($conexao, $sql);
 
 echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
@@ -43,7 +60,7 @@ while ($dados = mysqli_fetch_assoc($result)) {
     echo '<td>' . $dados['nome'] . '</td>';
     echo '<td>' . $dados['matricula'] . '</td>';
     echo '<td>';
-    echo '<input type="hidden" name="registro['.$a.'][id_presenca]" value="' . $dados['id_presenca'] . '" />';
+    echo '<input type="text" name="registro['.$a.'][id_presenca]" value="' . $dados['id_presenca'] . '" />';
     echo '<select name="registro['.$a.'][status]" required>';
     echo '  <option value="0" ' . ($dados['presenca']  == 0 ? 'selected' :  '') . ' >Ausente</option>';
     echo '  <option value="1" ' . ($dados['presenca']  == 1 ? 'selected' :  '') . ' >Presente</option>';
