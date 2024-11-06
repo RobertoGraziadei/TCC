@@ -40,7 +40,7 @@ include "navbar.php"; ?>
                 INNER JOIN horario ON fk_disciplina_id_disciplina = id_disciplinas 
                 INNER JOIN turma ON id_turma = fk_turma_id_turma
                 WHERE fk_professor = " . $_SESSION['id_usuario'];
-                //var_dump($select_professor);die;
+                //echo($select_professor);die;
                 $exe_prof = mysqli_query($conexao, $select_professor);
                 while ($dados_prof = mysqli_fetch_assoc($exe_prof)) {
                     "<br>" ?>

@@ -24,14 +24,14 @@ INNER JOIN turma ON turma.id_turma = aluno.turma
 INNER JOIN horario ON horario.fk_turma_id_turma = turma.id_turma
 WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas AND horario.fk_turma_id_turma = $id_turma
 ";
-
-/*SELECT 
+//echo $sql;die;
+/* $sql = "SELECT 
     id_presenca,
     matricula,
     nome,
-    COALESCE(presenca, 0) AS presenca,
+    presenca,
     turma,
-    COALESCE(id_disciplinas, 0) AS id_disciplinas
+    id_disciplinas
 FROM aluno LEFT JOIN(
     SELECT * FROM presenca
     INNER JOIN horario ON horario.id_horario = presenca.fk_horario_id_horario
@@ -39,9 +39,9 @@ FROM aluno LEFT JOIN(
     INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas) AS tabelao
     ON aluno.matricula = tabelao.fk_aluno_matricula
     
-    /*WHERE tabelao.id_disciplinas = 16
-    WHERE turma = 210 */
-echo $sql;die;
+    WHERE turma = $id_turma
+    "; */
+
 $result = mysqli_query($conexao, $sql);
 
 echo "<link rel='stylesheet' href='../../css/bootstrap.min.css'>";
