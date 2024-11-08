@@ -80,14 +80,14 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                 <?php
                 while ($dados = mysqli_fetch_assoc($resultado)) { ?>
                     <tr>
-                    <?php
-                    echo '<td>' . $dados['matricula'] . '</td>';
-                    echo '<td>' . $dados['nome'] . '</td>';
-                    echo '<td>' . $dados['nome_turma'] . '</td>';
-                    echo '<td> <a href="formedit.php?matricula=' . $dados['matricula'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
-                    echo '<td> <a href="excluir?matricula=' . $dados['matricula'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
+                        <?php
+                        echo '<td>' . $dados['matricula'] . '</td>';
+                        echo '<td>' . $dados['nome'] . '</td>';
+                        echo '<td>' . $dados['nome_turma'] . '</td>';
+                        echo '<td> <a href="formedit.php?matricula=' . $dados['matricula'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
+                        echo '<td> <a href="excluir?matricula=' . $dados['matricula'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
                     echo '</tr>';
-                } ?>
+                    } ?>
 
             </table><br>
 </body>

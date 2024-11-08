@@ -4,7 +4,8 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     include "../login/verif-log.php";
 }
 
-echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+echo "<link rel='stylesheet' href='../css/bootstrap.min.css'>";
+echo '<script src="../css/bootstrap.min.js"></script>';
 include "../conecta.php";
 $matricula = $_GET['matricula'];
 $sala = $_GET['sala'];
@@ -66,7 +67,6 @@ $dia_semana = $dia_semana_pt[$dia_semana_ing];
 
 
 
-echo "<link rel='stylesheet' href='../css/bootstrap.min.css'>";
 //TESTANDO NOVOS DIAS
 $dia_semana2 = 'Segunda-Feira';
 //echo "<br>" . $dia_semana2;
@@ -105,10 +105,25 @@ VALUES ('$agora'," . $pega_id['id_horario'] . ", $matricula , 1)";
 $exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
 $resultado = mysqli_query($conexao, $sql4);
 $nome_aluno = $dados3['nome'];
-echo "<script>
-    alert('Presença cadastrada do aluno $nome_aluno');
-    window.location.href = 'chamada.php?sala=$sala'  ;
-    </script>";
+/* echo "<script>
+    window.location.href = 'chamada.php?sala=$sala';
+
+    </script>"; */
+?>
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img src="..." class="rounded me-2" alt="...">
+    <strong class="me-auto">Bootstrap</strong>
+    <small>11 mins ago</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+</div>
+
+<?php
 die;
 
 /* echo "<script>Swal.fire({
