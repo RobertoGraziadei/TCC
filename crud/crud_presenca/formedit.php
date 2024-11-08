@@ -1,41 +1,69 @@
 <?php
-/* session_start();
-if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
-    include "../../login/verif-log.php";
+/* if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
+    include "../login/verif-log.php";
+} */
+
+date_default_timezone_set('America/Sao_Paulo');
+$data = new DateTime('now');
+$agora = $data->format('Y-m-d H:i:s');
+
+echo "<link rel='stylesheet' href='../css/bootstrap.min.css'>";
+echo '<script src="../css/bootstrap.min.js"></script>';
+
+include "../../conecta.php";
+$matricula = $_GET['matricula'];
+$id_disciplina = $_GET['id_disciplinas'];
+$id_turma = $_GET['id_turma'];
+$hr_batida = $_GET['hr_batida'];
+
+$sql4 = "SELECT * FROM horario 
+INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas 
+INNER JOIN turma on horario.fk_turma_id_turma = turma.id_turma 
+
+WHERE horario.horario_inicio < NOW() AND horario.horario_fim > NOW() 
+AND horario.dia = 'Segunda-Feira'
+AND turma.id_turma = $id_turma
+AND disciplina.id_disciplinas = $id_disciplina;
+";
+//echo $sql4;die;
+$exe4 = mysqli_query($conexao, $sql4);
+
+/* if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
+    echo "<script>
+    alert('Aula inválida');
+    window.location.href = 'chamada.php?sala=$sala';
+    </script>";
     die();
 } */
-$id_presenca = $_GET['id_presenca'];
-include('../../conecta.php');
-$sql = "SELECT * FROM presenca WHERE id_presenca = $id_presenca";
-$resultado = mysqli_query($conexao,$sql);
-$dados = mysqli_fetch_assoc($resultado);
-var_dump($dados['id_presenca']);
-?>
-<!DOCTYPE html>
-<html lang="pt_br">
-<head>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar presenca</title>
+/* if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
+    echo "<script>Swal.fire({
+    icon: 'error',
+    title: 'Ops...',
+    text: 'Aula inválida'  
+});
+</script>";
+    die;
+} */
+
+
+$pega_id = mysqli_fetch_assoc($exe4);
+$cadastra_presenca = "INSERT INTO presenca (hr_batida, fk_horario_id_horario, fk_aluno_matricula, presenca)
+VALUES ('$agora'," . $pega_id['id_horario'] . ", $matricula , 1)";
+$exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
+
+//echo $cadastra_presenca;die;
+
+//$resultado = mysqli_query($conexao, $sql4);
+/* header('lcoation: listar.php?id_disciplinas=<?php echo $id_disciplina; ?>&
+    id_turma=<?php echo $id_turma;?>&
+    hr_batida=<?php $hr_batida?>'); */
     
-</head>
-<body>
-
-<form action="alterar.php" method="get">
-
-    <h2>Editar presenca</h2>
-    <input type="hidden" name="id_presenca" value="<?php echo $dados['id_presenca'];?>">
-    Edite o nome
-    <input type="text" value="<?php echo $dados['id_presenca'];?>" name="id_presenca"><br><br>
-       
-
-    <input type="submit" value="Editar"/>
-
-    <p>Deseja <a href="index.php">Voltar?</a></p>
-
-</form>
+    echo "<script>
+    window.location.href = 'listar.php?id_disciplinas=<?php echo $id_disciplina; ?>&
+    id_turma=<?php echo $id_turma;?>&
+    hr_batida=<?php $hr_batida?>
+    ';
+    </script>";
     
-</body>
-</html>
+    die;

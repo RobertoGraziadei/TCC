@@ -27,15 +27,34 @@ INNER JOIN turma ON turma.id_turma = aluno.turma
 INNER JOIN horario ON horario.fk_turma_id_turma = turma.id_turma
 WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas AND horario.fk_turma_id_turma = $id_turma
 ";
-$result = mysqli_query($conexao, $sql); ?>
+//echo $sql;die;
+$result = mysqli_query($conexao, $sql);
 
+
+$sql2 = "SELECT DISTINCT id_presenca, matricula, nome, presenca, nome_turma, dia FROM aluno
+LEFT JOIN presenca ON (presenca.fk_aluno_matricula = aluno.matricula) and (date (presenca.hr_batida) = '$data')
+INNER JOIN turma ON turma.id_turma = aluno.turma
+INNER JOIN horario ON horario.fk_turma_id_turma = turma.id_turma
+WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas AND horario.fk_turma_id_turma = $id_turma
+";
+
+$result2 = mysqli_query($conexao, $sql2);
+foreach ($result2 as $f){
+    $turminha = $f['nome_turma'];
+    $dia = $f['dia'];
+}
+?>
 <link rel='stylesheet' href='../../css/bootstrap.min.css'>
 <link rel='stylesheet' href='../../css/layout.css'>
 <div class='container'>
 
-    <h3>Selecione a data para ver as presenças dos alunos</h3>
+    <h3>Selecione uma data - 
+        <?php echo $turminha .' - ';
+        echo $dia;
+        ?>
+    </h3>
     <form action='listar.php' method='GET'>
-        <input type='date' name='hr_batida' value='<?php echo $data ?>' required>
+        <input type='date' name='hr_batida' value='<?php echo $data;?>' required>
         <input type='hidden' name='id_disciplinas' value='<?php echo $id_disciplinas ?>' />
         <input type='hidden' name='id_turma' value='<?php echo $id_turma ?>' />
         <?php echo "<input type='submit' value='Ver'>"; ?>
@@ -55,6 +74,7 @@ $result = mysqli_query($conexao, $sql); ?>
                 $dados = [];
                 while ($d = mysqli_fetch_assoc($result)) {
                     $dados[] = $d;
+                    //var_dump($dados);die;
                 }
                 foreach ($dados as $d) {
                     //var_dump($dados);die;
@@ -88,8 +108,14 @@ $result = mysqli_query($conexao, $sql); ?>
             foreach ($dados as $d) {
                 if (empty($d['id_presenca'])) {
                     echo '<tr>';
-                    echo '<td>' . $d['nome'] . '</td>';
-                    echo '</td>';
+                    echo '<td>' . $d['nome'] . '</td>';?>
+                    <th><a class="btn btn-secondary" href=
+                    "formedit.php?matricula=<?php echo $d['matricula']?>
+                    &id_turma=<?php echo $id_turma ?>
+                    &id_disciplinas=<?php echo $id_disciplinas?>
+                    &hr_batida=<?php echo $data?>
+                    ">Registrar presença</a></th>
+                    <?php echo '</td>';
                     echo '</tr>';
                 }
             }
