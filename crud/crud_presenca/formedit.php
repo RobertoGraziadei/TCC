@@ -55,15 +55,12 @@ $exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
 //echo $cadastra_presenca;die;
 
 //$resultado = mysqli_query($conexao, $sql4);
-/* header('lcoation: listar.php?id_disciplinas=<?php echo $id_disciplina; ?>&
-    id_turma=<?php echo $id_turma;?>&
-    hr_batida=<?php $hr_batida?>'); */
+header('Location: listar.php?id_disciplinas=' . $id_disciplina . '&id_turma=' . $id_turma . '&hr_batida=' . $hr_batida);
+
     
-    echo "<script>
+/*     echo "<script>
     window.location.href = 'listar.php?id_disciplinas=<?php echo $id_disciplina; ?>&
     id_turma=<?php echo $id_turma;?>&
     hr_batida=<?php $hr_batida?>
     ';
-    </script>";
-    
-    die;
+    </script>"; */

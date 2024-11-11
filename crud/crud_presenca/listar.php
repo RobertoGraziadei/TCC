@@ -110,10 +110,7 @@ foreach ($result2 as $f){
                     echo '<tr>';
                     echo '<td>' . $d['nome'] . '</td>';?>
                     <th><a class="btn btn-secondary" href=
-                    "formedit.php?matricula=<?php echo $d['matricula']?>
-                    &id_turma=<?php echo $id_turma ?>
-                    &id_disciplinas=<?php echo $id_disciplinas?>
-                    &hr_batida=<?php echo $data?>
+                    "formedit.php?matricula=<?php echo $d['matricula']?>&id_turma=<?php echo $id_turma ?>&id_disciplinas=<?php echo $id_disciplinas?>&hr_batida=<?php echo $data?>
                     ">Registrar presença</a></th>
                     <?php echo '</td>';
                     echo '</tr>';
