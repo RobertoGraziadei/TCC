@@ -119,6 +119,7 @@ foreach ($result2 as $f){
             echo '</table>'; ?>
     </div>
 </div>
+
 <!-- <script>
     jQuery('#mostraAluno').hide()
 
