@@ -1,20 +1,12 @@
 <?php
 session_start();
-if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
+/* if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     include "../../login/verif-log.php";
     die();
-}
-
-// Conectar ao BD
+} */
 include('../../conecta.php');
+$id_presenca = $_GET['id_presenca'];
+$sql = "DELETE FROM presenca WHERE id_presenca = $id_presenca";
+mysqli_query($conexao, $sql);
 
-// receber os dados do formulário
-$id_dia = $_GET['id_disciplina'];
-
-$sql = "DELETE FROM disciplina WHERE id_disciplina = $id_disciplina";
-
-// executa o comando no BD
-mysqli_query($conexao,$sql);
-
-header("location: listar.php");
-?>
+header('Location: listar.php?id_disciplinas=' . $id_disciplina . '&id_turma=' . $id_turma . '&hr_batida=' . $hr_batida);
