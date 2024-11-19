@@ -48,7 +48,7 @@ if (!isset($_SESSION['user'])) {
     <!--     <p class="text--center">Você não tem um cadastro? <a href="inscreve.php">Cadastre-se</a> <svg class="icon">
         <use xlink:href="#icon-arrow-right"></use>
       </svg></p> -->
-    <p class="text--center">Esqueceu sua senha? <a href="#">Recuperar senha</a> <svg>
+    <p class="text--center">Esqueceu sua senha? <a href="recuperar-senha/form-recuperar-senha.php">Recuperar senha</a> <svg>
         <!-- <use xlink:href="#icon-arrow-right"></use> -->
       </svg></p>
 

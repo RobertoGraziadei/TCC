@@ -4,7 +4,7 @@ $config = [
     'host' => 'localhost',
     'user' => 'root',
     'pass' => '',
-    'db'   => 'recuperar-senha',
+    'db'   => 'tcc_roberto',
     'email' => 'roberto.2022315930@aluno.iffar.edu.br',
-    'senha_email' => 'aqpf imul zcbh yddf'
+    'senha_email' => 'zrft ryej zioc xdls'
 ];
