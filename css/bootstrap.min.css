@@ -1,8 +1,9 @@
 @charset "UTF-8";
 #olho{
-    position: fixed; 
-    margin-top: 246px;
-    margin-left: 1030px;
+    position: absolute; 
+    z-index: 9999;
+    margin-top: 343px;
+    margin-left: 1390px;
 }
 
 .link1{
