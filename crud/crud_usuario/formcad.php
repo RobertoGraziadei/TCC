@@ -95,8 +95,11 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             </header>
             <?php
             include('../../conecta.php');
+            
             $sql = "SELECT * FROM usuario";
-            $resultado = mysqli_query($conexao, $sql); ?>
+            $resultado = mysqli_query($conexao, $sql);
+            //VERIFICAR SE EXISTE UM EMAIL ANTES DE CADASTRAR
+            ?>
             <table class=" container table table-white table-striped">
                 <tr>
                     <th scope="col">Nome do usuário</th>

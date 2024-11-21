@@ -12,8 +12,20 @@ $nivel = $_POST['nivel'];
 $hash = password_hash($senha, PASSWORD_ARGON2I);
 password_verify($senha, $hash);
 
+$sql = "SELECT * FROM usuario where email = '$email'";
+$result = mysqli_query($conexao, $sql);
+$verEmail = mysqli_num_rows($result);
+if ($verEmail != 0) {
+  die("<script>
+alert('Já existe um usuário com este email!');
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
+</script>");
+}
+
 $sql = "INSERT INTO usuario (nome_usuario, email, senha, nivel) VALUES ('$user', '$email', '$hash', $nivel)";
 $resultado = mysqli_query($conexao, $sql);
+
+
 /* if ($resultado === false) {
   if (mysqli_errno($conexao) == 1062) {
     echo "Email em uso! Tente outro email.";

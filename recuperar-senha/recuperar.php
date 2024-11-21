@@ -13,8 +13,7 @@ $resultado = executarSQL($conexao, $sql);
 
 $usuario = mysqli_fetch_assoc($resultado);
 if ($usuario == null) {
-    echo "Email não cadastrado! Faça o cadastro e 
-          em seguida realize o login.";
+    echo "Email não encontrado!";
     die();
 }
 //gerar um token unico
