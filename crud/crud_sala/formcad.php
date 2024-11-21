@@ -34,7 +34,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                 <form action="cadastrar.php" method="post">
                     <label><input type="number" placeholder="Número da sala" name="n_sala" required></label><br><br>
                     <label><input type="text" placeholder="Descrição" name="descricao" required></label><br><br>
-                    <input type="submit" value="Cadastrar"><br><br><br><br>
+                    <input class="btn btn-primary" type="submit" value="Cadastrar"><br><br><br><br>
             </div>
             </form>
         </div>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 
 
         </div>
-        <a href="../../login/redire.php"><button>Voltar</button></a>
+        <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
 </body>
 
 <script>

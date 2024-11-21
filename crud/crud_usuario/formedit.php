@@ -6,8 +6,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 }
 include('../../conecta.php');
 $email = $_GET['email'];
-// $nome_usuario = $_GET['nome_usuario'];
-// $nivel = $_GET['nivel'];
+//$nivel = $_GET['nivel'];
 $sql = "SELECT * FROM usuario WHERE email = '$email'";
 $resultado = mysqli_query($conexao, $sql);
 $dados = mysqli_fetch_assoc($resultado);
@@ -22,7 +21,7 @@ $dados = mysqli_fetch_assoc($resultado);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <title>Alterar</title>>
+    <title>Alterar</title>
 </head>
 
 <body>
@@ -37,24 +36,22 @@ $dados = mysqli_fetch_assoc($resultado);
         <br><br>
         <div style="text-align: center;">
             <form action="alterar.php" method="get">
-                <label style="text-align: left;">Email<br><input type="email" name="email" value="<?php echo $dados['email']; ?>"></label><br><br>
                 <label style="text-align: left;">Nome do usuário<br><input name="nome_usuario" type="text" value="<?php echo $dados['nome_usuario']; ?>"></label><br><br>
-                <label style="text-align: left;">Editar o nivel<br>
-                    <input name="nivel" type="number" value="<?php echo $dados['nivel']; ?>"></label><br><br>
+                <label style="text-align: left;">Email<br><input type="email" name="email" value="<?php echo $dados['email']; ?>"></label><br><br>
+                <label for=" nivel">Editar o nivel</label><br>
+                <label>Administrador<input type="radio" name="nivel" value="1"
+                        <?php if ($dados['nivel'] == 1) {
+                            echo 'checked';
+                        }
+                        ?>></label><br>
 
-
-                <label for="nivel">Nivel</label>
-                <select name="nivel" required>
-                    <?php
-                    foreach ($dados as $val) { ?>
-                        <option value="<?php echo $val['nivel']; ?>"
-                            <?php if ($dados['nivel'] == $val['nivel']) {
-                                echo 'selected';
-                            } ?>>
-                            <?php echo $val['nivel']; ?>
-                        </option>
-                    <?php } ?>
-                </select><br><br>
+                <label>Professor<input type="radio" name="nivel" value="2"
+                        <?php if ($dados['nivel'] == 2) {
+                            echo 'checked';
+                        }
+                        ?>></input></label><br><br>
+                <?php
+                ?>
 
 
                 <button type="submit" class="btn btn-outline-success">Editar</button>

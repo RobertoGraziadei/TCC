@@ -37,7 +37,7 @@ include "../../conecta.php";
                     <input type="text" name="nome_disciplina" placeholder="Nome da disciplina" required><br>
                     </select><br><br>
 
-                    <input type="submit" value="Cadastrar"><br><br><br><br>
+                    <input class="btn btn-primary" type="submit" value="Cadastrar"><br><br><br><br>
             </div>
             </form>
         </div>
@@ -70,7 +70,7 @@ include "../../conecta.php";
                 } ?>
             </table><br>
             </div>
-            <a href="../../login/redire.php"><button>Voltar</button></a>
+            <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
 </body>
 
 <script>
