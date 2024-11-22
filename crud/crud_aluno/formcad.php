@@ -23,7 +23,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <div class="container">
         <div id="cadastrar">
             <header>
-                <h2>Cadastrar aluno</h2>
+                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Cadastrar aluno</h2>
                 <nav>
                     <ul>
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="listar()">Ver alunos </button></a></td></a></li>
@@ -56,7 +56,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         </div>
         <div id="listar">
             <header>
-                <h2>Alunos cadastrados</h2>
+                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Alunos cadastrados</h2>
                 <nav>
                     <ul>
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="cadastrar()">Cadastrar </button></a></td></a></li>
@@ -79,19 +79,19 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                 <?php
                 while ($dados = mysqli_fetch_assoc($resultado)) { ?>
                     <tr>
-                        <?php
-                        echo '<td>' . $dados['matricula'] . '</td>';
-                        echo '<td>' . $dados['nome'] . '</td>';
-                        echo '<td>' . $dados['nome_turma'] . '</td>';
-                        echo '<td> <a href="formedit.php?matricula=' . $dados['matricula'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
-                        echo '<td> <a href="excluir?matricula=' . $dados['matricula'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
+                    <?php
+                    echo '<td>' . $dados['matricula'] . '</td>';
+                    echo '<td>' . $dados['nome'] . '</td>';
+                    echo '<td>' . $dados['nome_turma'] . '</td>';
+                    echo '<td> <a href="formedit.php?matricula=' . $dados['matricula'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
+                    echo '<td> <a href="excluir?matricula=' . $dados['matricula'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
                     echo '</tr>';
-                    } ?>
+                } ?>
 
             </table><br>
 </body>
 </div>
-<a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+<!-- <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a> -->
 </body>
 
 <script>

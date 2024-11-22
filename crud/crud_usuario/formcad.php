@@ -23,7 +23,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <div class="container">
         <div id="cadastrar">
             <header>
-                <h2>Cadastrar usuário</h2>
+                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Cadastrar usuário</h2>
                 <nav>
                     <ul>
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="listar()">Ver usuários </button></a></td></a></li>
@@ -55,7 +55,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                         <label>Tipo de usuário:</label><br>
                         <label>Administrador<input type="radio" name="nivel" value="1" required></label><br>
                         <label>Professor(a)<input type="radio" name="nivel" value="2" required></label><br><br>
-                        <input class="btn btn-primary" type="submit" value="Cadastrar"><br><br>
+                        <input class="btn btn-primary" type="submit" value="Cadastrar">
                     </div>
                 </form>
 
@@ -94,7 +94,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         </div>
         <div id="listar">
             <header>
-                <h2>Usuários cadastrados</h2>
+                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Usuários cadastrados</h2>
                 <nav>
                     <ul>
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="cadastrar()">Cadastrar </button></a></td></a></li>
@@ -135,7 +135,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             </table>
             <br>
         </div>
-        <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+        <!-- <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a> -->
 </body>
 
 <script>

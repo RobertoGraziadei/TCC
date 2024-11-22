@@ -53,7 +53,7 @@ WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas AND horario.fk_turma
     ?>
 
     <div class='container'>
-    <h3>Selecione uma data
+    <h3><a href="../../QRcode/index.php"><img src="../../img/voltar.png"></a> Selecione uma data
         <?php echo $dia . '   '; echo $turminha;
         ?>
     </h3>
@@ -109,4 +109,4 @@ WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas AND horario.fk_turma
             echo '</table>';
             ?>
         </table><br>
-        <a href="../../QRcode/index.php" class="btn btn-secondary">Voltar</a>
+        <!-- <a href="../../QRcode/index.php" class="btn btn-secondary"><img src="../../img/voltar.png">Voltar</a> -->

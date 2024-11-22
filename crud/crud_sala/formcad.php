@@ -22,7 +22,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <div class="container">
         <div id="cadastrar">
             <header>
-                <h2>Cadastrar salas</h2>
+                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Cadastrar salas</h2>
                 <nav>
                     <ul>
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="listar()">Ver salas </button></a></td></a></li>
@@ -40,7 +40,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         </div>
         <div id="listar">
             <header>
-                <h2>Salas cadastradas</h2>
+                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Salas cadastradas</h2>
                 <nav>
                     <ul>
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="cadastrar()">Cadastrar </button></a></td></a></li>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 
 
         </div>
-        <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+        <!-- <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a> -->
 </body>
 
 <script>

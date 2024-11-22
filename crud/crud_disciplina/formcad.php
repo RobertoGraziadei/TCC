@@ -23,7 +23,7 @@ include "../../conecta.php";
     <div class="container">
         <div id="cadastrar">
             <header>
-                <h2>Cadastrar disciplinas</h2>
+                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Cadastrar disciplinas</h2>
                 <nav>
                     <ul>
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="listar()">Ver disciplinas </button></a></td></a></li>
@@ -43,7 +43,7 @@ include "../../conecta.php";
         </div>
         <div id="listar">
             <header>
-                <h2>Disciplinas cadastrados</h2>
+                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Disciplinas cadastrados</h2>
                 <nav>
                     <ul>
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="cadastrar()">Cadastrar </button></a></td></a></li>
@@ -70,7 +70,7 @@ include "../../conecta.php";
                 } ?>
             </table><br>
             </div>
-            <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+            <!-- <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a> -->
 </body>
 
 <script>
