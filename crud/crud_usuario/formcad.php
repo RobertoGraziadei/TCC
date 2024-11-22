@@ -29,31 +29,32 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="listar()">Ver usuários </button></a></td></a></li>
                     </ul>
                 </nav>
-
-
             </header>
-            <br><br>
-
-
-
             <div style="text-align: center">
                 <form action="cadastrar.php" method="post">
                     <div class="container">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input name="user" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                             <label for="floatingInput">Nome de usuário</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                             <label for="floatingInput">Email</label>
                         </div>
-                        <div class="">
-                            <label><input type="password" class="form-control" id="floatingPassword" id="senha" type="password" name="senha" class="form__input" placeholder="Senha" required></label><br><br>
+
+                        <div id="inputsenha" class="form__field form-floating mb-3">
+                            <input id="senha" type="password" name="senha" class="form__input form-control" id="floatingInput" placeholder="name@example.com" required>
+                            <label for="login__password floatingInput"><span class="hidden">Senha</span></label>
                         </div>
+
+                        <!--    <div id="inputsenha" class="form__field form-floating mb-3">
+                            <input type="password" name="senha" class="form-control" class="form__input" id="floatingInput" id="senha" placeholder="name@example.com" required>
+                            <label for="floatingInput">Senha</label>
+                        </div> -->
 
                         <label>Tipo de usuário:</label><br>
                         <label>Administrador<input type="radio" name="nivel" value="1" required></label><br>
-                        <label>Professor<input type="radio" name="nivel" value="2" required></label><br><br>
+                        <label>Professor(a)<input type="radio" name="nivel" value="2" required></label><br><br>
                         <input class="btn btn-primary" type="submit" value="Cadastrar"><br><br>
                     </div>
                 </form>
@@ -90,50 +91,51 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 
 
             </div>
-            <div id="listar">
-                <header>
-                    <h2>Usuários cadastrados</h2>
-                    <nav>
-                        <ul>
-                            <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="cadastrar()">Cadastrar </button></a></td></a></li>
-                        </ul>
-                    </nav>
-                </header>
-                <?php
-                include('../../conecta.php');
+        </div>
+        <div id="listar">
+            <header>
+                <h2>Usuários cadastrados</h2>
+                <nav>
+                    <ul>
+                        <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="cadastrar()">Cadastrar </button></a></td></a></li>
+                    </ul>
+                </nav>
+            </header>
+            <?php
+            include('../../conecta.php');
 
-                $sql = "SELECT * FROM usuario";
-                $resultado = mysqli_query($conexao, $sql);
-                //VERIFICAR SE EXISTE UM EMAIL ANTES DE CADASTRAR
-                ?>
-                <table class=" container table table-white table-striped">
+            $sql = "SELECT * FROM usuario";
+            $resultado = mysqli_query($conexao, $sql);
+            //VERIFICAR SE EXISTE UM EMAIL ANTES DE CADASTRAR
+            ?>
+            <table class=" container table table-white table-striped">
+                <tr>
+                    <th scope="col">Nome do usuário</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Nivel de acesso</th>
+                    <th colspan=3>Opções</th>
+                </tr>
+                <?php
+                while ($dados = mysqli_fetch_assoc($resultado)) { ?>
                     <tr>
-                        <th scope="col">Nome do usuário</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Nivel de acesso</th>
-                        <th colspan=3>Opções</th>
+                        <?php
+                        echo '<td>' . $dados['nome_usuario'] . '</td>';
+                        echo '<td>' . $dados['email'] . '</td>';
+                        if ($dados['nivel'] == 1) {
+                            echo '<td>' . 'Administrador' . '</td>';
+                        }
+                        if ($dados['nivel'] == 2) {
+                            echo '<td>' . 'Professor(a)' . '</td>';
+                        }
+                        echo '<td> <a href="formedit.php?email=' . $dados['email'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
+                        echo '<td> <a href="excluir?email=' . $dados['email'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>'; ?>
                     </tr>
-                    <?php
-                    while ($dados = mysqli_fetch_assoc($resultado)) { ?>
-                        <tr>
-                            <?php
-                            echo '<td>' . $dados['nome_usuario'] . '</td>';
-                            echo '<td>' . $dados['email'] . '</td>';
-                            if ($dados['nivel'] == 1) {
-                                echo '<td>' . 'Administrador' . '</td>';
-                            }
-                            if ($dados['nivel'] == 2) {
-                                echo '<td>' . 'Professor' . '</td>';
-                            }
-                            echo '<td> <a href="formedit.php?email=' . $dados['email'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
-                            echo '<td> <a href="excluir?email=' . $dados['email'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>'; ?>
-                        </tr>
-                    <?php
-                    } ?>
-                </table>
-                <br>
-            </div>
-            <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+                <?php
+                } ?>
+            </table>
+            <br>
+        </div>
+        <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
 </body>
 
 <script>

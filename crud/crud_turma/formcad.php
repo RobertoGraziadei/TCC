@@ -53,7 +53,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             $resultado = mysqli_query($conexao, $sql); ?>
             <table class="container table table-white table-striped">
                 <tr>
-                    <th scope="col">Id da turma</th>
+                    <th scope="col">#</th>
                     <th scope="col">Nome da turma</th>
                     <th colspan=3>Opções</th>
                 </tr>
