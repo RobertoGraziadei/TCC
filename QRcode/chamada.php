@@ -26,7 +26,8 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     <title>Escaner - QR Code</title>
 </head>
 <?php
-include "navbar.php";?>
+include "navbar.php"; ?>
+
 <body>
     <div class="container">
         <header>
@@ -38,69 +39,84 @@ include "navbar.php";?>
 
                 <form action="processa.php" method="get">
                     <div style="text-align: center; font-size: 25px;">
-                        <select name="sala" required>
+                        <div class="container">
+                            <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="sala" required>
+                        </div>
 
 
-                            <option selected value="">Selecione a sala</option>
-                            <?php
-                            $sql = "SELECT * FROM sala";
-                            $executaSQL = mysqli_query($conexao, $sql);
-                            while ($dados = mysqli_fetch_assoc($executaSQL)) { ?>
-                                <option
-                                    <?php
-                                    if (isset($_GET['sala']) and $_GET['sala'] !== null) {
-                                        if ($_GET['sala'] == $dados['n_sala']) {
-                                            echo " selected ";
-                                        }
+                        <option selected value="">Selecione a sala</option>
+                        <?php
+                        $sql = "SELECT * FROM sala";
+                        $executaSQL = mysqli_query($conexao, $sql);
+                        while ($dados = mysqli_fetch_assoc($executaSQL)) { ?>
+                            <option
+                                <?php
+                                if (isset($_GET['sala']) and $_GET['sala'] !== null) {
+                                    if ($_GET['sala'] == $dados['n_sala']) {
+                                        echo " selected ";
                                     }
-                                    ?>
-                                    value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?>
-                                </option>
-                            <?php
-                            }
-                            ?>
+                                }
+                                ?>
+                                value="<?php echo $dados['n_sala']; ?>"><?php echo $dados['descricao']; ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
 
                         </select>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12  center-align">
+                            <a href="#" class="btn btn-secondary btn-lg" role="button" onclick="mostraInput()">Entrada Manual</a>
+                            <a href="#" class="btn btn-secondary btn-lg" role="button" onclick="mostraQrcode()">Entrada automática</a>
+                        </div>
+                    </div>
+                    <!-- <a class="btn btn-secondary btn-lg link1" role="button" href="#" onclick="mostraInput()" style="text-decoration: none"> Entrada Manual </a>
+                    <a class="btn btn-secondary btn-lg link2" href="#" role="button" onclick="mostraQrcode()" style="text-decoration: none"> Entrada Automática</a> -->
+                    <!--                     <div class="row">
+                        <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
+                            <a href="#" class="btn btn-secondary link2" role="button" onclick="mostraQrcode()" style="text-decoration: none"> Entrada Automática</a>
+                        </div>
+                    </div> -->
+                    <br>
 
-
-
-                    </div><br>
-
-
-                    <a class="btn btn-secondary link1" role="button" href="#" onclick="mostraInput()" style="text-decoration: none"> Entrada Manual </a>
-                    <a class="btn btn-secondary link2" href="#" role="button" onclick="mostraQrcode()" style="text-decoration: none"> Entrada Automática</a>
-                    <br><br>
-
-                    <div style="text-align: center; font-size: 20px">
-                        <input id="matricula" type="number" name="matricula" placeholder="Matricula" required>
-                        <input id="enviar" type="submit" value="Enviar">
+                    <div id="matricula">
+                        <div class="container">
+                            <div class="form-floating mb-3">
+                                <input name="nome" type="number" class="form-control" id="matricula" placeholder="" required>
+                                <label for="matricula" style="font-size: 70%;">Matricula</label>
+                            </div>
+                        </div>
+                        <!-- <input id="matricula" type="number" name="matricula" placeholder="Matricula" required> -->
+                        <input id="enviar" class="d-grid gap-2 col-6 mx-auto btn btn-success" type="submit" value="Enviar">
 
                     </div>
                 </form>
+    </div>
 
-            </section>
+    </section>
 
-        </main>
-        <script>
+    </main>
+    <script>
+        jQuery('#qr-reader').show();
+        jQuery('#matricula').hide();
+        jQuery('#enviar').hide();
+
+        function mostraInput() {
+            jQuery('#qr-reader').hide();
+            jQuery('#matricula').show();
+            jQuery('#enviar').show();
+        }
+
+        function mostraQrcode() {
             jQuery('#qr-reader').show();
             jQuery('#matricula').hide();
             jQuery('#enviar').hide();
-
-            function mostraInput() {
-                jQuery('#qr-reader').hide();
-                jQuery('#matricula').show();
-                jQuery('#enviar').show();
-            }
-
-            function mostraQrcode() {
-                jQuery('#qr-reader').show();
-                jQuery('#matricula').hide();
-                jQuery('#enviar').hide();
-            }
-        </script>
+        }
+    </script>
 
 
-        <div id="qr-reader">
+    <div id="qr-reader">
 </body>
 <script src="html5-qrcode.min.js"></script>
 <script>

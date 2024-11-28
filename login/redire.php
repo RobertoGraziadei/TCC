@@ -34,27 +34,27 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         <span>
 
             <div style="margin-top: 100px;" class="d-grid gap-2 col-8 mx-auto">
-                <a href="../crud/crud_usuario/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Usuários</a>
+                <a href="../crud/crud_usuario/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar usuários</a>
             </div>
 
             <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
-                <a href="../crud/crud_turma/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Turmas</a>
+                <a href="../crud/crud_turma/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar turmas</a>
             </div>
 
             <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
-                <a href="../crud/crud_sala/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Salas</a>
+                <a href="../crud/crud_sala/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar salas</a>
             </div>
 
             <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
-                <a href="../crud/crud_disciplina/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Disciplinas</a>
+                <a href="../crud/crud_disciplina/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar disciplinas</a>
             </div>
 
             <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
-                <a href="../crud/crud_aluno/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Aluno</a>
+                <a href="../crud/crud_aluno/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar aluno</a>
             </div>
 
             <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
-                <a href="../crud/crud_horario/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Horário</a>
+                <a href="../crud/crud_horario/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar horário</a>
             </div>
 
             <!-- <a href="../crud/crud_presenca/"><button type="button" class="btn btn-primary">Cadastrar presença</button><br><br></a> -->

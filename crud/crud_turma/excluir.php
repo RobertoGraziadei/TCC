@@ -10,6 +10,6 @@ $sql = "DELETE FROM turma WHERE id_turma = $id_turma";
 mysqli_query($conexao, $sql);
 die("<script>
 alert('Turma excluída com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_turma/formcad.php';
 </script>");
 ?>

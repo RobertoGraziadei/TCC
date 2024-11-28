@@ -30,14 +30,18 @@ include "../../conecta.php";
                     </ul>
                 </nav>
             </header>
-            <br><br>
             <div style="text-align: center">
                 <form action="cadastrar.php" method="post">
                     <input type="hidden" name="id_disciplinas">
-                    <input type="text" name="nome_disciplina" placeholder="Nome da disciplina" required><br>
-                    </select><br><br>
+                    <div class="container">
+                        <div class="form-floating mb-3">
+                            <input name="nome_disciplina" type="text" class="form-control" id="floatingInput" placeholder="" required>
+                            <label for="floatingInput">Nome da disciplina</label>
+                        </div>
+                    </div>
+                    </select>
 
-                    <input class="btn btn-primary" type="submit" value="Cadastrar"><br><br><br><br>
+                    <input class="btn btn-primary" type="submit" value="Cadastrar"><br><br>
             </div>
             </form>
         </div>
@@ -69,8 +73,8 @@ include "../../conecta.php";
                     echo '</tr>';
                 } ?>
             </table><br>
-            </div>
-            <!-- <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a> -->
+        </div>
+        <!-- <a href="../../login/redire.php"><button type="button" class="btn btn-secondary">Voltar</button></a> -->
 </body>
 
 <script>

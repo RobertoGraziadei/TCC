@@ -29,11 +29,18 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                     </ul>
                 </nav>
             </header>
-            <br><br>
             <div style="text-align  : center">
                 <form action="cadastrar.php" method="post">
-                    <label><input type="number" placeholder="Id da turma" name="id_turma" required></label><br><br>
-                    <label><input type="text" placeholder="Nome da turma" name="nome_turma" required></label><br><br>
+                    <div class="container">
+                        <div class="form-floating mb-3">
+                            <input name="id_turma" type="number" class="form-control" id="floatingInput" placeholder="" required>
+                            <label for="floatingInput">Número da turma</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input name="nome_turma" type="text" class="form-control" id="floatingInput" placeholder="" required>
+                            <label for="floatingInput">Nome da turma</label>
+                        </div>
+                    </div>
                     <input class="btn btn-primary" type="submit" value="Cadastrar"><br><br><br><br>
             </div>
         </div>
