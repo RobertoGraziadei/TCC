@@ -100,8 +100,7 @@ WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas AND horario.fk_turma
                 if (empty($dados['id_presenca'])) {
                     echo '<tr>';
                     echo '<td>' . $dados['nome'] . '</td>'; ?>
-                    <th><a class="btn btn-primary" href="formedit.php?matricula=<?php echo $dados['matricula'] ?>&id_turma=<?php echo $id_turma ?>&id_disciplinas=<?php echo $id_disciplinas ?>&hr_batida=<?php echo $data ?>
-                    ">Registrar presença</a></th>
+                    <th><a class="btn btn-primary" href="formedit.php?matricula=<?php echo $dados['matricula'] ?>&id_turma=<?php echo $id_turma ?>&id_disciplinas=<?php echo $id_disciplinas ?>&hr_batida=<?php echo $data ?>">Registrar presença</a></th>
             <?php echo '</td>';
                     echo '</tr>';
                 }
