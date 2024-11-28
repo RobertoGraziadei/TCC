@@ -72,7 +72,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                         <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="professor" required>
                             <option disabled selected>Selecione o professor</option>
                             <?php
-                            $sql = "SELECT DISTINCT id_usuario, nome_usuario FROM horario INNER JOIN usuario ON id_usuario = fk_professor";
+                            $sql = "SELECT DISTINCT id_usuario, nome_usuario FROM usuario";
                             $executaSQL = mysqli_query($conexao, $sql);
                             while ($dados = mysqli_fetch_assoc($executaSQL)) {
                                 echo '<option value="' . $dados['id_usuario'] . '">' . $dados['nome_usuario'] . '</option>';
