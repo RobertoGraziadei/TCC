@@ -81,7 +81,7 @@ include('../../conecta.php');
                         <td><?php echo $dados['matricula']; ?></td>
                         <td>
                             <button class="btn btn-danger deleteButton" 
-                                    data-url="excluir.php?id_presenca=<?php echo $dados['id_presenca']; ?>&id_disciplinas=<?php echo $id_disciplinas; ?>&id_turma=<?php echo $id_turma; ?>">Apagar
+                                    data-url="excluir.php?id_presenca=<?php echo $dados['id_presenca']; ?>&id_disciplinas=<?php echo $id_disciplinas; ?>&id_turma=<?php echo $id_turma; ?>">Deletar registro
                             </button>
                         </td>
                     </tr>

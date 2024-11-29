@@ -21,8 +21,7 @@ $hr_batida = $_GET['hr_batida'];
 $sql4 = "SELECT * FROM horario 
 INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas 
 INNER JOIN turma on horario.fk_turma_id_turma = turma.id_turma 
-WHERE horario.horario_inicio < NOW() AND horario.horario_fim > NOW() 
-AND horario.dia = 'Segunda-Feira'
+WHERE horario.dia = 'Segunda-Feira'
 AND turma.id_turma = $id_turma
 AND disciplina.id_disciplinas = $id_disciplina;
 ";
@@ -52,12 +51,9 @@ $pega_id = mysqli_fetch_assoc($exe4);
 $cadastra_presenca = "INSERT INTO presenca (hr_batida, fk_horario_id_horario, fk_aluno_matricula, presenca)
 VALUES ('$hr_batida'," . $pega_id['id_horario'] . ", $matricula , 1)";
 
-
-
 $exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
 
 //echo $cadastra_presenca;die;
-
 //$resultado = mysqli_query($conexao, $sql4);
 header('Location: listar.php?id_disciplinas=' . $id_disciplina . '&id_turma=' . $id_turma . '&hr_batida=' . $hr_batida);
 
