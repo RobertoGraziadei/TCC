@@ -21,7 +21,6 @@ $hr_batida = $_GET['hr_batida'];
 $sql4 = "SELECT * FROM horario 
 INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas 
 INNER JOIN turma on horario.fk_turma_id_turma = turma.id_turma 
-
 WHERE horario.horario_inicio < NOW() AND horario.horario_fim > NOW() 
 AND horario.dia = 'Segunda-Feira'
 AND turma.id_turma = $id_turma
