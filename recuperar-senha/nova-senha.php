@@ -1,7 +1,5 @@
 <?php
 
-// verificar o email
-// verificar o token
 $email = $_GET['email'];
 $token = $_GET['token'];
 require_once "conexao.php";

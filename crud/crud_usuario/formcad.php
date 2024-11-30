@@ -11,6 +11,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../css/sweetalert2@11.js"></script>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script rel="stylesheet" src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/layout.css">
@@ -30,67 +31,63 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                     </ul>
                 </nav>
             </header>
-            <div style="text-align: center">
-                <form action="cadastrar.php" method="post">
-                    <div class="container">
-                        <div class="form-floating mb-3">
-                            <input name="user" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                            <label for="floatingInput">Nome de usuário</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                            <label for="floatingInput">Email</label>
-                        </div>
+            <form action="cadastrar.php" method="post">
+                <div class="container">
+                    <div class="form-floating mb-3">
+                        <input name="user" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                        <label for="floatingInput">Nome de usuário</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                        <label for="floatingInput">Email</label>
+                    </div>
 
-                        <div id="inputsenha" class="form__field form-floating mb-3">
-                            <input id="senha" type="password" name="senha" class="form__input form-control" id="floatingInput" placeholder="name@example.com" required>
-                            <label for="login__password floatingInput"><span class="hidden">Senha</span></label>
-                        </div>
+                    <div id="inputsenha" class="form__field form-floating mb-3">
+                        <input id="senha" type="password" name="senha" class="form__input form-control" id="floatingInput" placeholder="name@example.com" required>
+                        <label for="login__password floatingInput"><span class="hidden">Senha</span></label>
+                    </div>
 
-                        <!--    <div id="inputsenha" class="form__field form-floating mb-3">
+                    <!--    <div id="inputsenha" class="form__field form-floating mb-3">
                             <input type="password" name="senha" class="form-control" class="form__input" id="floatingInput" id="senha" placeholder="name@example.com" required>
                             <label for="floatingInput">Senha</label>
                         </div> -->
 
-                        <label>Tipo de usuário:</label><br>
-                        <label>Administrador<input type="radio" name="nivel" value="1" required></label><br>
-                        <label>Professor(a)<input type="radio" name="nivel" value="2" required></label><br><br>
-                        <input class="btn btn-primary" type="submit" value="Cadastrar">
-                    </div>
-                </form>
+                    <label><b>Tipo de usuário:</b></label><br>
+                    <label>Administrador(a) <input type="radio" name="nivel" value="1" required></label><br>
+                    <label>Professor(a) <input type="radio" name="nivel" value="2" required></label><br><br>
+                    <input class="btn btn-primary" type="submit" value="Cadastrar">
+                </div>
+            </form>
 
 
-                <svg xmlns="http://www.w3.org/2000/svg" class="icons">
-                    <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
-                        <path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z" />
-                    </symbol>
-                    <symbol id="icon-lock" viewBox="0 0 1792 1792">
-                        <path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z" />
-                    </symbol>
-                    <symbol id="icon-user" viewBox="0 0 1792 1792">
-                        <path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z" />
-                    </symbol>
-                </svg>
-                <script>
-                    var senha = $('#senha');
-                    var olho = $("#olho");
+            <svg xmlns="http://www.w3.org/2000/svg" class="icons">
+                <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
+                    <path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z" />
+                </symbol>
+                <symbol id="icon-lock" viewBox="0 0 1792 1792">
+                    <path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z" />
+                </symbol>
+                <symbol id="icon-user" viewBox="0 0 1792 1792">
+                    <path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z" />
+                </symbol>
+            </svg>
+            <script>
+                var senha = $('#senha');
+                var olho = $("#olho");
 
-                    olho.mousedown(function() {
-                        senha.attr("type", "text");
-                    });
+                olho.mousedown(function() {
+                    senha.attr("type", "text");
+                });
 
-                    olho.mouseup(function() {
-                        senha.attr("type", "password");
-                    });
-                    // para evitar o problema de arrastar a imagem e a senha continuar exposta, 
-                    //citada pelo nosso amigo nos comentários
-                    $("#olho").mouseout(function() {
-                        $("#senha").attr("type", "password");
-                    });
-                </script>
-
-
-            </div>
+                olho.mouseup(function() {
+                    senha.attr("type", "password");
+                });
+                // para evitar o problema de arrastar a imagem e a senha continuar exposta, 
+                //citada pelo nosso amigo nos comentários
+                $("#olho").mouseout(function() {
+                    $("#senha").attr("type", "password");
+                });
+            </script>
         </div>
         <div id="listar">
             <header>
@@ -122,13 +119,21 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                         echo '<td>' . $dados['nome_usuario'] . '</td>';
                         echo '<td>' . $dados['email'] . '</td>';
                         if ($dados['nivel'] == 1) {
-                            echo '<td>' . 'Administrador' . '</td>';
+                            echo '<td>' . 'Administrador(a)' . '</td>';
                         }
                         if ($dados['nivel'] == 2) {
                             echo '<td>' . 'Professor(a)' . '</td>';
-                        }
-                        echo '<td> <a href="formedit.php?email=' . $dados['email'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
-                        echo '<td> <a href="excluir?email=' . $dados['email'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>'; ?>
+                        } ?>
+                        <td>
+                            <a href="formedit.php?email=<?php echo $dados['email'] ?>" role="button" class="btn btn-info"><img src="imagens/editar.png" width="20" height="20"> </a>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger deleteButton"
+                                data-url="excluir.php?email=<?php echo $dados['email']; ?>">
+                                <img src="imagens/excluir.png" width="20" height="20">
+                            </button>
+
+                        </td>
                     </tr>
                 <?php
                 } ?>
@@ -139,7 +144,8 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 </body>
 
 <script>
-    jQuery('#listar').hide();
+    jQuery('#cadastrar').hide();
+    jQuery('#olho').hide();
 
     function listar() {
         jQuery('#listar').show();
@@ -152,6 +158,28 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         jQuery('#listar').hide();
         jQuery('#olho').show();
     }
+</script>
+<script>
+    document.querySelectorAll('.deleteButton').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const url = this.getAttribute('data-url');
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: 'Você não poderá reverter isso!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sim, deletar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
 </script>
 
 </html>

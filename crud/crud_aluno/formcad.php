@@ -12,6 +12,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../css/sweetalert2@11.js"></script>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script rel="stylesheet" src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/layout.css">
@@ -87,13 +88,21 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                 <?php
                 while ($dados = mysqli_fetch_assoc($resultado)) { ?>
                     <tr>
-                    <?php
-                    echo '<td>' . $dados['matricula'] . '</td>';
-                    echo '<td>' . $dados['nome'] . '</td>';
-                    echo '<td>' . $dados['nome_turma'] . '</td>';
-                    echo '<td> <a href="formedit.php?matricula=' . $dados['matricula'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
-                    echo '<td> <a href="excluir?matricula=' . $dados['matricula'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
-                    echo '</tr>';
+                        <?php
+                        echo '<td>' . $dados['matricula'] . '</td>';
+                        echo '<td>' . $dados['nome'] . '</td>';
+                        echo '<td>' . $dados['nome_turma'] . '</td>'; ?>
+
+                        <td>
+                            <a href="formedit.php?matricula=<?php echo $dados['matricula'] ?>" role="button" class="btn btn-info"><img src="imagens/editar.png" width="20" height="20"> </a>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger deleteButton"
+                                data-url="excluir.php?matricula=<?php echo $dados['matricula']; ?>">
+                                <img src="imagens/excluir.png" width="20" height="20">
+                            </button>
+                    </tr>
+                <?php
                 } ?>
 
             </table><br>
@@ -103,7 +112,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 </body>
 
 <script>
-    jQuery('#listar').hide();
+    jQuery('#cadastrar').hide();
 
     function listar() {
         jQuery('#listar').show();
@@ -114,6 +123,27 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         jQuery('#cadastrar').show();
         jQuery('#listar').hide();
     }
+
+    document.querySelectorAll('.deleteButton').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const url = this.getAttribute('data-url');
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: 'Você não poderá reverter isso!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sim, deletar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
 </script>
 
 </html>

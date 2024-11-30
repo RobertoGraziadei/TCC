@@ -10,6 +10,6 @@ $sql = "DELETE FROM usuario WHERE email = '$email'";
 mysqli_query($conexao,$sql);
 die("<script>
 alert('Usuário excluído com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
 </script>");
 ?>
