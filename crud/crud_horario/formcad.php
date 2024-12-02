@@ -17,7 +17,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <script src="../../css/bootstrap.min.js"></script> <!-- Corrigido src (rel não é válido aqui) -->
     <link rel="stylesheet" href="../../css/layout.css">
     <script src="../../css/jquery.min.js"></script> <!-- Corrigido src -->
-    <title>Cadastrar</title>
+    <title>Gerenciar horário</title>
 </head>
 
 <body>

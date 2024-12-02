@@ -21,7 +21,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     <script src="../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/layout.css">
 
-    <title>Escaner - QR Code</title>
+    <title>Chamada automática</title>
 </head>
 
 <?php

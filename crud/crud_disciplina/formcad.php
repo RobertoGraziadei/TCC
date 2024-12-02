@@ -17,7 +17,7 @@ include "../../conecta.php";
     <script rel="stylesheet" src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/layout.css">
     <script rel="stylesheet" src="../../css/jquery.min.js"></script>
-    <title>Cadastrar</title>
+    <title>Gerenciar disciplina</title>
 </head>
 
 <body>

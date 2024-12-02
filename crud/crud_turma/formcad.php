@@ -16,7 +16,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <script rel="stylesheet" src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/layout.css">
     <script rel="stylesheet" src="../../css/jquery.min.js"></script>
-    <title>Cadastrar</title>
+    <title>Gerenciar turma</title>
 </head>
 
 <body>
