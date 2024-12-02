@@ -30,7 +30,7 @@ include "navbar.php"; ?>
 <body>
     <div class="container">
         <header>
-            <h2 style="font-size: 30px;">Olá, <?php echo $_SESSION['user']; ?></h2>
+            <h2 style="font-size: 24px;">Olá, <?php echo $_SESSION['user']; ?></h2>
         </header>
         <main>
             <section>

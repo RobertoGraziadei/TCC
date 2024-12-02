@@ -23,7 +23,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 
     <body>
         <header>
-            <h2 style="font-size: 30px;">Olá, <?php echo $_SESSION['user']; ?></h2>
+            <h2 style="font-size: 24px;">Olá, <?php echo $_SESSION['user']; ?></h2>
             <nav>
                 <ul>
                     <li><a href="logout.php"><button type="button" class="btn btn-outline-dark">

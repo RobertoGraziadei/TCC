@@ -28,15 +28,19 @@ $id_usuario = $_SESSION['id_usuario'];
     $id_turma = $_GET['id_turma'];
     $data = empty($_GET['hr_batida']) ? $agora : $_GET['hr_batida'];
 
-    $sql = "SELECT DISTINCT id_presenca, matricula, nome, presenca 
+    /*$sql = "SELECT DISTINCT id_presenca, matricula, nome, presenca 
             FROM aluno
             LEFT JOIN presenca ON (presenca.fk_aluno_matricula = aluno.matricula) AND (DATE(presenca.hr_batida) = '$data')
             INNER JOIN turma ON turma.id_turma = aluno.turma
             INNER JOIN horario ON horario.fk_turma_id_turma = turma.id_turma
             WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas 
             AND horario.fk_turma_id_turma = $id_turma
-            AND horario.fk_professor =" . $id_usuario;
+            AND horario.fk_professor =" . $id_usuario;*/
     //echo $sql;die;
+    $sql = "SELECT * FROM presenca 
+            INNER JOIN horario ON presenca.fk_horario_id_horario = horario.id_horario AND horario.fk_turma_id_turma = $id_turma AND horario.fk_professor = $id_usuario AND horario.fk_disciplina_id_disciplina = $id_disciplinas 
+            RIGHT JOIN aluno ON aluno.matricula = presenca.fk_aluno_matricula 
+            WHERE aluno.turma = $id_turma;";
     $result = mysqli_query($conexao, $sql);
 
     $sql2 = "SELECT DISTINCT nome_turma, dia, nome_disciplina
@@ -73,7 +77,9 @@ $id_usuario = $_SESSION['id_usuario'];
             <input type="date" name="hr_batida" value="<?php echo $data; ?>" required>
             <input type="hidden" name="id_disciplinas" value="<?php echo $id_disciplinas; ?>">
             <input type="hidden" name="id_turma" value="<?php echo $id_turma; ?>">
-            <input type="submit" value="Ver"><p><p></p>
+            <input type="submit" value="Ver">
+            <p>
+            <p></p>
             <hr>
             <h3>
                 <?php
