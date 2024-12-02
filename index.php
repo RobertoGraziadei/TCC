@@ -18,9 +18,6 @@ if (!isset($_SESSION['user'])) {
 </head>
 
 <body class="align">
-
-
-
   <div class="grid">
 
     <form action="" method="POST" class="form login">
@@ -76,8 +73,6 @@ if (!isset($_SESSION['user'])) {
     olho.mouseup(function() {
       senha.attr("type", "password");
     });
-    // para evitar o problema de arrastar a imagem e a senha continuar exposta, 
-    //citada pelo nosso amigo nos comentários
     $("#olho").mouseout(function() {
       $("#senha").attr("type", "password");
     });

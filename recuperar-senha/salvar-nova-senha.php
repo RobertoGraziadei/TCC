@@ -2,7 +2,6 @@
 $email = $_POST['email'];
 $token = $_POST['token'];
 $senha = $_POST['senha'];
-$repetirSenha = $_POST['repetirSenha'];
 
 require_once "conexao.php";
 $conexao = conectar();
@@ -12,8 +11,11 @@ $resultado = executarSQL($conexao, $sql);
 $recuperar = mysqli_fetch_assoc($resultado);
 
 if ($recuperar == null) {
-    echo "Email ou token incorreto. Tente fazer um novo pedido 
-          de recuperação de senha.";
+    echo ("<script>
+    alert(\"Email ou token incorreto. Tente fazer um novo pedido 
+          de recuperação de senha.\");
+    window.location.href = window.location.origin + '/roberto/TCC/index.php';
+    </script>");
     die();
 } else {
     // verificar a validade do pedido (data_criacao)
@@ -28,23 +30,19 @@ if ($recuperar == null) {
     $dataExpiracao = date_add($data_criacao, $umDia);
 
     if ($agora > $dataExpiracao) {
-        echo "Essa solicitação de recuperação de senha expirou!
-              Faça um novo pedido de recuperação de senha.";
+        echo ("<script>
+    alert(\"Essa solicitação de recuperação de senha expirou!
+              Faça um novo pedido de recuperação de senha.\");
+    window.location.href = window.location.origin + '/roberto/TCC/index.php';
+    </script>");
         die();
     }
 
     if ($recuperar['usado'] == 1) {
-        echo "Esse pedido de recuperação de senha já foi utilizado
-        anteriormente! Para recuperar a senha faça um novo pedido
-        de recuperação de senha.";
-        die();
-    }
-
-    if ($senha != $repetirSenha) {
-        echo "A senha que você digitou é diferente da senha que
-              você digitou no repetir senha. Por favor tente 
-              novamente!";
-        die();
+        die("<script>
+        alert(\"Esse pedido de recuperação de senha já foi utilizado anteriormente! Para recuperar a senha, faça um novo pedido de recuperação de senha.\");
+        window.location.href = window.location.origin + '/roberto/TCC/index.php';
+    </script>");
     }
 
     $hash = password_hash($senha, PASSWORD_ARGON2I);
@@ -56,7 +54,8 @@ if ($recuperar == null) {
              email='$email' AND token='$token'";
     executarSQL($conexao, $sql3);
 
-    echo "Nova senha cadastrada com sucesso! Faça o login para 
-          acessar o sistema.<br>";
-    echo "<a href='../index.php'>Acessar sistema</a>";
+    echo ("<script>
+    alert(\"Senha alterada!\");
+    window.location.href = window.location.origin + '/roberto/TCC/index.php';
+    </script>");
 }
