@@ -12,6 +12,7 @@ include "../../conecta.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../css/sweetalert2@11.js"></script>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script rel="stylesheet" src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/layout.css">
@@ -47,7 +48,7 @@ include "../../conecta.php";
         </div>
         <div id="listar">
             <header>
-                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Disciplinas cadastrados</h2>
+                <h2><a href="../../login/redire.php"><img src="../../img/voltar.png"></a> Disciplinas cadastradas</h2>
                 <nav>
                     <ul>
                         <li><a href="#"><button type="button" class="btn btn-outline-secondary" onclick="cadastrar()">Cadastrar </button></a></td></a></li>
@@ -66,11 +67,19 @@ include "../../conecta.php";
                 <?php
                 while ($dados = mysqli_fetch_assoc($resultado)) { ?>
                     <tr>
-                    <?php
-                    echo '<td>' . $dados['nome_disciplina'] . '</td>';
-                    echo '<td> <a href="formedit.php?id_disciplinas=' . $dados['id_disciplinas'] . '"> <img src="imagens/editar.png" width="20" height="20"> </a> </td>';
-                    echo '<td> <a href="excluir?id_disciplinas=' . $dados['id_disciplinas'] . '"> <img src="imagens/excluir.png" width="20" height="20"> </a> </td>';
-                    echo '</tr>';
+                        <?php
+                        echo '<td>' . $dados['nome_disciplina'] . '</td>'; ?>
+
+                        <td>
+                            <a href="formedit.php?id_disciplinas=<?php echo $dados['id_disciplinas'] ?>" role="button" class="btn btn-info"><img src="imagens/editar.png" width="20" height="20"> </a>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger deleteButton"
+                                data-url="excluir.php?id_disciplinas=<?php echo $dados['id_disciplinas']; ?>">
+                                <img src="imagens/excluir.png" width="20" height="20">
+                            </button>
+                    </tr>
+                <?php
                 } ?>
             </table><br>
         </div>
@@ -78,7 +87,7 @@ include "../../conecta.php";
 </body>
 
 <script>
-    jQuery('#listar').hide();
+    jQuery('#cadastrar').hide();
 
     function listar() {
         jQuery('#listar').show();
@@ -89,6 +98,27 @@ include "../../conecta.php";
         jQuery('#cadastrar').show();
         jQuery('#listar').hide();
     }
+
+    document.querySelectorAll('.deleteButton').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const url = this.getAttribute('data-url');
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: 'Você não poderá reverter isso!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sim, deletar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
 </script>
 
 </html>

@@ -1,5 +1,11 @@
 <?php
 include('../../conecta.php');
+session_start();
+if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
+    include "../../login/verif-log.php";
+    die();
+}
+$id_usuario = $_SESSION['id_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +14,7 @@ include('../../conecta.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../css/sweetalert2@11.js"></script>
     <script src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/layout.css">
@@ -28,21 +34,25 @@ include('../../conecta.php');
             INNER JOIN turma ON turma.id_turma = aluno.turma
             INNER JOIN horario ON horario.fk_turma_id_turma = turma.id_turma
             WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas 
-            AND horario.fk_turma_id_turma = $id_turma";
-
+            AND horario.fk_turma_id_turma = $id_turma
+            AND horario.fk_professor =" . $id_usuario;
+    //echo $sql;die;
     $result = mysqli_query($conexao, $sql);
 
-    $sql2 = "SELECT DISTINCT nome_turma, dia 
-             FROM turma 
+    $sql2 = "SELECT DISTINCT nome_turma, dia, nome_disciplina
+             FROM turma
              INNER JOIN horario ON horario.fk_turma_id_turma = turma.id_turma
+             INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas
              WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas 
-             AND horario.fk_turma_id_turma = $id_turma";
-
+             AND horario.fk_turma_id_turma = $id_turma
+             AND horario.fk_professor =" . $id_usuario;
+    //echo $sql2;die;
     $result2 = mysqli_query($conexao, $sql2);
     $turminha = $dia = '';
     if ($row = mysqli_fetch_assoc($result2)) {
         $turminha = $row['nome_turma'];
         $dia = $row['dia'];
+        $disciplina = $row['nome_disciplina'];
     }
 
     $d = [];
@@ -63,7 +73,14 @@ include('../../conecta.php');
             <input type="date" name="hr_batida" value="<?php echo $data; ?>" required>
             <input type="hidden" name="id_disciplinas" value="<?php echo $id_disciplinas; ?>">
             <input type="hidden" name="id_turma" value="<?php echo $id_turma; ?>">
-            <input type="submit" value="Ver">
+            <input type="submit" value="Ver"><p><p></p>
+            <hr>
+            <h3>
+                <?php
+                echo $disciplina;
+                ?>
+            </h3>
+
         </form>
 
         <br>
@@ -80,8 +97,8 @@ include('../../conecta.php');
                         <td><?php echo $dados['nome']; ?></td>
                         <td><?php echo $dados['matricula']; ?></td>
                         <td>
-                            <button class="btn btn-danger deleteButton" 
-                                    data-url="excluir.php?id_presenca=<?php echo $dados['id_presenca']; ?>&id_disciplinas=<?php echo $id_disciplinas; ?>&id_turma=<?php echo $id_turma; ?>">Deletar registro
+                            <button class="btn btn-danger deleteButton"
+                                data-url="excluir.php?id_presenca=<?php echo $dados['id_presenca']; ?>&id_disciplinas=<?php echo $id_disciplinas; ?>&id_turma=<?php echo $id_turma; ?>&hr_batida=<?php echo $data; ?>"><img src="imagens/excluir.png" width="20" height="20">
                             </button>
                         </td>
                     </tr>
@@ -101,8 +118,8 @@ include('../../conecta.php');
                     <tr>
                         <td><?php echo $dados['nome']; ?></td>
                         <td>
-                            <a class="btn btn-primary" 
-                               href="formedit.php?matricula=<?php echo $dados['matricula']; ?>&id_turma=<?php echo $id_turma; ?>&id_disciplinas=<?php echo $id_disciplinas; ?>&hr_batida=<?php echo $data; ?>">
+                            <a class="btn btn-primary"
+                                href="formedit.php?matricula=<?php echo $dados['matricula']; ?>&id_turma=<?php echo $id_turma; ?>&id_disciplinas=<?php echo $id_disciplinas; ?>&hr_batida=<?php echo $data; ?>">
                                 Registrar presença
                             </a>
                         </td>
@@ -135,4 +152,5 @@ include('../../conecta.php');
         });
     </script>
 </body>
+
 </html>

@@ -34,13 +34,16 @@ $dados = mysqli_fetch_assoc($resultado);
                 </ul>
             </nav>
         </header>
-        <br><br>
-        <div style="text-align: center;">
+        <div class="container">
             <form action="alterar.php" method="get">
                 <label style="text-align: left;"><input type="hidden" name="matricula" value="<?php echo $dados['matricula']; ?>"></label>
-                <label style="text-align: left;">Edite o nome<br> <input type="text" name="nome" value="<?php echo $dados['nome']; ?>"></label><br><br>
-
-                <p><select name="turma" required>
+                <div class="form-floating mb-3">
+                    <input name="nome" type="text" class="form-control" value="<?php echo $dados['nome']; ?>" id="floatingInput" placeholder="" required>
+                    <label for="floatingInput">Nome do aluno</label>
+                </div>
+                <p>
+                    <label for="floatingInput">Turma</label>
+                    <select name="turma" class="form-select form-select-lg mb-3" id="floatingInput" aria-label="Large select example" required>
                         <?php
                         $sql = "SELECT * FROM aluno inner join turma on aluno.turma = turma.id_turma WHERE aluno.turma = id_turma";
                         $executaSQL = mysqli_query($conexao, $sql);
@@ -50,7 +53,8 @@ $dados = mysqli_fetch_assoc($resultado);
                         <?php
                         }
                         ?>
-                    </select></p>
+                    </select>
+                </p>
 
                 </section>
 

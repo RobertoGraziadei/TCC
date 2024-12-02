@@ -8,7 +8,7 @@ $id_turma = $_GET['id_turma'];
 include('../../conecta.php');
 $sql = "SELECT * FROM turma WHERE id_turma = $id_turma";
 $resultado = mysqli_query($conexao, $sql);
-$dados = mysqli_fetch_assoc($resultado);
+$dados_sql = mysqli_fetch_assoc($resultado);
 ?>
 
 <!DOCTYPE html>
@@ -33,15 +33,29 @@ $dados = mysqli_fetch_assoc($resultado);
                 </ul>
             </nav>
         </header>
-        <br><br>
-        <div style="text-align: center;">
             <form action="alterar.php" method="get">
+                
+                <div class="container">
+                <input type="hidden" name="id_turma" value="<?php echo $dados_sql['id_turma']; ?>">
 
-                <h2>Editar disciplina</h2>
-                <input type="hidden" name="id_turma" value="<?php echo $dados['id_turma']; ?>">
-                <label style="text-align: left;">Edite o nome<br><input type="text" value="<?php echo $dados['nome_turma']; ?>" name="nome_turma"></label><br><br>
-                <button type="submit" class="btn btn-outline-success">Editar</button>
-                <a href="formcad.php" class="btn btn-outline-danger">Cancelar</a>
+                        <label for="turma">Turma:</label><br>
+                <select name="nome_turma" class="form-select form-select-lg mb-3" aria-label="Large select example" required>
+                    <?php
+                    $sql = "SELECT * FROM turma";
+                    $exe = mysqli_query($conexao, $sql);
+                    while ($dados = mysqli_fetch_assoc($exe)) { ?>
+                        <option value="<?php echo $dados['nome_turma']; ?>"
+                            <?php if ($dados_sql['nome_turma'] == $dados['nome_turma']) {
+                                echo 'selected';
+                            } ?>>
+                            <?php echo $dados['nome_turma']; ?>
+                        </option>
+                    <?php } ?>
+                </select>
+                        
+                        <button type="submit" class="btn btn-outline-success">Editar</button>
+                        <a href="formcad.php" class="btn btn-outline-danger">Cancelar</a>
+                    </div>
         </div>
         </form>
 

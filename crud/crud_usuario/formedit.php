@@ -27,25 +27,32 @@ $dados = mysqli_fetch_assoc($resultado);
 <body>
     <div class="container">
         <header>
-            <h2>Alterar Usuário</h2>
+            <h2>Alterar usuário</h2>
             <nav>
                 <ul>
                 </ul>
             </nav>
         </header>
-        <br><br>
-        <div style="text-align: center;">
+        <div class="container">
             <form action="alterar.php" method="get">
-                <label style="text-align: left;">Nome do usuário<br><input name="nome_usuario" type="text" value="<?php echo $dados['nome_usuario']; ?>"></label><br><br>
-                <label style="text-align: left;">Email<br><input type="email" name="email" value="<?php echo $dados['email']; ?>"></label><br><br>
-                <label for=" nivel">Editar o nivel</label><br>
-                <label>Administrador<input type="radio" name="nivel" value="1"
+
+                <div class="form-floating mb-3">
+                    <input name="nome_usuario" type="text" class="form-control" id="floatingInput" value="<?php echo $dados['nome_usuario'];?>" placeholder="" required>
+                    <label for="floatingInput">Nome do usuário</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                            <input name="email" type="email" class="form-control" id="floatingInput" value="<?php echo $dados['email']; ?>" placeholder="" required>
+                            <label for="floatingInput">Email</label>
+                        </div>
+                <label for=" nivel"><b>Editar o nivel:</b></label><br>
+                <label>Administrador(a) <input type="radio" name="nivel" value="1"
                         <?php if ($dados['nivel'] == 1) {
                             echo 'checked';
                         }
                         ?>></label><br>
 
-                <label>Professor<input type="radio" name="nivel" value="2"
+                <label>Professor(a) <input type="radio" name="nivel" value="2"
                         <?php if ($dados['nivel'] == 2) {
                             echo 'checked';
                         }

@@ -10,5 +10,5 @@ $sql = "DELETE FROM sala WHERE n_sala = $n_sala";
 mysqli_query($conexao,$sql);
 die("<script>
 alert('Sala excluída com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_sala/formcad.php';
 </script>");

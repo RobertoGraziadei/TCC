@@ -40,12 +40,11 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
                 </ul>
             </nav>
         </header>
-        <br><br>
-        <div style="text-align: center;">
+        <div class="container">
             <form action="alterar.php" method="get">
                 <input type="hidden" name="id_horario" value="<?php echo $dados_horario['id_horario']; ?>">
-                <label for="turma">Turma</label><br>
-                <select name="turma" required>
+                <label for="turma">Turma:</label><br>
+                <select name="turma"class="form-select form-select-lg mb-3" aria-label="Large select example" required>
                     <?php
                     $sql = "SELECT * FROM turma";
                     $exe = mysqli_query($conexao, $sql);
@@ -57,11 +56,11 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
                             <?php echo $dados['nome_turma']; ?>
                         </option>
                     <?php } ?>
-                </select><br><br>
+                </select>
 
 
-                <label style="text-align: left;" for="dia">Dia</label><br>
-                <select name="dia" required>
+                <label style="text-align: left;" for="dia">Dia:</label><br>
+                <select name="dia" class="form-select form-select-lg mb-3" aria-label="Large select example" required>
                     <?php
                     $sql = "SELECT dia FROM horario";
                     $exe = mysqli_query($conexao, $sql);
@@ -73,11 +72,11 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
                             <?php echo $dados['dia']; ?>
                         </option>
                     <?php } ?>
-                </select><br><br>
+                </select>
 
 
-                <label style="text-align: left;" for="disciplina">Disciplina</label><br>
-                <select name="disciplina" required>
+                <label style="text-align: left;" for="disciplina">Disciplina:</label><br>
+                <select name="disciplina" class="form-select form-select-lg mb-3" aria-label="Large select example" required>
                     <?php
                     $sql = "SELECT * FROM disciplina";
                     $exe = mysqli_query($conexao, $sql);
@@ -89,11 +88,11 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
                             <?php echo $dados['nome_disciplina']; ?>
                         </option>
                     <?php } ?>
-                </select><br><br>
+                </select>
 
 
-                <label for="professor">Professor</label><br>
-                <select name="professor" required>
+                <label for="professor">Professor:</label><br>
+                <select name="professor" class="form-select form-select-lg mb-3" aria-label="Large select example" required>
                     <?php
                     $sql = "SELECT * FROM horario INNER JOIN usuario ON id_usuario = fk_professor";
                     $exe = mysqli_query($conexao, $sql);
@@ -105,11 +104,11 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
                             <?php echo $dados['nome_usuario']; ?>
                         </option>
                     <?php } ?>
-                </select><br><br>
+                </select>
 
 
-                <label for="sala">Sala</label><br>
-                <select name="sala" required>
+                <label for="sala">Sala:</label><br>
+                <select name="sala" class="form-select form-select-lg mb-3" aria-label="Large select example" required>
                     <?php
                     $sql = "SELECT * FROM sala";
                     $exe = mysqli_query($conexao, $sql);
@@ -121,15 +120,15 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
                             <?php echo $dados['descricao']; ?>
                         </option>
                     <?php } ?>
-                </select><br><br>
+                </select><br>
 
                 <?php
                 $sql = "SELECT * FROM horario Where id_horario = $id_horario";
                 $exe2 = mysqli_query($conexao, $sql);
                 $dados = mysqli_fetch_assoc($exe2) ?>
-                <label>Horário inicial <input value="<?php echo $dados['horario_inicio'] ?>" type="time" name="horario_inicio" required></label><br>
-                <label>Horário final <input value="<?php echo $dados['horario_fim'] ?>" type="time" name="horario_fim" required></label><br><br>
-                </select><br><br>
+                <label>Horário inicial: <input value="<?php echo $dados['horario_inicio'] ?>" type="time" name="horario_inicio" required></label><br>
+                <label>Horário final: <input value="<?php echo $dados['horario_fim'] ?>" type="time" name="horario_fim" required></label><br><br>
+                </select>
 
                 <button type="submit" class="btn btn-outline-success">Editar</button>
                 <a href="formcad.php" class="btn btn-outline-danger">Cancelar</a>

@@ -50,10 +50,10 @@ $exe4 = mysqli_query($conexao, $sql4);
 $pega_id = mysqli_fetch_assoc($exe4);
 $cadastra_presenca = "INSERT INTO presenca (hr_batida, fk_horario_id_horario, fk_aluno_matricula, presenca)
 VALUES ('$hr_batida'," . $pega_id['id_horario'] . ", $matricula , 1)";
-
+//echo $cadastra_presenca;die;
 $exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
 
-//echo $cadastra_presenca;die;
+
 //$resultado = mysqli_query($conexao, $sql4);
 header('Location: listar.php?id_disciplinas=' . $id_disciplina . '&id_turma=' . $id_turma . '&hr_batida=' . $hr_batida);
 

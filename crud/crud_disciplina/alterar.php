@@ -16,6 +16,7 @@ $nome = $_GET['nome_disciplina'];
 $sql = "UPDATE disciplina SET 
 nome_disciplina = '$nome' WHERE id_disciplinas = $id_disciplina";
 mysqli_query($conexao,$sql);
+//die;
 die("<script>
 alert('Disciplina alterada com sucesso!');
 window.location.href = window.location.origin + '/roberto/TCC/crud/crud_disciplina/formcad.php';

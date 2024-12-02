@@ -14,5 +14,5 @@ $sql = "DELETE FROM horario WHERE id_horario = $id_horario";
 mysqli_query($conexao,$sql);
 die("<script>
 alert('Horário excluído com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/login/redire.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_horario/formcad.php';
 </script>");
