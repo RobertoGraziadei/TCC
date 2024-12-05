@@ -36,12 +36,16 @@ $id_usuario = $_SESSION['id_usuario'];
             WHERE horario.fk_disciplina_id_disciplina = $id_disciplinas 
             AND horario.fk_turma_id_turma = $id_turma
             AND horario.fk_professor =" . $id_usuario;*/
-    //echo $sql;die;
     $sql = "SELECT * FROM presenca 
-            INNER JOIN horario ON presenca.fk_horario_id_horario = horario.id_horario AND horario.fk_turma_id_turma = $id_turma AND horario.fk_professor = $id_usuario AND horario.fk_disciplina_id_disciplina = $id_disciplinas 
+            INNER JOIN horario ON presenca.fk_horario_id_horario = horario.id_horario 
+            AND horario.fk_turma_id_turma = $id_turma 
+            AND horario.fk_professor = $id_usuario 
+            AND horario.fk_disciplina_id_disciplina = $id_disciplinas
+            AND (DATE(presenca.hr_batida) = '$data')
             RIGHT JOIN aluno ON aluno.matricula = presenca.fk_aluno_matricula 
             WHERE aluno.turma = $id_turma;";
     $result = mysqli_query($conexao, $sql);
+    //echo $sql;die;
 
     $sql2 = "SELECT DISTINCT nome_turma, dia, nome_disciplina
              FROM turma
