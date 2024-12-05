@@ -19,9 +19,9 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <title>Menu</title>
 </head>
 
-<div class="container">
 
-    <body>
+<body>
+    <div class="container">
         <header>
             <h2 style="font-size: 24px;">Olá, <?php echo $_SESSION['user']; ?></h2>
             <nav>
@@ -31,9 +31,58 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                 </ul>
             </nav>
         </header>
-        <span>
+        <div class="container" style="margin-top: 30px;">
+            <div class="row">
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerenciar usuários</h5>
+                        <hr>
+                        <a href="../crud/crud_usuario/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
+                    </div>
+                </div>
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerenciar turmas</h5>
+                        <hr>
+                        <a href="../crud/crud_turma/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
+                    </div>
+                </div>
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerenciar salas</h5>
+                        <hr>
+                        <a href="../crud/crud_sala/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
+                    </div>
+                </div>
+            </div>
 
-            <div style="margin-top: 100px;" class="d-grid gap-2 col-8 mx-auto">
+            <div class="row">
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerenciar disciplinas</h5>
+                        <hr>
+                        <a href="../crud/crud_disciplina/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
+                    </div>
+                </div>
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerenciar alunos</h5>
+                        <hr>
+                        <a href="../crud/crud_aluno/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
+                    </div>
+                </div>
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerenciar horários</h5>
+                        <hr>
+                        <a href="../crud/crud_horario/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--             <div style="margin-top: 100px;" class="d-grid gap-2 col-8 mx-auto">
                 <a href="../crud/crud_usuario/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar usuários</a>
             </div>
 
@@ -43,9 +92,9 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 
             <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
                 <a href="../crud/crud_sala/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar salas</a>
-            </div>
+            </div> -->
 
-            <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
+        <!--             <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
                 <a href="../crud/crud_disciplina/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar disciplinas</a>
             </div>
 
@@ -55,11 +104,10 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
 
             <div style="margin-top: 20px;" class="d-grid gap-2 col-8 mx-auto">
                 <a href="../crud/crud_horario/formcad.php" role="button" style="font-size: 200%;" class="btn btn-secondary" type="button">Gerenciar horário</a>
-            </div>
+            </div> -->
 
-            <!-- <a href="../crud/crud_presenca/"><button type="button" class="btn btn-primary">Cadastrar presença</button><br><br></a> -->
-        </span>
-</div>
+        <!-- <a href="../crud/crud_presenca/"><button type="button" class="btn btn-primary">Cadastrar presença</button><br><br></a> -->
+    </div>
 </body>
 
 </html>
