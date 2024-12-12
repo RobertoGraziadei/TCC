@@ -42,8 +42,8 @@ $dados = mysqli_fetch_assoc($resultado);
                 </div>
 
                 <div class="form-floating mb-3">
-                            <input name="email" type="email" class="form-control" id="floatingInput" value="<?php echo $dados['email']; ?>" placeholder="" required>
-                            <label for="floatingInput">Email</label>
+                            <input name="email" type="hidden" class="form-control" id="floatingInput" value="<?php echo $dados['email']; ?>" placeholder="" required>
+                            <!-- <label for="floatingInput">Email</label> -->
                         </div>
                 <label for=" nivel"><b>Editar o nivel:</b></label><br>
                 <label>Administrador(a) <input type="radio" name="nivel" value="1"
