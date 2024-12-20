@@ -83,7 +83,7 @@ include "navbar.php"; ?>
                     <div id="matricula">
                         <div class="container">
                             <div class="form-floating mb-3">
-                                <input name="nome" type="number" class="form-control" id="matricula" placeholder="" required>
+                                <input name="matricula" type="number" class="form-control" id="matricula" placeholder="" required>
                                 <label for="matricula" style="font-size: 70%;">Matricula</label>
                             </div>
                         </div>

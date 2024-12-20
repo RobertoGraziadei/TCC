@@ -14,10 +14,16 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/layoutInicial.css">
     <link rel="shortcut icon" href="barra.ico" type="image/x-icon">
     <title>Menu</title>
 </head>
+<style>
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+</style>
 
 
 <body>
@@ -33,21 +39,21 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
         </header>
         <div class="container" style="margin-top: 30px;">
             <div class="row">
-                <div class="card mb-3" style="width: 18rem;">
+                <div class="card mb-5" style="width: 20rem;">
                     <div class="card-body">
                         <h5 class="card-title">Gerenciar usuários</h5>
                         <hr>
                         <a href="../crud/crud_usuario/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
                     </div>
                 </div>
-                <div class="card mb-3" style="width: 18rem;">
+                <div class="card mb-5" style="width: 20rem;">
                     <div class="card-body">
                         <h5 class="card-title">Gerenciar turmas</h5>
                         <hr>
                         <a href="../crud/crud_turma/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
                     </div>
                 </div>
-                <div class="card mb-3" style="width: 18rem;">
+                <div class="card mb-5" style="width: 20rem;">
                     <div class="card-body">
                         <h5 class="card-title">Gerenciar salas</h5>
                         <hr>
@@ -57,21 +63,21 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             </div>
 
             <div class="row">
-                <div class="card mb-3" style="width: 18rem;">
+                <div class="card mb-3" style="width: 20rem;">
                     <div class="card-body">
                         <h5 class="card-title">Gerenciar disciplinas</h5>
                         <hr>
                         <a href="../crud/crud_disciplina/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
                     </div>
                 </div>
-                <div class="card mb-3" style="width: 18rem;">
+                <div class="card mb-3" style="width: 20rem;">
                     <div class="card-body">
                         <h5 class="card-title">Gerenciar alunos</h5>
                         <hr>
                         <a href="../crud/crud_aluno/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
                     </div>
                 </div>
-                <div class="card mb-3" style="width: 18rem;">
+                <div class="card mb-3" style="width: 20rem;">
                     <div class="card-body">
                         <h5 class="card-title">Gerenciar horários</h5>
                         <hr>

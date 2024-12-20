@@ -76,7 +76,7 @@ INNER JOIN sala ON horario.fk_sala_n_sala = sala.n_sala
 INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas
 INNER join turma on horario.fk_turma_id_turma = turma.id_turma
 WHERE horario.fk_sala_n_sala = $sala AND horario.fk_turma_id_turma =" . $dados['turma'] . "
-AND horario.horario_inicio < NOW() AND horario.horario_fim > NOW() AND horario.dia = '$dia_semana2'";
+AND horario.horario_inicio < NOW() AND horario.horario_fim > NOW() AND horario.dia = '$dia_semana'";
 $exe4 = mysqli_query($conexao, $sql4);
 
 if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
@@ -105,9 +105,19 @@ VALUES ('$agora'," . $pega_id['id_horario'] . ", $matricula , 1)";
 $exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
 $resultado = mysqli_query($conexao, $sql4);
 $nome_aluno = $dados3['nome'];
+?>
+<script>
+    Swal.fire({
+        title: "The Internet?",
+        text: "That thing is still around?",
+        icon: "question"
+    });
+</script>
+
+
+<?php
 echo "<script>
     window.location.href = 'chamada.php?sala=$sala';
-
     </script>";
 ?>
 
