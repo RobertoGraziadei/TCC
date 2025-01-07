@@ -96,7 +96,7 @@ AND DATE(hr_batida) = DATE(NOW())";
 $executa = mysqli_query($conexao, $verifica);
 if(mysqli_num_rows($executa) > 0){
     echo "<script>
-    alert('Aluno ja está presente na aula!');
+    alert('Registro inválido. O aluno já foi registrado nesta aula!');
     window.location.href = 'chamada.php?sala=$sala';
     </script>";
     die();
@@ -109,50 +109,6 @@ $resultado = mysqli_query($conexao, $sql4);
 $nome_aluno = $dados3['nome'];
 ?>
 <?php
-/* echo "<script>
-    window.location.href = 'chamada.php?sala=$sala'
-    ;
-    </script>"; */
-    $_SESSION['mensagem'] = "Presença cadastrada do aluno $nome_aluno";
+    $_SESSION['mensagem'] = "Presença registrada do aluno(a) $nome_aluno";
     header("location: chamada.php?sala=$sala");
 ?>
-
-
-<?php
-die;
-
-/* echo "<script>({
-    icon: 'success',
-    title: 'Sucesso.',
-    text: 'Presença cadastrada do aluno $nome_aluno'
-    })
-</script>";
-die; */
-
-echo '<table class="table">
-<tr>
-<th scope="col">#</th>
-<th scope="col">Dia</th>
-<th scope="col">Turma</th>
-<th scope="col">Disciplina</th>
-<th scope="col">Professor</th>
-<th scope="col">Sala</th>
-<th scope="col">Horário de inicio</th>
-<th scope="col">Horário de fim</th>
-</tr>';
-
-while ($dados4 = mysqli_fetch_assoc($resultado)) {
-    echo '<tr>';
-    echo '<td>' . $dados4['id_horario'] . '</td>';
-    echo '<td>' . $dados4['dia'] . '</td>';
-    echo '<td>' . $dados2['nome_turma'] . '</td>';
-    echo '<td>' . $dados4['nome_disciplina'] . '</td>'; // fk_disciplina_id_disciplina
-    echo '<td>' . $dados4['fk_professor'] . '</td>';
-    echo '<td>' . $dados4['descricao'] . '</td>';
-    echo '<td>' . $dados4['horario_inicio'] . '</td>';
-    echo '<td>' . $dados4['horario_fim'] . '</td>';
-    echo '</tr>';
-}
-echo '</table>' . "<br>";
-
-echo '<button><a href="chamada.php">Voltar</a></button>';
