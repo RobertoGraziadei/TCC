@@ -20,6 +20,8 @@ if (mysqli_num_rows($exe) == 0) {
     </script>";
     die();
 }
+
+
 /* $verifi_sala = "SELECT * FROM horario
 INNER JOIN sala ON horario.fk_sala_n_sala = sala.n_sala
 Where sala.n_sala = $sala";
@@ -76,7 +78,7 @@ INNER JOIN sala ON horario.fk_sala_n_sala = sala.n_sala
 INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas
 INNER join turma on horario.fk_turma_id_turma = turma.id_turma
 WHERE horario.fk_sala_n_sala = $sala AND horario.fk_turma_id_turma =" . $dados['turma'] . "
-AND horario.horario_inicio < NOW() AND horario.horario_fim > NOW() AND horario.dia = '$dia_semana'";
+AND horario.horario_inicio < NOW() AND horario.horario_fim > NOW() AND horario.dia = '$dia_semana2'";
 $exe4 = mysqli_query($conexao, $sql4);
 
 if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
@@ -86,19 +88,19 @@ if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
     </script>";
     die();
 }
-
-/* if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
-    echo "<script>Swal.fire({
-    icon: 'error',
-    title: 'Ops...',
-    text: 'Aula inválida'  
-});
-</script>";
-    die;
-} */
-
-
 $pega_id = mysqli_fetch_assoc($exe4);
+
+$verifica = "SELECT * FROM presenca WHERE fk_aluno_matricula = $matricula
+AND fk_horario_id_horario = " . $pega_id['id_horario'] . "
+AND DATE(hr_batida) = DATE(NOW())";
+$executa = mysqli_query($conexao, $verifica);
+if(mysqli_num_rows($executa) > 0){
+    echo "<script>
+    alert('Aluno ja está presente na aula!');
+    window.location.href = 'chamada.php?sala=$sala';
+    </script>";
+    die();
+}
 
 $cadastra_presenca = "INSERT INTO presenca (hr_batida, fk_horario_id_horario, fk_aluno_matricula, presenca)
 VALUES ('$agora'," . $pega_id['id_horario'] . ", $matricula , 1)";
@@ -106,26 +108,20 @@ $exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
 $resultado = mysqli_query($conexao, $sql4);
 $nome_aluno = $dados3['nome'];
 ?>
-<script>
-    Swal.fire({
-        title: "The Internet?",
-        text: "That thing is still around?",
-        icon: "question"
-    });
-</script>
-
-
 <?php
-echo "<script>
-    window.location.href = 'chamada.php?sala=$sala';
-    </script>";
+/* echo "<script>
+    window.location.href = 'chamada.php?sala=$sala'
+    ;
+    </script>"; */
+    $_SESSION['mensagem'] = "Presença cadastrada do aluno $nome_aluno";
+    header("location: chamada.php?sala=$sala");
 ?>
 
 
 <?php
 die;
 
-/* echo "<script>Swal.fire({
+/* echo "<script>({
     icon: 'success',
     title: 'Sucesso.',
     text: 'Presença cadastrada do aluno $nome_aluno'

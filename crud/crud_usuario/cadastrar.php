@@ -12,21 +12,21 @@ $nivel = $_POST['nivel'];
 $hash = password_hash($senha, PASSWORD_ARGON2I);
 password_verify($senha, $hash);
 
-$sql1 = "SELECT * FROM sala WHERE n_sala = $n_sala";
-$sql2 = "SELECT * FROM sala WHERE descricao = '$descricao'";
+$sql1 = "SELECT * FROM usuario WHERE nome_usuario = '$user'";
+$sql2 = "SELECT * FROM usuario WHERE email = '$email'";
 $executa1 = mysqli_query($conexao, $sql1);
 $executa2 = mysqli_query($conexao, $sql2);
-
+//echo $sql1;die;
 if ($verifica = mysqli_num_rows($executa1) != 0) {
-    die("<script>
-alert('Já existe uma sala com esse número!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_sala/formcad.php';
+  die("<script>
+alert('Já existe um usuário com esse nome!');
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
 </script>");
 }
 if ($verifica = mysqli_num_rows($executa2) != 0) {
-    die("<script>
-alert('Já existe uma sala com essa descrição!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_sala/formcad.php';
+  die("<script>
+alert('Já existe um usuário com esse email!');
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
 </script>");
 }
 

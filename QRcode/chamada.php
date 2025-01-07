@@ -30,8 +30,22 @@ include "navbar.php"; ?>
 
 <body>
     <div class="container">
+        <style>
+            .letra {
+                color: green;
+            }
+        </style>
+        <div class="letra">
+
+            <?php
+            if (isset($_SESSION['mensagem'])) {
+                echo $_SESSION['mensagem'];
+                unset($_SESSION['mensagem']);
+            }
+            ?>
+        </div>
         <header>
-            <h2 style="font-size: 30px;">Controle de frequência </a></h2>
+            <h2 style="font-size: 30px;">Controle de frequência </a> </h2>
         </header>
         <main>
             <section>
