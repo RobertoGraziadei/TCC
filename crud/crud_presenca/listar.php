@@ -19,7 +19,7 @@ $id_usuario = $_SESSION['id_usuario'];
     <script src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <title>Chamada automática</title>
+    <title>Chamada</title>
     <?php
     date_default_timezone_set('America/Sao_Paulo');
     $data = new DateTime('now');

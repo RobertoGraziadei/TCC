@@ -26,11 +26,10 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     }
 </style>
 
-
 <body>
     <div class="container">
         <header>
-            <h2 style="font-size: 24px;">Olá, <?php echo $_SESSION['user']; ?></h2>
+            <h2 style="font-size: 24px;"><img src="../img/iffar.png" alt="70" width="30"> Olá, <?php echo $_SESSION['user']; ?></h2>
             <nav>
                 <ul>
                     <li><a href="logout.php"><button type="button" class="btn btn-outline-dark">
