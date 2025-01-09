@@ -14,9 +14,10 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../../css/sweetalert2@11.js"></script>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <script src="../../css/bootstrap.min.js"></script> <!-- Corrigido src (rel não é válido aqui) -->
+    <link rel="shortcut icon" href="../../img/qrcode.ico">
+    <script src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/layout.css">
-    <script src="../../css/jquery.min.js"></script> <!-- Corrigido src -->
+    <script src="../../css/jquery.min.js"></script>
     <title>Gerenciar horário</title>
 </head>
 

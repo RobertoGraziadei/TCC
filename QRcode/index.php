@@ -15,6 +15,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../img/qrcode.ico">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script src="../css/jquery.min.js"></script>
     <link href="../css/bootstrap.min.css" rel="stylesheet">

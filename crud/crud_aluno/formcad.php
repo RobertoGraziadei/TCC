@@ -13,6 +13,7 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../../css/sweetalert2@11.js"></script>
+    <link rel="shortcut icon" href="../../img/qrcode.ico">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script rel="stylesheet" src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/layout.css">
