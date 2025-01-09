@@ -83,7 +83,7 @@ $exe4 = mysqli_query($conexao, $sql4);
 
 if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
     echo "<script>
-    alert('Aula inválida');
+    alert('Nenhuma aula encontrada!');
     window.location.href = 'chamada.php?sala=$sala';
     </script>";
     die();
