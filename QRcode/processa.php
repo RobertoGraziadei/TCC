@@ -102,7 +102,7 @@ if(mysqli_num_rows($executa) > 0){
 }
 
     echo "<script>
-    alert('Aluno ja está presente na aula!');
+    alert('Registro inválido. O aluno já foi registrado nesta aula!');
     window.location.href = 'chamada.php?sala=$sala';
     </script>";
     die();
@@ -115,6 +115,6 @@ $resultado = mysqli_query($conexao, $sql4);
 $nome_aluno = $dados3['nome'];
 ?>
 <?php
-    $_SESSION['mensagem'] = "Presença cadastrada do aluno $nome_aluno";
+    $_SESSION['mensagem'] = "Presença registrada do aluno(a) $nome_aluno";
     header("location: chamada.php?sala=$sala");
 ?>

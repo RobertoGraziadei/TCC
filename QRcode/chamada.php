@@ -32,19 +32,19 @@ include "navbar.php"; ?>
 <body>
     <div class="container">
         <style>
-            .letra1 {
-                color: black;
-                background-color: rgb(130, 219, 130);
+            .letra {
+                color: rgb(115, 216, 115);
             }
         </style>
         <div class="letra">
 
             <?php
             if (isset($_SESSION['mensagem'])) {
-                echo $_SESSION['mensagem'];
+                echo $_SESSION['mensagem'] . ' <img src="../img/verificado.png" alt="15" width="15">';
                 unset($_SESSION['mensagem']);
             }
             ?>
+            <img src="" alt="" width="">
         </div>
         <header>
             <h2 style="font-size: 30px;">Controle de frequência </a> </h2>
