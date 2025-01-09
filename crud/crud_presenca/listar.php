@@ -19,7 +19,7 @@ $id_usuario = $_SESSION['id_usuario'];
     <script src="../../css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <title>Chamada</title>
+    <title>Chamada automática</title>
     <?php
     date_default_timezone_set('America/Sao_Paulo');
     $data = new DateTime('now');
@@ -98,15 +98,29 @@ $id_usuario = $_SESSION['id_usuario'];
         <h3>Alunos presentes</h3>
         <table class="table table-white table-striped">
             <tr>
-                <th scope="col">Nome</th>
                 <th scope="col">Matrícula</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Horário de chegada</th>
                 <th scope="col"></th>
             </tr>
             <?php foreach ($d as $dados): ?>
                 <?php if (!empty($dados['id_presenca'])): ?>
                     <tr>
-                        <td><?php echo $dados['nome']; ?></td>
                         <td><?php echo $dados['matricula']; ?></td>
+                        <td><?php echo $dados['nome']; ?></td>
+                        <?php
+
+                        date_default_timezone_set('America/Sao_Paulo');
+                        $horario_chegada = new DateTime($dados['hr_batida']);
+                        $chegada = $horario_chegada->format('H:i');
+
+                        if($chegada == '00:00'){?>
+                            <td><?php echo "Presença feita pelo professor."; ?></td>
+                        <?php }else{
+                        ?>
+
+                        <td><?php echo $chegada ?></td>
+                        <?php } ?>
                         <td>
                             <button class="btn btn-danger deleteButton"
                                 data-url="excluir.php?id_presenca=<?php echo $dados['id_presenca']; ?>&id_disciplinas=<?php echo $id_disciplinas; ?>&id_turma=<?php echo $id_turma; ?>&hr_batida=<?php echo $data; ?>"><img src="imagens/excluir.png" width="20" height="20">

@@ -94,20 +94,14 @@ $verifica = "SELECT * FROM presenca WHERE fk_aluno_matricula = $matricula
 AND fk_horario_id_horario = " . $pega_id['id_horario'] . "
 AND DATE(hr_batida) = DATE(NOW())";
 $executa = mysqli_query($conexao, $verifica);
-if(mysqli_num_rows($executa) > 0){
-
-    $_SESSION['mensagem'] = "O aluno $nome_aluno ja está presente na aula!";
-    header("location: chamada.php?sala=$sala");
-    die;
-}
-
+//echo $verifica;die;
+if (mysqli_num_rows($executa) > 0) {
     echo "<script>
     alert('Registro inválido. O aluno já foi registrado nesta aula!');
     window.location.href = 'chamada.php?sala=$sala';
     </script>";
     die();
-
-
+}
 $cadastra_presenca = "INSERT INTO presenca (hr_batida, fk_horario_id_horario, fk_aluno_matricula, presenca)
 VALUES ('$agora'," . $pega_id['id_horario'] . ", $matricula , 1)";
 $exe_cadastro = mysqli_query($conexao, $cadastra_presenca);
@@ -115,6 +109,6 @@ $resultado = mysqli_query($conexao, $sql4);
 $nome_aluno = $dados3['nome'];
 ?>
 <?php
-    $_SESSION['mensagem'] = "Presença registrada do aluno(a) $nome_aluno";
-    header("location: chamada.php?sala=$sala");
+$_SESSION['mensagem'] = "Presença registrada do aluno(a) $nome_aluno";
+header("location: chamada.php?sala=$sala");
 ?>
