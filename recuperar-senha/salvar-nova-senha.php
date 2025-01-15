@@ -14,7 +14,7 @@ if ($recuperar == null) {
     echo ("<script>
     alert(\"Email ou token incorreto. Tente fazer um novo pedido 
           de recuperação de senha.\");
-    window.location.href = window.location.origin + '/index.php';
+    window.location.href = window.location.origin + '/roberto/TCC/index.php';
     </script>");
     die();
 } else {
@@ -33,7 +33,7 @@ if ($recuperar == null) {
         echo ("<script>
     alert(\"Essa solicitação de recuperação de senha expirou!
               Faça um novo pedido de recuperação de senha.\");
-    window.location.href = window.location.origin + '/index.php';
+    window.location.href = window.location.origin + '/roberto/TCC/index.php';
     </script>");
         die();
     }
@@ -41,7 +41,7 @@ if ($recuperar == null) {
     if ($recuperar['usado'] == 1) {
         die("<script>
         alert(\"Esse pedido de recuperação de senha já foi utilizado anteriormente! Para recuperar a senha, faça um novo pedido de recuperação de senha.\");
-        window.location.href = window.location.origin + '/index.php';
+        window.location.href = window.location.origin + '/roberto/TCC/index.php';
     </script>");
     }
 
@@ -56,6 +56,6 @@ if ($recuperar == null) {
 
     echo ("<script>
     alert(\"Senha alterada!\");
-    window.location.href = window.location.origin + '/index.php';
+    window.location.href = window.location.origin + '/roberto/TCC/index.php';
     </script>");
 }

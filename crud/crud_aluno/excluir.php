@@ -10,5 +10,5 @@ $sql = "DELETE FROM aluno WHERE matricula = $matricula";
 mysqli_query($conexao, $sql);
 die("<script>
 alert('Aluno excluído com sucesso!');
-window.location.href = window.location.origin + '/crud/crud_aluno/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_aluno/formcad.php';
 </script>");

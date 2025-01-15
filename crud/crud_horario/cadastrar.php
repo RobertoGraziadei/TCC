@@ -26,7 +26,7 @@ $executa = mysqli_query($conexao, $sql);
 if(mysqli_num_rows($executa) > 0){
     die("<script>
 alert('Já existe um horário com essas informações!');
-window.location.href = window.location.origin + '/crud/crud_usuario/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
 </script>");
 }
 
@@ -36,5 +36,5 @@ mysqli_query($conexao, $sql);
 /* var_dump($sql);die; */
 die("<script>
 alert('Horário cadastrado com sucesso!');
-window.location.href = window.location.origin + '/crud/crud_horario/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_horario/formcad.php';
 </script>");

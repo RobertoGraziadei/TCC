@@ -19,7 +19,7 @@ mysqli_query($conexao,$sql);
 
 die("<script>
 alert('Turma alterada com sucesso!');
-window.location.href = window.location.origin + '/crud/crud_turma/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_turma/formcad.php';
 </script>");
 
 ?>

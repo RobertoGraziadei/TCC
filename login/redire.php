@@ -2,7 +2,7 @@
 include "verif-log.php";
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     die("<script>
-    window.location.href = window.location.origin + '/QRcode/index.php';
+    window.location.href = window.location.origin + '/roberto/TCC/QRcode/index.php';
     </script>");
 }
 ?>

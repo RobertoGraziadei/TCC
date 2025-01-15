@@ -20,13 +20,13 @@ $executa2 = mysqli_query($conexao, $sql2);
 if ($verifica = mysqli_num_rows($executa1) != 0) {
   die("<script>
 alert('Já existe um usuário com esse nome!');
-window.location.href = window.location.origin + '/crud/crud_usuario/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
 </script>");
 }
 if ($verifica = mysqli_num_rows($executa2) != 0) {
   die("<script>
 alert('Já existe um usuário com esse email!');
-window.location.href = window.location.origin + '/crud/crud_usuario/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
 </script>");
 }
 
@@ -37,7 +37,7 @@ $verEmail = mysqli_num_rows($result);
 if ($verEmail != 0) {
   die("<script>
 alert('Já existe um usuário com este email!');
-window.location.href = window.location.origin + '/crud/crud_usuario/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
 </script>");
 }
 
@@ -57,5 +57,5 @@ $resultado = mysqli_query($conexao, $sql);
 } */
 die("<script>
 alert('Usuário cadastrado com sucesso!');
-window.location.href = window.location.origin + '/crud/crud_usuario/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
 </script>");

@@ -10,5 +10,5 @@ $sql = "UPDATE dia SET
 dia = '$dia' WHERE id_dia = $id_dia";
 mysqli_query($conexao, $sql);
 echo("<script>
-window.location.href = window.location.origin + '/crud/crud_presenca/listar.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_presenca/listar.php';
 </script>");

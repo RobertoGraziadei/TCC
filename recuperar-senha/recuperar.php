@@ -71,7 +71,7 @@ try {
 
     $mail->send();
     echo '<script> alert("Email enviado com sucesso! Confira o seu email.")
-    window.location.href = window.location.origin + "/index.php";
+    window.location.href = window.location.origin + "/roberto/TCC/index.php";
     </script>';
 
     // gravar as informações na tabela recuperar-senha
