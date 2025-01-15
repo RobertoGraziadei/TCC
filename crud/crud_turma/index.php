@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
     die("<script>
-    window.location.href = window.location.origin + '/roberto/TCC/QRcode/index.php';
+    window.location.href = window.location.origin + '/QRcode/index.php';
     </script>");
 }
 include('../../conecta.php');
@@ -20,7 +20,7 @@ include('../../conecta.php');
         <h1> Crud das turmas </h1><br>
         <button><a href="formcad.php">Cadastrar </button></a><br><br>
         <button><a href="listar.php">Listar</button><br><br><br><br>
-        <button><a href="/roberto/TCC/login/redire.php">Voltar</a></button>
+        <button><a href="/login/redire.php">Voltar</a></button>
         </div>
     </body>
 

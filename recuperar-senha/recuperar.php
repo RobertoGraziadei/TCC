@@ -62,7 +62,7 @@ try {
     $mail->Body = 'Olá!<br>
         Você solicitou a recuperação da sua conta no nosso sistema.
         Para isso, clique no link abaixo para realizar a troca de senha:<br>
-        <a href="' . $_SERVER['SERVER_NAME'] . '/roberto/TCC/recuperar-senha/nova-senha.php?email='
+        <a href="' . $_SERVER['SERVER_NAME'] . '/recuperar-senha/nova-senha.php?email='
         . $usuario['email'] . '&token=' . $token .
         '">Clique aqui para recuperar o acesso à sua conta!</a><br>
         <br>
@@ -71,7 +71,7 @@ try {
 
     $mail->send();
     echo '<script> alert("Email enviado com sucesso! Confira o seu email.")
-    window.location.href = window.location.origin + "/roberto/TCC/index.php";
+    window.location.href = window.location.origin + "/index.php";
     </script>';
 
     // gravar as informações na tabela recuperar-senha

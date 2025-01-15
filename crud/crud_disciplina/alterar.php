@@ -19,5 +19,5 @@ mysqli_query($conexao,$sql);
 //die;
 die("<script>
 alert('Disciplina alterada com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_disciplina/formcad.php';
+window.location.href = window.location.origin + '/crud/crud_disciplina/formcad.php';
 </script>");

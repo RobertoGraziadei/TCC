@@ -13,5 +13,5 @@ $sql = "UPDATE usuario SET nome_usuario = '$nome', nivel = $nivel WHERE email = 
 $executaSql = mysqli_query($conexao, $sql);
 die("<script>
 alert('Usuário alterado com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
+window.location.href = window.location.origin + '/crud/crud_usuario/formcad.php';
 </script>");

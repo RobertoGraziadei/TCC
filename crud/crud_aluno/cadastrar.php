@@ -17,13 +17,13 @@ $executa2 = mysqli_query($conexao, $sql2);
 if ($verifica = mysqli_num_rows($executa1) != 0) {
   die("<script>
 alert('Já existe um aluno com essa matrícula!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_aluno/formcad.php';
+window.location.href = window.location.origin + '/crud/crud_aluno/formcad.php';
 </script>");
 }
 if ($verifica = mysqli_num_rows($executa2) != 0) {
   die("<script>
 alert('Já existe um aluno com esse nome!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_aluno/formcad.php';
+window.location.href = window.location.origin + '/crud/crud_aluno/formcad.php';
 </script>");
 }
 
@@ -31,6 +31,6 @@ $sql = "INSERT INTO aluno (matricula, nome, turma) VALUES ($matricula, '$nome', 
 mysqli_query($conexao, $sql);
 die("<script>
 alert('Aluno cadastrado com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_aluno/formcad.php';
+window.location.href = window.location.origin + '/crud/crud_aluno/formcad.php';
 </script>");
 ?>
