@@ -75,9 +75,10 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
             </header>
             <?php
             include('../../conecta.php');
-            $sql = "SELECT * FROM usuario";
-            $sql = "SELECT * FROM aluno
-    inner join turma on turma = id_turma";
+            /* $sql = "SELECT * FROM usuario"; */
+            $sql = "SELECT * FROM aluno INNER JOIN turma on turma = id_turma
+            ORDER BY aluno.nome";
+            //echo $sql;die;
             $resultado = mysqli_query($conexao, $sql); ?>
             <table class=" container table table-white table-striped">
                 <tr>
