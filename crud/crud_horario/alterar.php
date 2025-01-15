@@ -22,5 +22,5 @@ $sql = "UPDATE horario
 $exe = mysqli_query($conexao, $sql);
 die("<script>
 alert('Horário alterado com sucesso!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_horario/formcad.php';
+window.location.href = window.location.origin + '/crud/crud_horario/formcad.php';
 </script>");

@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 1) {
     die("<script>
     alert('Página dedicada aos professores');
-    window.location.href = window.location.origin + '/roberto/TCC/login/logout.php';
+    window.location.href = window.location.origin + '/login/logout.php';
     </script>");
 }
 ?>
