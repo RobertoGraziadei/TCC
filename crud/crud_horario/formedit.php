@@ -45,7 +45,7 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
             <form action="alterar.php" method="get">
                 <input type="hidden" name="id_horario" value="<?php echo $dados_horario['id_horario']; ?>">
                 <label for="turma">Turma:</label><br>
-                <select name="turma"class="form-select form-select-lg mb-3" aria-label="Large select example" required>
+                <select name="turma" class="form-select form-select-lg mb-3" aria-label="Large select example" required>
                     <?php
                     $sql = "SELECT * FROM turma";
                     $exe = mysqli_query($conexao, $sql);
@@ -59,21 +59,17 @@ $exe2 = mysqli_query($conexao, $selecione_horario2); */
                     <?php } ?>
                 </select>
 
-
                 <label style="text-align: left;" for="dia">Dia:</label><br>
                 <select name="dia" class="form-select form-select-lg mb-3" aria-label="Large select example" required>
-                    <?php
-                    $sql = "SELECT dia FROM horario";
-                    $exe = mysqli_query($conexao, $sql);
-                    while ($dados = mysqli_fetch_assoc($exe)) { ?>
-                        <option value="<?php echo $dados['dia']; ?>"
-                            <?php if ($dados_horario['dia'] == $dados['dia']) {
-                                echo 'selected';
-                            } ?>>
-                            <?php echo $dados['dia']; ?>
-                        </option>
-                    <?php } ?>
+                    <option disabled selected>Selecione o dia</option>
+                    <option value="Segunda-Feira" <?php if ($dados_horario['dia'] == 'Segunda-Feira') echo 'selected'; ?>>Segunda-Feira</option>
+                    <option value="Terça-Feira" <?php if ($dados_horario['dia'] == 'Terça-Feira') echo 'selected'; ?>>Terça-Feira</option>
+                    <option value="Quarta-Feira" <?php if ($dados_horario['dia'] == 'Quarta-Feira') echo 'selected'; ?>>Quarta-Feira</option>
+                    <option value="Quinta-Feira" <?php if ($dados_horario['dia'] == 'Quinta-Feira') echo 'selected'; ?>>Quinta-Feira</option>
+                    <option value="Sexta-Feira" <?php if ($dados_horario['dia'] == 'Sexta-Feira') echo 'selected'; ?>>Sexta-Feira</option>
+                    <option value="Sábado" <?php if ($dados_horario['dia'] == 'Sábado') echo 'selected'; ?>>Sábado</option>
                 </select>
+
 
 
                 <label style="text-align: left;" for="disciplina">Disciplina:</label><br>

@@ -6,6 +6,20 @@
 date_default_timezone_set('America/Sao_Paulo');
 $data = new DateTime('now');
 $agora = $data->format('Y-m-d H:i:s');
+//echo $agora;
+
+$dia_semana_pt = array(
+    'Sunday' => 'Domingo',
+    'Monday' => 'Segunda-Feira',
+    'Tuesday' => 'Terça-Feira',
+    'Wednesday' => 'Quarta-Feira',
+    'Thursday' => 'Quinta-Feira',
+    'Friday' => 'Sexta-Feira',
+    'Saturday' => 'Sábado',
+);
+
+$dia_semana_ing = $data->format('l');
+$dia_semana = $dia_semana_pt[$dia_semana_ing];
 
 echo "<link rel='stylesheet' href='../css/bootstrap.min.css'>";
 echo '<script src="../css/bootstrap.min.js"></script>';
@@ -21,7 +35,7 @@ $hr_batida = $_GET['hr_batida'];
 $sql4 = "SELECT * FROM horario 
 INNER JOIN disciplina ON horario.fk_disciplina_id_disciplina = disciplina.id_disciplinas 
 INNER JOIN turma on horario.fk_turma_id_turma = turma.id_turma 
-WHERE horario.dia = 'Segunda-Feira'
+WHERE horario.dia = '$dia_semana'
 AND turma.id_turma = $id_turma
 AND disciplina.id_disciplinas = $id_disciplina;
 ";
