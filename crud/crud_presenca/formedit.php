@@ -29,6 +29,7 @@ $matricula = $_GET['matricula'];
 $id_disciplina = $_GET['id_disciplinas'];
 $id_turma = $_GET['id_turma'];
 $hr_batida = $_GET['hr_batida'];
+//echo $hr_batida;die;
 
 
 
@@ -41,24 +42,13 @@ AND disciplina.id_disciplinas = $id_disciplina;
 ";
 //echo $sql4;die;
 $exe4 = mysqli_query($conexao, $sql4);
-
-/* if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
+if (mysqli_num_rows($exe4) == 0) {
     echo "<script>
-    alert('Aula inválida');
-    window.location.href = 'chamada.php?sala=$sala';
-    </script>";
-    die();
-} */
-
-/* if ($verifi_sala = mysqli_num_rows($exe4) == 0) {
-    echo "<script>Swal.fire({
-    icon: 'error',
-    title: 'Ops...',
-    text: 'Aula inválida'  
-});
+alert('Não é possível registrar uma presença nesta data');
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_presenca/listar.php?id_disciplinas=' + " . json_encode($id_disciplina) . " + '&id_turma=' + " . json_encode($id_turma) . " + '&hr_batida=' + " . json_encode($hr_batida) . ";
 </script>";
     die;
-} */
+}
 
 
 $pega_id = mysqli_fetch_assoc($exe4);
