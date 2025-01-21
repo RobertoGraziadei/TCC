@@ -22,17 +22,45 @@ and fk_professor = '$professor'
 and horario_inicio = '$horario_i'
 and horario_fim = '$horario_f'";
 $executa = mysqli_query($conexao, $sql);
-
-if(mysqli_num_rows($executa) > 0){
+if (mysqli_num_rows($executa) > 0) {
     die("<script>
 alert('Já existe um horário com essas informações!');
-window.location.href = window.location.origin + '/roberto/TCC/crud/crud_usuario/formcad.php';
+window.location.href = window.location.origin + '/roberto/TCC/crud/crud_horario/formcad.php';
 </script>");
 }
 
-$sql = "INSERT INTO horario (dia, fk_sala_n_sala, fk_disciplina_id_disciplina, fk_turma_id_turma, horario_inicio, horario_fim, fk_professor)
+$sql2 = "SELECT * FROM horario
+INNER JOIN turma ON turma.id_turma = horario.fk_turma_id_turma
+WHERE dia = '$dia'
+AND turma.id_turma = $turma
+AND horario.horario_inicio = '$horario_i'
+AND horario.horario_fim = '$horario_f'";
+$executa2 = mysqli_query($conexao, $sql2);
+if(mysqli_num_rows($executa2) != 0){
+    die("<script>
+    alert('Já existe uma aula registrada neste horário para esta turma!');
+    window.location.href = window.location.origin + '/roberto/TCC/crud/crud_horario/formcad.php';
+    </script>");
+}
+$sql3 = "SELECT * FROM horario
+INNER JOIN turma ON turma.id_turma = horario.fk_turma_id_turma
+WHERE dia = '$dia'
+AND turma.id_turma = $turma
+AND horario.horario_inicio = '$horario_i'
+AND horario.horario_fim = '$horario_f'";
+$executa3 = mysqli_query($conexao, $sql3);
+if(mysqli_num_rows($executa2) != 0){
+    die("<script>
+    alert('Já existe uma aula registrada neste horário para esta turma!');
+    window.location.href = window.location.origin + '/roberto/TCC/crud/crud_horario/formcad.php';
+    </script>");
+}
+
+
+
+$sql_cad = "INSERT INTO horario (dia, fk_sala_n_sala, fk_disciplina_id_disciplina, fk_turma_id_turma, horario_inicio, horario_fim, fk_professor)
 VALUES ('$dia', '$sala', '$disciplina', '$turma', '$horario_i', '$horario_f', $professor)";
-mysqli_query($conexao, $sql);
+$executa_cad = mysqli_query($conexao, $sql_cad);
 /* var_dump($sql);die; */
 die("<script>
 alert('Horário cadastrado com sucesso!');
