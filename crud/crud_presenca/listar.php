@@ -77,6 +77,7 @@ $id_usuario = $_SESSION['id_usuario'];
         <h3>
             <a href="../../QRcode/index.php"><img src="../../img/voltar.png" alt="Voltar"></a>
             Selecione uma data: <?php echo $dia . ' ' . $turminha; ?>
+            <a href="ver_presencas.php?id_disciplinas=<?=$id_disciplinas?>&id_turma=<?=$id_turma?>">Imprimir presenças</a>
         </h3>
 
         <form action="listar.php" method="GET">
@@ -115,12 +116,12 @@ $id_usuario = $_SESSION['id_usuario'];
                         $horario_chegada = new DateTime($dados['hr_batida']);
                         $chegada = $horario_chegada->format('H:i');
 
-                        if($chegada == '00:00'){?>
+                        if ($chegada == '00:00') { ?>
                             <td><?php echo "Presença feita pelo professor."; ?></td>
-                        <?php }else{
+                        <?php } else {
                         ?>
 
-                        <td><?php echo $chegada ?></td>
+                            <td><?php echo $chegada ?></td>
                         <?php } ?>
                         <td>
                             <button class="btn btn-danger deleteButton"
