@@ -84,6 +84,13 @@ if (!isset($_SESSION['nivel']) or $_SESSION['nivel'] == 2) {
                         <a href="../crud/crud_horario/formcad.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
                     </div>
                 </div>
+                <div class="card mb-3" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Fazer backup</h5>
+                        <hr>
+                        <a href="../BD/backup.php" role="button" style="font-size: 100%;" class="btn btn-secondary" type="button">Acessar</a>
+                    </div>
+                </div>
             </div>
         </div>
 
